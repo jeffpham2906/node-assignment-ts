@@ -1,0 +1,69 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "mysql"
+  url      = env("DATABASE_URL")
+}
+
+model Customer {
+  customerNumber         Int      @id @default(autoincrement()) @db.UnsignedInt
+  customerName           String   @db.VarChar(255)
+  contactLastName        String   @db.VarChar(50)
+  contactFirstName       String   @db.VarChar(50)
+  phone                  String   @db.VarChar(20)
+  addressLine1           String   @db.VarChar(50)
+  addressLine2           String?  @db.VarChar(50)
+  city                   String   @db.VarChar(50)
+  state                  String?  @db.VarChar(50)
+  postalCode             String?  @db.VarChar(50)
+  country                String   @db.VarChar(50)
+  salesRepEmployeeNumber Int      @db.UnsignedInt
+  employee               Employee @relation(fields: [salesRepEmployeeNumber], references: [employeeNumber])
+  creditLimit            Decimal? @db.Decimal(10, 2)
+  created_at             DateTime @default(now()) @db.Timestamp(0)
+  updated_at             DateTime @default(now()) @db.Timestamp(0)
+
+  @@map("customers")
+}
+
+model Employee {
+  employeeNumber Int        @unique @db.UnsignedInt
+  user           User       @relation(fields: [employeeNumber], references: [employeeNumber])
+  lastName       String     @db.VarChar(50)
+  firstName      String     @db.VarChar(50)
+  extension      String     @db.VarChar(50)
+  email          String     @db.VarChar(100)
+  officeCode     String     @db.VarChar(10)
+  reportsTo      Int        @db.UnsignedInt
+  jobTitle       String     @db.VarChar(50)
+  employeeRole   Role       @relation(fields: [role], references: [name])
+  role           String     @unique() @db.VarChar(50)
+  created_at     DateTime   @default(now()) @db.Timestamp(0)
+  updated_at     DateTime   @default(now()) @db.Timestamp(0)
+  Customer       Customer[]
+
+  @@map("employees")
+}
+
+model Role {
+  id          Int        @id @default(autoincrement()) @db.UnsignedInt
+  name        String     @unique() @db.VarChar(50)
+  permissions Json
+  employees   Employee[]
+
+  @@index([name], map: "i_name")
+  @@map("roles")
+}
+
+model User {
+  employeeNumber Int       @id @default(autoincrement()) @db.UnsignedInt
+  username       String    @unique @db.VarChar(20)
+  password       String    @db.VarChar(100)
+  Employee       Employee?
+
+  @@index([employeeNumber], map: "i_employee_number")
+  @@index([username], map: "i_username")
+  @@map("users")
+}
