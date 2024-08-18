@@ -2,10 +2,6 @@
     "compilerOptions": {
         "target": "ESNext",
         "module": "CommonJS",
-        "baseUrl": ".",
-        "paths": {
-            "@/*": ["src/*"]
-        },
         "moduleResolution": "Node",
         "outDir": "dist",
         "importsNotUsedAsValues": "remove",
@@ -14,6 +10,10 @@
         "skipLibCheck": true,
         "forceConsistentCasingInFileNames": true
     },
-    "include": ["src/**/*"],
-    "exclude": ["node_modules"]
+    "include": [
+        "src/**/*"
+    ],
+    "exclude": [
+        "node_modules"
+    ]
 }

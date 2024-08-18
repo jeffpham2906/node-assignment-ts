@@ -3,8 +3,9 @@ generator client {
 }
 
 datasource db {
-  provider = "mysql"
-  url      = env("DATABASE_URL")
+  provider          = "mysql"
+  url               = env("DATABASE_URL")
+  shadowDatabaseUrl = env("SHADOW_DATABASE_URL")
 }
 
 model Customer {
@@ -29,20 +30,20 @@ model Customer {
 }
 
 model Employee {
-  employeeNumber Int        @unique @db.UnsignedInt
-  user           User       @relation(fields: [employeeNumber], references: [employeeNumber])
+  employeeNumber Int        @id @default(autoincrement()) @db.UnsignedInt
   lastName       String     @db.VarChar(50)
   firstName      String     @db.VarChar(50)
   extension      String     @db.VarChar(50)
   email          String     @db.VarChar(100)
   officeCode     String     @db.VarChar(10)
-  reportsTo      Int        @db.UnsignedInt
+  reportsTo      Int?       @db.UnsignedInt
   jobTitle       String     @db.VarChar(50)
-  employeeRole   Role       @relation(fields: [role], references: [name])
-  role           String     @unique() @db.VarChar(50)
+  employeeRole   Role?      @relation(fields: [role], references: [name])
+  role           String?    @unique() @db.VarChar(50)
   created_at     DateTime   @default(now()) @db.Timestamp(0)
   updated_at     DateTime   @default(now()) @db.Timestamp(0)
   Customer       Customer[]
+  User           User?
 
   @@map("employees")
 }
@@ -59,9 +60,9 @@ model Role {
 
 model User {
   employeeNumber Int       @id @default(autoincrement()) @db.UnsignedInt
+  employee       Employee? @relation(fields: [employeeNumber], references: [employeeNumber])
   username       String    @unique @db.VarChar(20)
   password       String    @db.VarChar(100)
-  Employee       Employee?
 
   @@index([employeeNumber], map: "i_employee_number")
   @@index([username], map: "i_username")

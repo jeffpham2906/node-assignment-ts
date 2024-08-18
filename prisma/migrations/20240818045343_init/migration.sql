@@ -21,20 +21,20 @@ CREATE TABLE `customers` (
 
 -- CreateTable
 CREATE TABLE `employees` (
-    `employeeNumber` INTEGER UNSIGNED NOT NULL,
+    `employeeNumber` INTEGER UNSIGNED NOT NULL AUTO_INCREMENT,
     `lastName` VARCHAR(50) NOT NULL,
     `firstName` VARCHAR(50) NOT NULL,
     `extension` VARCHAR(50) NOT NULL,
     `email` VARCHAR(100) NOT NULL,
     `officeCode` VARCHAR(10) NOT NULL,
-    `reportsTo` INTEGER UNSIGNED NOT NULL,
+    `reportsTo` INTEGER UNSIGNED NULL,
     `jobTitle` VARCHAR(50) NOT NULL,
-    `role` VARCHAR(50) NOT NULL,
+    `role` VARCHAR(50) NULL,
     `created_at` TIMESTAMP(0) NOT NULL DEFAULT CURRENT_TIMESTAMP(0),
     `updated_at` TIMESTAMP(0) NOT NULL DEFAULT CURRENT_TIMESTAMP(0),
 
-    UNIQUE INDEX `employees_employeeNumber_key`(`employeeNumber`),
-    UNIQUE INDEX `employees_role_key`(`role`)
+    UNIQUE INDEX `employees_role_key`(`role`),
+    PRIMARY KEY (`employeeNumber`)
 ) DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
 
 -- CreateTable
@@ -64,7 +64,7 @@ CREATE TABLE `users` (
 ALTER TABLE `customers` ADD CONSTRAINT `customers_salesRepEmployeeNumber_fkey` FOREIGN KEY (`salesRepEmployeeNumber`) REFERENCES `employees`(`employeeNumber`) ON DELETE RESTRICT ON UPDATE CASCADE;
 
 -- AddForeignKey
-ALTER TABLE `employees` ADD CONSTRAINT `employees_employeeNumber_fkey` FOREIGN KEY (`employeeNumber`) REFERENCES `users`(`employeeNumber`) ON DELETE RESTRICT ON UPDATE CASCADE;
+ALTER TABLE `employees` ADD CONSTRAINT `employees_role_fkey` FOREIGN KEY (`role`) REFERENCES `roles`(`name`) ON DELETE SET NULL ON UPDATE CASCADE;
 
 -- AddForeignKey
-ALTER TABLE `employees` ADD CONSTRAINT `employees_role_fkey` FOREIGN KEY (`role`) REFERENCES `roles`(`name`) ON DELETE RESTRICT ON UPDATE CASCADE;
+ALTER TABLE `users` ADD CONSTRAINT `users_employeeNumber_fkey` FOREIGN KEY (`employeeNumber`) REFERENCES `employees`(`employeeNumber`) ON DELETE RESTRICT ON UPDATE CASCADE;
