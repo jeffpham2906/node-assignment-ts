@@ -39,8 +39,8 @@ const checkCreate = async (customer: Customer, requiredConditions?: RequiredCond
             conditions.map(async (condition) => {
                 if (condition === "belongToThem" && customer.salesRepEmployeeNumber !== user.employeeNumber) {
                     throw new APIError(
-                        "UNAUTHORIZED",
                         StatusCodes.UNAUTHORIZED,
+                        "UNAUTHORIZED",
                         "Staff can only create their own customer, provide a valid employee number"
                     );
                 }
@@ -54,8 +54,8 @@ const checkCreate = async (customer: Customer, requiredConditions?: RequiredCond
                     const isSameOffice = employee?.officeCode === user.officeCode;
                     if (!isSameOffice) {
                         throw new APIError(
-                            "UNAUTHORIZED",
                             StatusCodes.UNAUTHORIZED,
+                            "UNAUTHORIZED",
                             "You don't have permission to create | update | delete customer of employee out of your office"
                         );
                     }
@@ -108,7 +108,7 @@ export class CustomerService implements ICustomerService {
         }
         const customer = await prisma.customer.findFirst(defaultOptions);
         if (!customer) {
-            throw new APIError("NOT_FOUND", StatusCodes.NOT_FOUND, `Customer with id ${customerNumber} not found.`);
+            throw new APIError(StatusCodes.NOT_FOUND, "NOT_FOUND", `Customer with id ${customerNumber} not found.`);
         }
         return customer;
     };

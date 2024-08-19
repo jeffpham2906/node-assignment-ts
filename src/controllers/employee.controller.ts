@@ -1,9 +1,8 @@
-import { RequestHandler } from "express";
-import { IEmployeeService } from "../interfaces/IEmployeeService";
-import { getRequiredConditions } from "../utils";
-import { logger } from "../lib/logger";
 import { StatusCodes } from "http-status-codes";
-import { APIError } from "../utils/error";
+import { IEmployeeService } from "../interfaces/IEmployeeService";
+import { logger } from "../lib/logger";
+import { APIResponse } from "../utils/api.state";
+
 import catchAsync from "../utils/catchAsync";
 
 export class EmployeeController {
@@ -12,42 +11,26 @@ export class EmployeeController {
         this.service = service;
     }
 
-    getEmployees = catchAsync(async (req, res, next) => {
-        logger.request(req, "getEmployees");
+    getEmployees = catchAsync(async (req, res) => {
         const data = await this.service.onGetEmployees();
         logger.response(req, res, data);
-        res.status(200).json({
-            message: "Get Employees",
-            data,
-        });
+        new APIResponse(StatusCodes.OK, "Success", data).send(res);
     });
-    createEmployee = catchAsync(async (req, res, next) => {
-        logger.request(req, "createEmployee");
+    createEmployee = catchAsync(async (req, res) => {
         const data = await this.service.onCreateEmployee(req.body);
         logger.response(req, res, data);
-        res.status(200).json({
-            message: "CreateEmployee",
-            data,
-        });
+        new APIResponse(StatusCodes.OK, "Success", data).send(res);
     });
-    updateEmployee = catchAsync(async (req, res, next) => {
-        logger.request(req, "updateEmployee");
+    updateEmployee = catchAsync(async (req, res) => {
         const { id } = req.params;
         const data = await this.service.onUpdateEmployee(parseInt(id), { ...req.body });
         logger.response(req, res, data);
-        res.status(200).json({
-            message: "Update Employee",
-            data,
-        });
+        new APIResponse(StatusCodes.OK, "Success", data).send(res);
     });
-    deleteEmployee = catchAsync(async (req, res, next) => {
-        logger.request(req, "deleteEmployee");
+    deleteEmployee = catchAsync(async (req, res) => {
         const { id } = req.params;
         const data = await this.service.onDeleteEmployee(parseInt(id));
         logger.response(req, res, data);
-        res.status(200).json({
-            message: "Delete Employee",
-            data,
-        });
+        new APIResponse(StatusCodes.OK, "Success", data).send(res);
     });
 }

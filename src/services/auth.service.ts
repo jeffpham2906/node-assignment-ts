@@ -20,7 +20,7 @@ export class AuthService implements IAuthService {
             },
         });
         if (!loggedInUser) {
-            throw new APIError("User not found", StatusCodes.NOT_FOUND, "User not found");
+            throw new APIError(StatusCodes.NOT_FOUND, "NOT_FOUND", "User not found");
         }
         let format = {} as any;
         const { employee, ..._user } = loggedInUser;

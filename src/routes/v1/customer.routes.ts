@@ -14,15 +14,13 @@ customerRoutes.get("/", authenticate({ key: "customers", method: "read" }), cust
 customerRoutes.post(
     "/",
     authenticate({ key: "customers", method: "create" }),
-    celebrate({
-        body: customerSchema,
-    }),
+    customerSchema,
     customerController.createCustomer
 );
 customerRoutes.put(
     "/:id",
     authenticate({ key: "customers", method: "update" }),
-    celebrate({ body: customerSchemaUpdate }),
+    customerSchemaUpdate,
     customerController.updateCustomer
 );
 customerRoutes.delete("/:id", authenticate({ key: "customers", method: "delete" }), customerController.deleteCustomer);

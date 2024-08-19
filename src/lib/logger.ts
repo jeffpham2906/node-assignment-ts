@@ -10,7 +10,7 @@ class Logger {
             format: combine(
                 colorize({ all: true }),
                 timestamp({
-                    format: "YYYY-MM-DD hh:mm:ss.SSS A",
+                    format: "hh:mm:ss A DD-MM-YYYY",
                 }),
                 align(),
                 printf((info) => `${info.timestamp} ${info.level}: ${info.message}`)
@@ -25,16 +25,16 @@ class Logger {
             ],
         });
     }
-    request = (req: Request, message: string) => {
-        this.logger.info(`Request: ${req.url} - ${req.method} - ${message}`);
+    request = (req: Request) => {
+        this.logger.info(`Request: ${req.originalUrl} - ${req.method} `);
     };
 
     response = (req: Request, res: Response, data: any) => {
-        this.logger.info(`Response: ${req.url} - ${req.method} - ${res.statusCode} - ${JSON.stringify(data)}`);
+        this.logger.info(`Response: ${req.originalUrl} - ${req.method} - ${res.statusCode} - ${JSON.stringify(data)}`);
     };
 
     errorResponse = (req: Request, res: Response, error: any) => {
-        this.logger.error(`Error: ${req.url} - ${req.method} - ${res.statusCode} - ${JSON.stringify(error)}`);
+        this.logger.error(`Error: ${req.originalUrl} - ${req.method} - ${res.statusCode} - ${JSON.stringify(error)}`);
     };
 
     error = (error: any) => {

@@ -1,15 +1,16 @@
 import { Employee } from "@prisma/client";
 import { Joi } from "celebrate";
+import { createBodySchema } from "../utils";
 
 export const base = Joi.object<Employee>({
-    // employeeNumber: Joi.number()
-    //     .positive()
-    //     .integer()
-    //     .not(null)
-    //     .alter({
-    //         post: (schema) => schema.required(),
-    //         put: (schema) => schema.forbidden(),
-    //     }),
+    employeeNumber: Joi.number()
+        .positive()
+        .integer()
+        .not(null)
+        .alter({
+            post: (schema) => schema.required(),
+            put: (schema) => schema.forbidden(),
+        }),
     lastName: Joi.string()
         .min(3)
         .max(50)
@@ -59,5 +60,5 @@ export const base = Joi.object<Employee>({
         }),
 });
 
-export const employeeSchema = base.tailor("post");
-export const employeeSchemaUpdate = base.tailor("put");
+export const employeeSchema = createBodySchema(base.tailor("post"));
+export const employeeSchemaUpdate = createBodySchema(base.tailor("put"));

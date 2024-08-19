@@ -1,4 +1,5 @@
 import { Employee, User } from "@prisma/client";
+import { celebrate, Joi } from "celebrate";
 import { Request } from "express";
 
 export const getRequiredConditions = (req: Request) => {
@@ -13,3 +14,5 @@ export const getRequiredConditions = (req: Request) => {
     }
     return query;
 };
+
+export const createBodySchema = (schema: Joi.Schema) => celebrate({ body: schema }, { abortEarly: false });

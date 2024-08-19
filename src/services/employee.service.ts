@@ -20,7 +20,7 @@ export class EmployeeService implements IEmployeeService {
             where: { employeeNumber },
         });
         if (!employee) {
-            throw new APIError("NOT_FOUND", StatusCodes.NOT_FOUND, `Employee with id ${employeeNumber} not found.`);
+            throw new APIError(StatusCodes.NOT_FOUND, "NOT_FOUND", `Employee with id ${employeeNumber} not found.`);
         }
         return employee;
     };
