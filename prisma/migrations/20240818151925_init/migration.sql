@@ -29,11 +29,10 @@ CREATE TABLE `employees` (
     `officeCode` VARCHAR(10) NOT NULL,
     `reportsTo` INTEGER UNSIGNED NULL,
     `jobTitle` VARCHAR(50) NOT NULL,
-    `role` VARCHAR(50) NULL,
+    `role` VARCHAR(50) NULL DEFAULT 'Staff',
     `created_at` TIMESTAMP(0) NOT NULL DEFAULT CURRENT_TIMESTAMP(0),
     `updated_at` TIMESTAMP(0) NOT NULL DEFAULT CURRENT_TIMESTAMP(0),
 
-    UNIQUE INDEX `employees_role_key`(`role`),
     PRIMARY KEY (`employeeNumber`)
 ) DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
 

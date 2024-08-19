@@ -1,8 +1,11 @@
 import dotenv from "dotenv";
 import e, { ErrorRequestHandler } from "express";
 import apiRoutes from "./routes/v1";
-import { errorController } from "./controllers/error.controller";
-import { errors, isCelebrateError } from "celebrate";
+
+import { errors } from "celebrate";
+import { StatusCodes } from "http-status-codes";
+import { APIError } from "./utils/error";
+import { logger } from "./lib/logger";
 dotenv.config();
 
 const bootstrap = async () => {
@@ -22,11 +25,18 @@ const bootstrap = async () => {
 		app.use("/api/v1", apiRoutes);
 
 		app.use(errors({ statusCode: 401 }));
-		const globalErrorHandler: ErrorRequestHandler = async (err, req, res, next) => {
-			if (!errorController.isTrustedError(err)) {
-				return next(err);
+		const globalErrorHandler: ErrorRequestHandler = async (error, req, res, next) => {
+			logger.errorResponse(req, res, error.message);
+			if (error instanceof APIError) {
+				const { stack, statusCode, message } = error;
+				return res.status(statusCode).json({ statusCode, message, stack });
 			}
-			await errorController.handleError(err);
+			return res.status(StatusCodes.BAD_GATEWAY).json({
+				message: "Something went wrong",
+				error: error.message,
+				stack: error.stack,
+				statusCode: StatusCodes.BAD_GATEWAY,
+			});
 		};
 		app.use(globalErrorHandler);
 		app.listen(port, () => {

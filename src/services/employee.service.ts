@@ -1,6 +1,8 @@
 import { Employee } from "@prisma/client";
 import { IEmployeeService } from "../interfaces/IEmployeeService";
 import { prisma } from "../lib/prisma";
+import { APIError } from "../utils/error";
+import { StatusCodes } from "http-status-codes";
 
 export class EmployeeService implements IEmployeeService {
     onGetEmployees = async (): Promise<Employee[]> => {
@@ -13,12 +15,12 @@ export class EmployeeService implements IEmployeeService {
         });
         return data;
     };
-    onGetEmployee = async (id: number): Promise<Employee> => {
+    onGetEmployee = async (employeeNumber: number): Promise<Employee> => {
         const employee = await prisma.employee.findFirst({
-            where: { employeeNumber: id },
+            where: { employeeNumber },
         });
         if (!employee) {
-            throw new Error(`Employee with id ${id} not found.`);
+            throw new APIError("NOT_FOUND", StatusCodes.NOT_FOUND, `Employee with id ${employeeNumber} not found.`);
         }
         return employee;
     };
@@ -28,18 +30,18 @@ export class EmployeeService implements IEmployeeService {
         });
         return data;
     };
-    onDeleteEmployee = async (id: number): Promise<Employee> => {
+    onDeleteEmployee = async (employeeNumber: number): Promise<Employee> => {
         const deletedEmployee = await prisma.employee.delete({
             where: {
-                employeeNumber: id,
+                employeeNumber,
             },
         });
         return deletedEmployee;
     };
-    onUpdateEmployee = async (id: number, employee: Partial<Employee>): Promise<Employee> => {
+    onUpdateEmployee = async (employeeNumber: number, employee: Partial<Employee>): Promise<Employee> => {
         const updatedEmployee = await prisma.employee.update({
             where: {
-                employeeNumber: id,
+                employeeNumber,
             },
             data: employee,
         });

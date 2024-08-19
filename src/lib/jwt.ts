@@ -25,7 +25,7 @@ const checkResource = (
         if (u_permission.key === requiredPermissions.key) {
             return u_permission.actions.some((u_action) => {
                 const hasPermission = u_action.method === requiredPermissions.method || u_action.method === "full";
-                if (u_action.conditions && hasPermission) {
+                if (u_action.conditions?.length && hasPermission) {
                     req.query.conditions = u_action.conditions;
                 }
                 return hasPermission;
@@ -45,6 +45,7 @@ const authenticate = (requiredPermissions?: RequiredPermission): RequestHandler 
         }
         try {
             const payload = verifyToken(token) as any;
+            (req as any).user = payload;
             if (requiredPermissions) {
                 const userPermissions = payload.permissions as UserPermissions[];
                 if (!userPermissions) {

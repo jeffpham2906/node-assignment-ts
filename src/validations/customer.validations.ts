@@ -1,25 +1,27 @@
 import { Customer } from "@prisma/client";
 import { Joi } from "celebrate";
 
+const customerName = Joi.string()
+    .min(5)
+    .max(50)
+    .not(null)
+    .alter({
+        post: (schema) => schema.required(),
+        put: (schema) => schema.optional(),
+    });
+
 const baseSchema = Joi.object<Customer>({
-    customerNumber: Joi.number()
-        .integer()
-        .positive()
-        .not(null)
-        .alter({
-            post: (schema) => schema.required(),
-            put: (schema) => schema.forbidden(),
-        }),
-    customerName: Joi.string()
-        .min(5)
-        .max(50)
-        .not(null)
-        .alter({
-            post: (schema) => schema.required(),
-            put: (schema) => schema.optional(),
-        }),
-    contactLastName: Joi.ref("customerName"),
-    contactFirstName: Joi.ref("customerName"),
+    // customerNumber: Joi.number()
+    //     .integer()
+    //     .positive()
+    //     .not(null)
+    //     .alter({
+    //         post: (schema) => schema.required(),
+    //         put: (schema) => schema.forbidden(),
+    //     }),
+    customerName: customerName,
+    contactLastName: customerName.min(3),
+    contactFirstName: customerName.min(3),
     phone: Joi.string()
         .min(8)
         .max(20)
@@ -45,8 +47,8 @@ const baseSchema = Joi.object<Customer>({
             post: (schema) => schema.required(),
             put: (schema) => schema.optional(),
         }),
-    state: Joi.string().min(2).max(50).valid(null).optional(),
-    postalCode: Joi.string().min(5).max(15).valid(null).optional(),
+    state: Joi.string().min(2).max(50).allow(null).optional(),
+    postalCode: Joi.string().min(5).max(15).allow(null).optional(),
     country: Joi.string()
         .min(2)
         .max(50)
@@ -58,7 +60,7 @@ const baseSchema = Joi.object<Customer>({
     salesRepEmployeeNumber: Joi.number()
         .integer()
         .positive()
-        .valid(null)
+        .allow(null)
         .alter({
             post: (schema) => schema.required(),
             put: (schema) => schema.optional(),
@@ -68,7 +70,7 @@ const baseSchema = Joi.object<Customer>({
         .options({
             convert: true,
         })
-        .valid(null)
+        .allow(null)
         .optional(),
 });
 

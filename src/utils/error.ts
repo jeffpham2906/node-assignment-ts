@@ -2,13 +2,13 @@ import { StatusCodes } from "http-status-codes";
 
 export class BaseError extends Error {
     public readonly name: string;
-    public readonly httpCode: StatusCodes;
+    public readonly statusCode: StatusCodes;
     public readonly isOperational: boolean;
 
-    constructor(name: string, httpCode: StatusCodes, isOperational: boolean, message: string) {
+    constructor(name: string, statusCode: StatusCodes, message: string, isOperational: boolean) {
         super(message);
         this.name = name;
-        this.httpCode = httpCode;
+        this.statusCode = statusCode;
         this.isOperational = isOperational;
         Error.captureStackTrace(this, this.constructor);
     }
@@ -17,10 +17,10 @@ export class BaseError extends Error {
 export class APIError extends BaseError {
     constructor(
         name: string,
-        httpCode: StatusCodes = StatusCodes.INTERNAL_SERVER_ERROR,
-        isOperational: boolean = true,
-        message: string = "Something went wrong"
+        statusCode: StatusCodes = StatusCodes.INTERNAL_SERVER_ERROR,
+        message: string = "Something went wrong",
+        isOperational: boolean = true
     ) {
-        super(name, httpCode, isOperational, message);
+        super(name, statusCode, message, isOperational);
     }
 }

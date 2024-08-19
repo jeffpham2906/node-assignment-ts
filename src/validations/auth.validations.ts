@@ -7,7 +7,7 @@ const credentials = {
         .required()
         .min(6)
         .max(100)
-        .regex(/^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[a-zA-Z]).{6,}$/),
+        .regex(/^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[a-zA-Z]).{6,}$/, "contains at least a number, a special char"),
 };
 
 const loginSchema = Joi.object<User>(credentials);
