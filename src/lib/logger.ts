@@ -5,13 +5,6 @@ const { combine, colorize, timestamp, align, printf } = winston.format;
 class Logger {
     private logger: winston.Logger;
     constructor() {
-        const prodTransport = new winston.transports.File({
-            filename: "logs/combined.log",
-            level: "info",
-        });
-        const devTransport = new winston.transports.Console({
-            level: "info",
-        });
         this.logger = winston.createLogger({
             level: process.env.LOG_LEVEL || "info",
             format: combine(
@@ -22,7 +15,14 @@ class Logger {
                 align(),
                 printf((info) => `${info.timestamp} ${info.level}: ${info.message}`)
             ),
-            transports: [process.env.NODE_ENV === "production" ? prodTransport : devTransport],
+            transports: [
+                new winston.transports.File({
+                    filename: "logs/error.log",
+                    level: "error",
+                }),
+                new winston.transports.File({ filename: "logs/combined.log" }),
+                new winston.transports.Console(),
+            ],
         });
     }
     request = (req: Request, message: string) => {

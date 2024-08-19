@@ -30,5 +30,6 @@ employeeRoutes.put(
     }),
     employeeController.updateEmployee
 );
+employeeRoutes.delete("/:id", authenticate({ key: "employees", method: "delete" }), employeeController.deleteEmployee);
 
 export default employeeRoutes;

@@ -25,5 +25,6 @@ customerRoutes.put(
     celebrate({ body: customerSchemaUpdate }),
     customerController.updateCustomer
 );
+customerRoutes.delete("/:id", authenticate({ key: "customers", method: "delete" }), customerController.deleteCustomer);
 
 export default customerRoutes;

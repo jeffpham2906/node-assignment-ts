@@ -105,7 +105,7 @@ async function main() {
     const employee = await prisma.employee.createMany({
         data: [
             {
-                employeeNumber: 123,
+                employeeNumber: 1,
                 lastName: "Pham",
                 firstName: "Jeff",
                 extension: "",
@@ -116,7 +116,7 @@ async function main() {
                 role: "President",
             },
             {
-                employeeNumber: 124,
+                employeeNumber: 2,
                 lastName: "Duc",
                 firstName: "Anh",
                 extension: "",
@@ -127,7 +127,7 @@ async function main() {
                 role: "Manager",
             },
             {
-                employeeNumber: 125,
+                employeeNumber: 3,
                 lastName: "Dung",
                 firstName: "Pham",
                 extension: "",
@@ -138,7 +138,7 @@ async function main() {
                 role: "Leader",
             },
             {
-                employeeNumber: 126,
+                employeeNumber: 4,
                 lastName: "John",
                 firstName: "Tran",
                 extension: "",
@@ -148,6 +148,28 @@ async function main() {
                 jobTitle: "Staff Sales",
                 role: "Staff",
             },
+            {
+                employeeNumber: 5,
+                lastName: "Pham",
+                firstName: "Luyen",
+                extension: "",
+                email: "phamluyeb@gmail.com",
+                officeCode: "103231",
+                reportsTo: null,
+                jobTitle: "Staff Sales",
+                role: "Staff",
+            },
+            {
+                employeeNumber: 6,
+                lastName: "Dang",
+                firstName: "Khoa",
+                extension: "",
+                email: "dangkhoa@gmail.com",
+                officeCode: "103231",
+                reportsTo: null,
+                jobTitle: "Leader ABC",
+                role: "Leader",
+            },
         ],
     });
     const user = await prisma.user.createMany({
@@ -155,22 +177,33 @@ async function main() {
             {
                 username: "system_admin",
                 password: "Admin@123",
-                employeeNumber: 123,
+                employeeNumber: 1,
             },
             {
                 username: "system_manager",
                 password: "Admin@123",
-                employeeNumber: 124,
+                employeeNumber: 2,
             },
             {
-                username: "system_leader",
+                username: "system_leader1",
                 password: "Admin@123",
-                employeeNumber: 125,
+                employeeNumber: 3,
             },
             {
-                username: "system_staff",
+                username: "system_staff1",
                 password: "Admin@123",
-                employeeNumber: 126,
+                employeeNumber: 4,
+            },
+
+            {
+                username: "system_staff2",
+                password: "Admin@123",
+                employeeNumber: 5,
+            },
+            {
+                username: "system_leader2",
+                password: "Admin@123",
+                employeeNumber: 6,
             },
         ],
     });

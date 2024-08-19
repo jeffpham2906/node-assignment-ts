@@ -2,14 +2,14 @@ import { Employee } from "@prisma/client";
 import { Joi } from "celebrate";
 
 export const base = Joi.object<Employee>({
-    employeeNumber: Joi.number()
-        .positive()
-        .integer()
-        .not(null)
-        .alter({
-            post: (schema) => schema.required(),
-            put: (schema) => schema.forbidden(),
-        }),
+    // employeeNumber: Joi.number()
+    //     .positive()
+    //     .integer()
+    //     .not(null)
+    //     .alter({
+    //         post: (schema) => schema.required(),
+    //         put: (schema) => schema.forbidden(),
+    //     }),
     lastName: Joi.string()
         .min(3)
         .max(50)
@@ -49,6 +49,7 @@ export const base = Joi.object<Employee>({
             post: (schema) => schema.required(),
             put: (schema) => schema.optional(),
         }),
+    role: Joi.string().allow(null).optional(),
     reportsTo: Joi.number().positive().integer().valid(null).optional(),
     jobTitle: Joi.string()
         .valid("President", "Manager", "Leader", "Staff")

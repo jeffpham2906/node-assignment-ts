@@ -1,9 +1,16 @@
-import { Customer } from "@prisma/client";
-
+import { Customer, Employee, User } from "@prisma/client";
+export type RequiredConditions = {
+    conditions: string[];
+    user: Employee & User;
+};
 export interface ICustomerService {
-    onGetCustomers(): Promise<Customer[]>;
-    onGetCustomer(id: number): Promise<Customer>;
-    onCreateCustomer(customer: Customer): Promise<Customer>;
-    onUpdateCustomer(id: number, customer: Partial<Customer>): Promise<Customer>;
-    onDeleteCustomer(id: number): Promise<Customer>;
+    onGetCustomers(requiredConditions?: RequiredConditions): Promise<Customer[]>;
+    onGetCustomer(id: number, requiredConditions?: RequiredConditions): Promise<Customer>;
+    onCreateCustomer(customer: Customer, requiredConditions?: RequiredConditions): Promise<Customer>;
+    onUpdateCustomer(
+        id: number,
+        customer: Partial<Customer>,
+        requiredConditions?: RequiredConditions
+    ): Promise<Customer>;
+    onDeleteCustomer(id: number, requiredConditions?: RequiredConditions): Promise<Customer>;
 }

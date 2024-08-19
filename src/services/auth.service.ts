@@ -2,6 +2,8 @@ import { User } from "@prisma/client";
 import { IAuthService } from "../interfaces/IAuthService";
 import { prisma } from "../lib/prisma";
 import bcrypt from "bcrypt";
+import { APIError } from "../utils/error";
+import { StatusCodes } from "http-status-codes";
 
 export class AuthService implements IAuthService {
     onLogin = async (user: Omit<User, "employeeNumber">): Promise<User> => {
@@ -18,7 +20,7 @@ export class AuthService implements IAuthService {
             },
         });
         if (!loggedInUser) {
-            throw new Error("User not found");
+            throw new APIError("User not found", StatusCodes.NOT_FOUND, "User not found");
         }
         let format = {} as any;
         const { employee, ..._user } = loggedInUser;
