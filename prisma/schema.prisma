@@ -3,9 +3,9 @@ generator client {
 }
 
 datasource db {
-  provider          = "mysql"
-  url               = env("DATABASE_URL")
-  shadowDatabaseUrl = env("SHADOW_DATABASE_URL")
+  provider = "mysql"
+  url      = env("DATABASE_URL")
+  // shadowDatabaseUrl = env("SHADOW_DATABASE_URL")
 }
 
 model Customer {
@@ -36,6 +36,8 @@ model Employee {
   extension      String     @db.VarChar(50)
   email          String     @db.VarChar(100)
   officeCode     String     @db.VarChar(10)
+  subordinates   Employee[] @relation("EmployeeToEmployee")
+  manager        Employee?  @relation("EmployeeToEmployee", fields: [reportsTo], references: [employeeNumber])
   reportsTo      Int?       @db.UnsignedInt
   jobTitle       String     @db.VarChar(50)
   employeeRole   Role?      @relation(fields: [role], references: [name])

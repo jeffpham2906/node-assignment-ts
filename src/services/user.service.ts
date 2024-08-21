@@ -1,6 +1,6 @@
 import { User } from "@prisma/client";
-import { IUserService } from "../interfaces/IUserService";
 import { prisma } from "../lib/prisma";
+import { IUserService } from "../interfaces";
 export class UserService implements IUserService {
     onGetUsers = async (): Promise<User[]> => {
         const data = await prisma.user.findMany({

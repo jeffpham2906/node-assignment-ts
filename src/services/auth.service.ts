@@ -1,51 +1,44 @@
+import bcrypt from "bcrypt";
 import { User } from "@prisma/client";
 import { IAuthService } from "../interfaces/IAuthService";
-import { prisma } from "../lib/prisma";
-import bcrypt from "bcrypt";
 import { APIError } from "../utils/error";
 import { StatusCodes } from "http-status-codes";
-
+import { STATUS_MESSAGES } from "../constants";
+import { IUserRepository } from "../interfaces";
+import { flattenObject } from "../utils";
 export class AuthService implements IAuthService {
+    private repository: IUserRepository;
+    constructor(repository: IUserRepository) {
+        this.repository = repository;
+    }
     onLogin = async (user: Omit<User, "employeeNumber">): Promise<User> => {
-        const loggedInUser = await prisma.user.findFirst({
-            where: {
-                username: user.username,
-            },
-            select: {
-                employee: {
-                    include: {
-                        employeeRole: true,
-                    },
-                },
-            },
-        });
+        const loggedInUser = await this.repository.findByUsername(user.username);
         if (!loggedInUser) {
-            throw new APIError(StatusCodes.NOT_FOUND, "NOT_FOUND", "User not found");
+            throw new APIError(
+                StatusCodes.NOT_FOUND,
+                STATUS_MESSAGES.NOT_FOUND,
+                `Cannot find user with username ${user.username}`
+            );
         }
-        let format = {} as any;
-        const { employee, ..._user } = loggedInUser;
-        if (employee) {
-            const { employeeRole, ..._employee } = employee;
-            format = { ...format, ..._employee };
-            if (employeeRole) {
-                format["permissions"] = [...Array.from(employeeRole.permissions as any)];
-            }
+        const isCorrectPassword = await bcrypt.compare(user.password, loggedInUser.password);
+        if (!isCorrectPassword) {
+            throw new APIError(
+                StatusCodes.UNAUTHORIZED,
+                STATUS_MESSAGES.UNAUTHORIZED,
+                `Password not correct with username ${user.username}`
+            );
         }
-
-        return {
-            ..._user,
-            ...format,
-        };
+        const { password, ...restUser } = loggedInUser;
+        return flattenObject({ ...restUser }) as User;
     };
     onRegister = async (user: User): Promise<User> => {
-        user.password = await bcrypt.hash(user.password, 10);
-        const createdUser = await prisma.user.create({
-            data: user,
-        });
-        return createdUser;
+        const salt = await bcrypt.genSalt(10);
+        user.password = await bcrypt.hash(user.password, salt);
+        const createdUser = await this.repository.create(user);
+        return flattenObject({ ...createdUser }) as User;
     };
 
     onRefreshToken = async (refreshToken: string): Promise<any> => {
-        return "ok";
+        throw new Error("Method not implemented.");
     };
 }

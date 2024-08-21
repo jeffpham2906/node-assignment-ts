@@ -40,5 +40,9 @@ class Logger {
     error = (error: any) => {
         this.logger.error(error);
     };
+
+    info = (info: any) => {
+        this.logger.info(info);
+    };
 }
 export const logger = new Logger();

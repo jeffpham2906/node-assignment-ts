@@ -1,27 +1,30 @@
 import { Router } from "express";
-import { EmployeeService } from "../../services/employee.service";
-import { EmployeeController } from "../../controllers/employee.controller";
-import { authenticate } from "../../lib/jwt";
 import { employeeSchema, employeeSchemaUpdate } from "../../validations/employee.validations";
+import authenticate from "../../middlewares/authenticate";
+import { Method } from "../../constants";
+import { EmployeeRepository } from "../../repositories/employee.repository";
+import { EmployeeController } from "../../controllers/employee.controller";
+import { EmployeeService } from "../../services/employee.service";
 
 // api/v1/employees
 const employeeRoutes = Router();
-const employeeService = new EmployeeService();
-const employeeController = new EmployeeController(employeeService);
+const repository = new EmployeeRepository();
+const service = new EmployeeService(repository);
+const controller = new EmployeeController(service);
 
-employeeRoutes.get("/", authenticate({ key: "employees", method: "read" }), employeeController.getEmployees);
+employeeRoutes.get("/", authenticate({ key: "employees", method: Method.READ }), controller.getEmployees);
 employeeRoutes.post(
     "/",
-    authenticate({ key: "employees", method: "create" }),
+    authenticate({ key: "employees", method: Method.CREATE }),
     employeeSchema,
-    employeeController.createEmployee
+    controller.createEmployee
 );
 employeeRoutes.put(
     "/:id",
-    authenticate({ key: "employees", method: "update" }),
+    authenticate({ key: "employees", method: Method.UPDATE }),
     employeeSchemaUpdate,
-    employeeController.updateEmployee
+    controller.updateEmployee
 );
-employeeRoutes.delete("/:id", authenticate({ key: "employees", method: "delete" }), employeeController.deleteEmployee);
+employeeRoutes.delete("/:id", authenticate({ key: "employees", method: Method.DELETE }), controller.deleteEmployee);
 
 export default employeeRoutes;
