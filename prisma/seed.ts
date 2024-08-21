@@ -1,6 +1,6 @@
 import { PrismaClient } from "@prisma/client";
 const prisma = new PrismaClient();
-
+import bcrypt from "bcrypt";
 async function main() {
     const roles = await prisma.role.createMany({
         data: [
@@ -172,40 +172,49 @@ async function main() {
             },
         ],
     });
-    const user = await prisma.user.createMany({
-        data: [
-            {
-                username: "system_admin",
-                password: "Admin@123",
-                employeeNumber: 1,
-            },
-            {
-                username: "system_manager",
-                password: "Admin@123",
-                employeeNumber: 2,
-            },
-            {
-                username: "system_leader1",
-                password: "Admin@123",
-                employeeNumber: 3,
-            },
-            {
-                username: "system_staff1",
-                password: "Admin@123",
-                employeeNumber: 4,
-            },
+    const defaultUsers = [
+        {
+            username: "system_admin",
+            password: "Admin@123",
+            employeeNumber: 1,
+        },
+        {
+            username: "system_manager",
+            password: "Admin@123",
+            employeeNumber: 2,
+        },
+        {
+            username: "system_leader1",
+            password: "Admin@123",
+            employeeNumber: 3,
+        },
+        {
+            username: "system_staff1",
+            password: "Admin@123",
+            employeeNumber: 4,
+        },
 
-            {
-                username: "system_staff2",
-                password: "Admin@123",
-                employeeNumber: 5,
-            },
-            {
-                username: "system_leader2",
-                password: "Admin@123",
-                employeeNumber: 6,
-            },
-        ],
+        {
+            username: "system_staff2",
+            password: "Admin@123",
+            employeeNumber: 5,
+        },
+        {
+            username: "system_leader2",
+            password: "Admin@123",
+            employeeNumber: 6,
+        },
+    ];
+
+    const data = await Promise.all(
+        defaultUsers.map(async (user) => {
+            const salt = await bcrypt.genSalt(10);
+            user.password = await bcrypt.hash(user.password, salt);
+            return user;
+        })
+    );
+    const user = await prisma.user.createMany({
+        data,
     });
 }
 main()

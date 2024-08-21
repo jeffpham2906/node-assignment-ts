@@ -1,28 +1,36 @@
 import { Router } from "express";
-import { authenticate } from "../../lib/jwt";
 import { CustomerService } from "../../services/customer.service";
 import { CustomerController } from "../../controllers/customer.controller";
-import { celebrate } from "celebrate";
 import { customerSchema, customerSchemaUpdate } from "../../validations/customer.validations";
+import authenticate from "../../middlewares/authenticate";
+import { Method } from "../../constants";
+import { CustomerRepository } from "../../repositories/customer.repository";
 
 // api/v1/customers
 const customerRoutes = Router();
-const customerService = new CustomerService();
-const customerController = new CustomerController(customerService);
+const repository = new CustomerRepository();
+const service = new CustomerService(repository);
+const controller = new CustomerController(service);
 
-customerRoutes.get("/", authenticate({ key: "customers", method: "read" }), customerController.getCustomers);
+customerRoutes.get("/", authenticate({ key: "customers", method: Method.READ }), controller.getCustomers);
+
 customerRoutes.post(
     "/",
-    authenticate({ key: "customers", method: "create" }),
+    authenticate({ key: "customers", method: Method.CREATE }),
     customerSchema,
-    customerController.createCustomer
+    controller.createCustomer
 );
+
 customerRoutes.put(
     "/:id",
-    authenticate({ key: "customers", method: "update" }),
+    authenticate({ key: "customers", method: Method.UPDATE }),
     customerSchemaUpdate,
-    customerController.updateCustomer
+    controller.updateCustomer
 );
-customerRoutes.delete("/:id", authenticate({ key: "customers", method: "delete" }), customerController.deleteCustomer);
+customerRoutes.delete(
+    "/:id",
+    authenticate({ key: "customers", method: Method.DELETE }),
+    controller.deleteCustomer
+);
 
 export default customerRoutes;

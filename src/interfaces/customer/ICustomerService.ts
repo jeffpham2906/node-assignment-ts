@@ -5,12 +5,12 @@ export type RequiredConditions = {
 };
 export interface ICustomerService {
     onGetCustomers(requiredConditions?: RequiredConditions): Promise<Customer[]>;
-    onGetCustomer(id: number, requiredConditions?: RequiredConditions): Promise<Customer>;
+    onGetCustomer(customerNumber: number, requiredConditions?: RequiredConditions): Promise<Customer>;
     onCreateCustomer(customer: Customer, requiredConditions?: RequiredConditions): Promise<Customer>;
     onUpdateCustomer(
-        id: number,
+        customerNumber: number,
         customer: Partial<Customer>,
         requiredConditions?: RequiredConditions
     ): Promise<Customer>;
-    onDeleteCustomer(id: number, requiredConditions?: RequiredConditions): Promise<Customer>;
+    onDeleteCustomer(customerNumber: number, requiredConditions?: RequiredConditions): Promise<Customer>;
 }

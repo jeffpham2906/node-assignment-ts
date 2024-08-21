@@ -4,24 +4,28 @@ import { generateToken } from "../lib/jwt";
 import catchAsync from "../utils/catchAsync";
 import { APIResponse } from "../utils/api.state";
 import { StatusCodes } from "http-status-codes";
+import { STATUS_MESSAGES } from "../constants";
 
 class AuthController {
     private service: IAuthService;
     constructor(service: IAuthService) {
         this.service = service;
     }
+
     login = catchAsync(async (req, res) => {
-        const user = await this.service.onLogin(req.body);
-        const token = generateToken(user);
-        const data = { ...user, token };
-        logger.response(req, res, user);
-        new APIResponse(StatusCodes.OK, "Login Successfully", data).send(res);
+        const data = await this.service.onLogin(req.body);
+        const token = generateToken(data);
+        const dataWithToken = { ...data, token };
+        logger.response(req, res, data);
+        new APIResponse(StatusCodes.OK, STATUS_MESSAGES.SUCCESS, dataWithToken).send(res);
     });
+
     register = catchAsync(async (req, res) => {
-        const response = await this.service.onRegister(req.body);
-        logger.response(req, res, response);
-        new APIResponse(StatusCodes.OK, "Register Successfully", response).send(res);
+        const data = await this.service.onRegister(req.body);
+        logger.response(req, res, data);
+        new APIResponse(StatusCodes.OK, STATUS_MESSAGES.SUCCESS, data).send(res);
     });
+
     refreshToken = catchAsync(async (req, res) => {
         const { refreshToken } = req.body;
         const response = await this.service.onRefreshToken(refreshToken);

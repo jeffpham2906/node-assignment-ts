@@ -3,6 +3,7 @@ import { ErrorRequestHandler } from "express";
 import { StatusCodes } from "http-status-codes";
 import { APIResponse } from "./api.state";
 import { logger } from "../lib/logger";
+import { STATUS_MESSAGES } from "../constants";
 
 export class BaseError extends Error {
     public readonly name: string;
@@ -43,11 +44,15 @@ export const globalErrorHandler: ErrorRequestHandler = async (error, req, res, n
 
     if (error instanceof APIError) {
         const { statusCode, message, name } = error;
-        const handledError = new APIResponse(statusCode, name, null, { ...error, message });
+        const handledError = new APIResponse(statusCode, name, null, message);
         handledError.send(res);
         return logger.errorResponse(req, res, handledError);
     }
-    const handledError = new APIResponse(StatusCodes.BAD_GATEWAY, "Something went wrong", null, error);
+    // if (error instanceof PrismaClientKnownRequestError) {
+    //     const { name, meta } = error;
+    //     const handledError = new APIResponse(StatusCodes.BAD_REQUEST, name, null, meta);
+    // }
+    const handledError = new APIResponse(StatusCodes.BAD_GATEWAY, STATUS_MESSAGES.SOME_THING_WENT_WRONG, null, error);
     handledError.send(res);
     return logger.errorResponse(req, res, handledError);
 };

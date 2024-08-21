@@ -1,0 +1,542 @@
+{
+    "swagger": "2.0",
+    "info": {
+        "description": "API documentation for Node",
+        "version": "1.0.0",
+        "title": "Node API"
+    },
+    "host": "localhost:3000",
+    "basePath": "/api/v1",
+    "schemes": [
+        "http"
+    ],
+    "paths": {
+        "/users/login": {
+            "post": {
+                "summary": "Login",
+                "description": "User login",
+                "parameters": [
+                    {
+                        "in": "body",
+                        "name": "body",
+                        "description": "Login user",
+                        "required": true,
+                        "schema": {
+                            "type": "object",
+                            "properties": {
+                                "username": {
+                                    "type": "string",
+                                    "default": "system_admin"
+                                },
+                                "password": {
+                                    "type": "string",
+                                    "default": "Admin@123"
+                                }
+                            }
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Successful login"
+                    }
+                }
+            }
+        },
+        "/users/register": {
+            "post": {
+                "summary": "Register",
+                "description": "Register a new user",
+                "parameters": [
+                    {
+                        "in": "body",
+                        "name": "body",
+                        "description": "New user details",
+                        "required": true,
+                        "schema": {
+                            "type": "object",
+                            "properties": {
+                                "username": {
+                                    "type": "string"
+                                },
+                                "password": {
+                                    "type": "string"
+                                },
+                                "role": {
+                                    "type": "string"
+                                }
+                            }
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Register Success",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "properties": {
+                                        "statusCode": {
+                                            "type": "integer",
+                                            "default": 200
+                                        },
+                                        "message": {
+                                            "type": "string",
+                                            "default": "SUCCESS"
+                                        },
+                                        "data": {
+                                            "type": "object",
+                                            "properties": {
+                                                "employeeNumber": {
+                                                    "type": "integer",
+                                                    "default": 1
+                                                },
+                                                "lastName": {
+                                                    "type": "string",
+                                                    "default": "Pham"
+                                                },
+                                                "firstName": {
+                                                    "type": "string",
+                                                    "default": "Jeff"
+                                                },
+                                                "extension": {
+                                                    "type": "string",
+                                                    "default": ""
+                                                },
+                                                "email": {
+                                                    "type": "string",
+                                                    "default": "jeffpham2906@gmail.com"
+                                                },
+                                                "officeCode": {
+                                                    "type": "string",
+                                                    "default": "103231"
+                                                },
+                                                "reportsTo": {
+                                                    "type": "integer",
+                                                    "default": null
+                                                },
+                                                "jobTitle": {
+                                                    "type": "string",
+                                                    "default": "Leader Sales"
+                                                },
+                                                "role": {
+                                                    "type": "string",
+                                                    "default": "President"
+                                                },
+                                                "created_at": {
+                                                    "type": "string",
+                                                    "default": "2024-08-20T03:53:06.000Z"
+                                                },
+                                                "updated_at": {
+                                                    "type": "string",
+                                                    "default": "2024-08-20T03:53:06.000Z"
+                                                },
+                                                "permissions": {
+                                                    "type": "array",
+                                                    "items": {
+                                                        "type": "object",
+                                                        "properties": {
+                                                            "key": {
+                                                                "type": "string"
+                                                            },
+                                                            "actions": {
+                                                                "type": "array",
+                                                                "items": {
+                                                                    "type": "object",
+                                                                    "properties": {
+                                                                        "method": {
+                                                                            "type": "string"
+                                                                        }
+                                                                    }
+                                                                }
+                                                            }
+                                                        },
+                                                        "required": [
+                                                            "key",
+                                                            "actions"
+                                                        ]
+                                                    }
+                                                }
+                                            }
+                                        },
+                                        "token": {
+                                            "type": "string"
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Bad Request",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "properties": {
+                                        "statusCode": {
+                                            "type": "integer",
+                                            "default": 400
+                                        },
+                                        "message": {
+                                            "type": "string",
+                                            "default": "Validation failed"
+                                        },
+                                        "data": {
+                                            "type": "null",
+                                            "default": null
+                                        },
+                                        "errors": {
+                                            "type": "array",
+                                            "items": {
+                                                "type": "object",
+                                                "properties": {
+                                                    "message": {
+                                                        "type": "string"
+                                                    },
+                                                    "path": {
+                                                        "type": "array",
+                                                        "items": {
+                                                            "type": "string"
+                                                        }
+                                                    }
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthorized",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "properties": {
+                                        "statusCode": {
+                                            "type": "integer",
+                                            "default": 401
+                                        },
+                                        "message": {
+                                            "type": "string",
+                                            "default": "UNAUTHORIZED"
+                                        },
+                                        "data": {
+                                            "type": "null",
+                                            "default": null
+                                        },
+                                        "errors": {
+                                            "type": "string",
+                                            "default": "You need to bearer token"
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/customers": {
+            "get": {
+                "summary": "List Customers",
+                "description": "Get a list of all users",
+                "parameters": [
+                    {
+                        "in": "header",
+                        "name": "Authorization",
+                        "required": true,
+                        "type": "string",
+                        "description": "Bearer Token"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Successful operation"
+                    }
+                }
+            },
+            "post": {
+                "summary": "Create a customer",
+                "description": "Create a new customer",
+                "parameters": [
+                    {
+                        "in": "header",
+                        "name": "Authorization",
+                        "type": "string",
+                        "required": true,
+                        "description": "Bearer Token"
+                    }
+                ],
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "type": "object",
+                                "properties": {
+                                    "name": {
+                                        "type": "string",
+                                        "description": "customer name"
+                                    },
+                                    "email": {
+                                        "type": "string",
+                                        "description": "customer email"
+                                    },
+                                    "phone": {
+                                        "type": "string",
+                                        "description": "customer phone"
+                                    },
+                                    "address": {
+                                        "type": "string",
+                                        "description": "customer address"
+                                    },
+                                    "creditLimit": {
+                                        "type": "number",
+                                        "description": "customer credit limit"
+                                    },
+                                    "state": {
+                                        "type": "string",
+                                        "description": "customer state"
+                                    },
+                                    "postalCode": {
+                                        "type": "string",
+                                        "description": "customer postal code"
+                                    },
+                                    "country": {
+                                        "type": "string",
+                                        "description": "customer country"
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "required": true
+                },
+                "responses": {
+                    "201": {
+                        "description": "Customer created"
+                    },
+                    "400": {
+                        "description": "Bad Request",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "properties": {
+                                        "statusCode": {
+                                            "type": "integer"
+                                        },
+                                        "message": {
+                                            "type": "string"
+                                        },
+                                        "data": {
+                                            "type": "null"
+                                        },
+                                        "errors": {
+                                            "type": "array",
+                                            "items": {
+                                                "type": "object",
+                                                "properties": {
+                                                    "message": {
+                                                        "type": "string"
+                                                    },
+                                                    "path": {
+                                                        "type": "array",
+                                                        "items": {
+                                                            "type": "string"
+                                                        }
+                                                    }
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthorized",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "properties": {
+                                        "statusCode": {
+                                            "type": "integer"
+                                        },
+                                        "message": {
+                                            "type": "string"
+                                        },
+                                        "data": {
+                                            "type": "null"
+                                        },
+                                        "errors": {
+                                            "type": "string",
+                                            "default": "You need to bearer token"
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/customers/{id}": {
+            "put": {
+                "summary": "Update Customer",
+                "description": "Update customer by id",
+                "parameters": [
+                    {
+                        "in": "header",
+                        "name": "Authorization",
+                        "type": "string",
+                        "required": true,
+                        "description": "Bearer Token"
+                    },
+                    {
+                        "in": "path",
+                        "name": "id",
+                        "type": "integer",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Successful operation"
+                    },
+                    "401": {
+                        "description": "Unauthorized"
+                    },
+                    "400": {
+                        "description": "Bad Request"
+                    }
+                }
+            },
+            "delete": {
+                "summary": "Delete Customer",
+                "description": "Delete customer by id",
+                "parameters": [
+                    {
+                        "in": "header",
+                        "name": "Authorization",
+                        "type": "string",
+                        "required": true,
+                        "description": "Bearer Token"
+                    },
+                    {
+                        "in": "path",
+                        "name": "id",
+                        "type": "integer",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Successful operation"
+                    },
+                    "401": {
+                        "description": "Unauthorized"
+                    },
+                    "400": {
+                        "description": "Bad Request"
+                    }
+                }
+            }
+        },
+        "/employees": {
+            "get": {
+                "summary": "List Employees",
+                "description": "Get a list of all employees",
+                "parameters": [
+                    {
+                        "in": "header",
+                        "name": "Authorization",
+                        "type": "string",
+                        "required": true,
+                        "description": "Bearer Token"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Successful operation"
+                    }
+                }
+            },
+            "post": {
+                "summary": "Create Employee",
+                "description": "Create a new employee",
+                "parameters": [
+                    {
+                        "in": "header",
+                        "name": "Authorization",
+                        "type": "string",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "201": {
+                        "description": "Role created"
+                    }
+                }
+            }
+        },
+        "/employees/{employeeNumber}": {
+            "put": {
+                "summary": "Update employee",
+                "description": "Update employee",
+                "parameters": [
+                    {
+                        "in": "path",
+                        "name": "employeeNumber",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    },
+                    {
+                        "in": "header",
+                        "name": "Authorization",
+                        "type": "string",
+                        "required": true,
+                        "description": "Bearer Token"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Employee updated"
+                    }
+                }
+            },
+            "delete": {
+                "summary": "Delete employee",
+                "description": "Delete employee",
+                "parameters": [
+                    {
+                        "in": "path",
+                        "name": "employeeNumber",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    },
+                    {
+                        "in": "header",
+                        "name": "Authorization",
+                        "type": "string",
+                        "required": true,
+                        "description": "Bearer Token"
+                    }
+                ],
+                "responses": {
+                    "204": {
+                        "description": "Employee deleted"
+                    }
+                }
+            }
+        }
+    }
+}
