@@ -1,4 +1,6 @@
 import catchAsync from "../utils/catchAsync";
+import mgLogger from "../services/logger.service";
+
 import { StatusCodes } from "http-status-codes";
 import { logger } from "../lib/logger";
 import { APIResponse } from "../utils/api.state";
@@ -14,12 +16,14 @@ export class EmployeeController {
     getEmployees = catchAsync(async (req, res) => {
         const data = await this.service.onGetEmployees();
         logger.response(req, res, data);
+        mgLogger.info((req as any).user, req, res, { ...data });
         new APIResponse(StatusCodes.OK, STATUS_MESSAGES.SUCCESS, data).send(res);
     });
 
     createEmployee = catchAsync(async (req, res) => {
         const data = await this.service.onCreateEmployee(req.body);
         logger.response(req, res, data);
+        mgLogger.info((req as any).user, req, res, { ...data });
         new APIResponse(StatusCodes.OK, STATUS_MESSAGES.SUCCESS, data).send(res);
     });
 
@@ -27,6 +31,7 @@ export class EmployeeController {
         const { id } = req.params;
         const data = await this.service.onUpdateEmployee(parseInt(id), { ...req.body });
         logger.response(req, res, data);
+        mgLogger.info((req as any).user, req, res, { ...data });
         new APIResponse(StatusCodes.OK, STATUS_MESSAGES.SUCCESS, data).send(res);
     });
 
@@ -34,6 +39,7 @@ export class EmployeeController {
         const { id } = req.params;
         const data = await this.service.onDeleteEmployee(parseInt(id));
         logger.response(req, res, data);
+        mgLogger.info((req as any).user, req, res, { ...data });
         new APIResponse(StatusCodes.OK, STATUS_MESSAGES.SUCCESS, data).send(res);
     });
 }

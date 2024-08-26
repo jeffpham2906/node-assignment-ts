@@ -1,4 +1,4 @@
-import { Employee } from "@prisma/client";
+import { Employee, Prisma } from "@prisma/client";
 import { APIError } from "../utils/error";
 import { StatusCodes } from "http-status-codes";
 import { STATUS_MESSAGES } from "../constants";
@@ -21,8 +21,7 @@ export class EmployeeService implements IEmployeeService {
         }
     };
     onGetEmployees = async (): Promise<Employee[]> => {
-        const data = await this.repository.getAll();
-        return data;
+        return this.repository.getAll();
     };
     onGetEmployee = async (employeeNumber: number): Promise<Employee> => {
         const employee = await this.repository.get(employeeNumber);
@@ -35,19 +34,23 @@ export class EmployeeService implements IEmployeeService {
         }
         return employee;
     };
-    onCreateEmployee = async (employee: Employee): Promise<Employee> => {
-        const data = await this.repository.create(employee);
-        return data;
+    onCreateEmployee = async (
+        employee: Prisma.EmployeeCreateInput & { customers: Prisma.CustomerCreateManyEmployeeInput[] }
+    ): Promise<Employee> => {
+        if (employee.customers && employee.customers.length > 0) {
+            const { customers, ...employeeData } = employee;
+            return this.repository.createWithCustomers(employeeData, customers);
+        } else {
+            return this.repository.create(employee);
+        }
     };
 
     onUpdateEmployee = async (employeeNumber: number, employee: Partial<Employee>): Promise<Employee> => {
         this.isChangeRootUser(employeeNumber);
-        const updatedEmployee = await this.repository.update(employeeNumber, employee);
-        return updatedEmployee;
+        return this.repository.update(employeeNumber, employee);
     };
-    onDeleteEmployee = async (employeeNumber: number): Promise<Employee> => {
+    onDeleteEmployee = async (employeeNumber: number): Promise<any> => {
         this.isChangeRootUser(employeeNumber);
-        const deletedEmployee = await this.repository.delete(employeeNumber);
-        return deletedEmployee;
+        return this.repository.delete(employeeNumber);
     };
 }

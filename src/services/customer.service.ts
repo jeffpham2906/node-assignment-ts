@@ -19,7 +19,7 @@ export class CustomerService implements ICustomerService {
     };
 
     onGetCustomer = async (customerNumber: number, requiredConditions?: RequiredConditions): Promise<Customer> => {
-        const options = this.checkGet<Prisma.CustomerFindFirstArgs>(requiredConditions);
+        const options = this.checkGet<Prisma.CustomerFindUniqueArgs>(requiredConditions);
         const customer = await this.repository.get(customerNumber, options);
 
         if (!customer) {
@@ -62,21 +62,23 @@ export class CustomerService implements ICustomerService {
         if (!requiredConditions) return options;
         const { conditions, user } = requiredConditions;
         conditions.forEach((condition) => {
-            if (condition === THEIR_OWN_CUSTOMER) {
-                merge(options, {
-                    where: {
-                        salesRepEmployeeNumber: user.employeeNumber,
-                    },
-                });
-            }
-            if (condition === SAME_OFFICE) {
-                merge(options, {
-                    where: {
-                        employee: {
-                            officeCode: user.officeCode,
+            switch (condition) {
+                case THEIR_OWN_CUSTOMER:
+                    merge(options, {
+                        where: {
+                            salesRepEmployeeNumber: user.employeeNumber,
                         },
-                    },
-                });
+                    });
+                    break;
+                case BELONG_TO_THEM:
+                    merge(options, {
+                        where: {
+                            employee: {
+                                officeCode: user.officeCode,
+                            },
+                        },
+                    });
+                    break;
             }
         });
         return options;
@@ -84,30 +86,34 @@ export class CustomerService implements ICustomerService {
     private checkCreate = async (customer: Customer, requiredConditions?: RequiredConditions) => {
         if (!requiredConditions) return;
         const { conditions, user } = requiredConditions;
-        await Promise.all(
+        return await Promise.all(
             conditions.map(async (condition) => {
-                if (condition === BELONG_TO_THEM && customer.salesRepEmployeeNumber !== user.employeeNumber) {
-                    throw new APIError(
-                        StatusCodes.UNAUTHORIZED,
-                        STATUS_MESSAGES.UNAUTHORIZED,
-                        "Staff can only create their own customer, provide a valid employee number"
-                    );
-                }
-                if (condition === SAME_OFFICE) {
-                    const employee = await prisma.employee.findFirst({
-                        where: {
-                            employeeNumber: customer.salesRepEmployeeNumber,
-                        },
-                    });
+                switch (condition) {
+                    case BELONG_TO_THEM:
+                        if (customer.salesRepEmployeeNumber !== user.employeeNumber) {
+                            throw new APIError(
+                                StatusCodes.UNAUTHORIZED,
+                                STATUS_MESSAGES.UNAUTHORIZED,
+                                "Staff can only create their own customer, provide a valid employee number"
+                            );
+                        }
+                        break;
+                    case SAME_OFFICE:
+                        const employee = await prisma.employee.findUnique({
+                            where: {
+                                employeeNumber: customer.salesRepEmployeeNumber || undefined,
+                            },
+                        });
 
-                    const isSameOffice = employee?.officeCode === user.officeCode;
-                    if (!isSameOffice) {
-                        throw new APIError(
-                            StatusCodes.UNAUTHORIZED,
-                            STATUS_MESSAGES.UNAUTHORIZED,
-                            "You don't have permission to create | update | delete customer of employee out of your office"
-                        );
-                    }
+                        const isSameOffice = employee?.officeCode === user.officeCode;
+                        if (!isSameOffice) {
+                            throw new APIError(
+                                StatusCodes.UNAUTHORIZED,
+                                STATUS_MESSAGES.UNAUTHORIZED,
+                                "You don't have permission to create | update | delete customer of employee out of your office"
+                            );
+                        }
+                        break;
                 }
             })
         );

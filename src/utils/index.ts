@@ -17,7 +17,7 @@ export const getRequiredConditions = (req: Request) => {
 };
 
 export const createBodySchema = (schema: Joi.Schema) => celebrate({ body: schema }, { abortEarly: false });
-export const flattenObject = <T>(obj: T): T => {
+export const flattenObject = <T = object>(obj: T): T => {
     let flatted = {} as T;
     for (const key in obj) {
         if (typeof obj[key] === "object" && !Array.isArray(obj[key]) && !isDate(obj[key])) {

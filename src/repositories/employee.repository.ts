@@ -1,50 +1,107 @@
-import { Employee, Prisma } from "@prisma/client";
+import { Customer, Employee, Prisma, PrismaClient } from "@prisma/client";
 import { IEmployeeRepository } from "../interfaces";
 import { prisma } from "../lib/prisma";
+import { APIError } from "../utils/error";
+import { StatusCodes } from "http-status-codes";
+import { STATUS_MESSAGES } from "../constants";
 
 export class EmployeeRepository implements IEmployeeRepository {
-    private client: Prisma.EmployeeDelegate;
+    private client: PrismaClient;
     constructor() {
-        this.client = prisma.employee;
+        this.client = prisma;
     }
+    private isChangeDefaultEmployee = (data: any) => {
+        if (data?.lastName && data.lastName === "9999") {
+            throw new APIError(
+                StatusCodes.BAD_REQUEST,
+                STATUS_MESSAGES.FAILED,
+                "Cannot change | create an default employee with lastName 9999"
+            );
+        }
+    };
     getAll = async (): Promise<Employee[]> => {
-        const data = await prisma.employee.findMany({
+        return this.client.employee.findMany({
             include: {
-                employeeRole: true,
-                User: {
+                user: {
                     select: {
                         username: true,
                     },
                 },
-                Customer: true,
+                customers: true,
             },
         });
-        return data;
     };
     async get(employeeNumber: number): Promise<Employee | null> {
-        const data = await this.client.findFirst({
+        return this.client.employee.findUnique({
             where: { employeeNumber },
         });
-        return data;
     }
-    async create(data: any): Promise<Employee> {
-        return await this.client.create({
+    async create(data: Prisma.EmployeeCreateInput): Promise<Employee> {
+        this.isChangeDefaultEmployee(data);
+        return this.client.employee.create({
             data,
+        });
+    }
+    async createWithCustomers(
+        employee: Prisma.EmployeeCreateInput,
+        customers: Prisma.CustomerCreateManyEmployeeInput[]
+    ): Promise<Employee> {
+        this.isChangeDefaultEmployee(employee);
+        return this.client.employee.create({
+            data: {
+                ...employee,
+                customers: {
+                    createMany: {
+                        data: customers,
+                    },
+                },
+            },
+            include: {
+                customers: true,
+            },
         });
     }
     async update(employeeNumber: number, data: any): Promise<Employee> {
-        return await this.client.update({
+        this.isChangeDefaultEmployee(data);
+        return this.client.employee.update({
             where: {
                 employeeNumber,
             },
             data,
         });
     }
-    async delete(employeeNumber: number): Promise<Employee> {
-        return await this.client.delete({
-            where: {
-                employeeNumber,
-            },
+    async delete(employeeNumber: number): Promise<any> {
+        return this.client.$transaction(async (prisma) => {
+            const deletedEmployee = await prisma.employee.delete({
+                where: {
+                    employeeNumber,
+                },
+                include: {
+                    customers: true,
+                    office: true,
+                },
+            });
+            this.isChangeDefaultEmployee(deletedEmployee);
+            if (!Boolean(deletedEmployee.customers.length)) {
+                return deletedEmployee;
+            }
+            const defaultEmployee = await prisma.employee.findFirst({
+                where: {
+                    officeCode: deletedEmployee.officeCode,
+                    AND: {
+                        lastName: "9999",
+                    },
+                },
+            });
+            if (!defaultEmployee) return;
+            return await prisma.customer.updateMany({
+                where: {
+                    salesRepEmployeeNumber: null,
+                },
+                data: {
+                    salesRepEmployeeNumber: defaultEmployee?.employeeNumber,
+                },
+            });
         });
     }
 }

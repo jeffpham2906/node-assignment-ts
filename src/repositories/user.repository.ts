@@ -1,11 +1,11 @@
-import { Prisma, User } from "@prisma/client";
+import { PrismaClient, User } from "@prisma/client";
 import { IUserRepository } from "../interfaces";
 import { prisma } from "../lib/prisma";
 
 export class UserRepository implements IUserRepository {
-    private client: Prisma.UserDelegate; // Assuming UserDelegate is the Prisma client's UserDelegate type.
+    private client: PrismaClient; // Assuming UserDelegate is the Prisma client's UserDelegate type.
     constructor() {
-        this.client = prisma.user;
+        this.client = prisma;
     }
     findOne = async (id: number): Promise<User | null> => {
         // Implementation
@@ -14,11 +14,9 @@ export class UserRepository implements IUserRepository {
 
     findByUsername = async (username: string): Promise<User | null> => {
         // Implementation
-        const data = await this.client.findFirst({
+        return this.client.user.findUnique({
             where: { username: username },
-            select: {
-                username: true,
-                password: true,
+            include: {
                 employee: {
                     include: {
                         employeeRole: {
@@ -30,14 +28,13 @@ export class UserRepository implements IUserRepository {
                 },
             },
         });
-        return data as User | null;
     };
     findAll = async (): Promise<User[]> => {
         // Implementation
         throw new Error("Method not implemented.");
     };
     create = async (data: any): Promise<Omit<User, "password">> => {
-        return await this.client.create({
+        return this.client.user.create({
             data,
             select: {
                 username: true,

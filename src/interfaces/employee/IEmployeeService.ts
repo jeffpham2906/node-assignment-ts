@@ -1,4 +1,4 @@
-import { Employee } from "@prisma/client";
+import { Employee, Prisma } from "@prisma/client";
 // type GetParams = {
 //     page: number;
 //     limit: number;
@@ -9,7 +9,10 @@ import { Employee } from "@prisma/client";
 export interface IEmployeeService {
     onGetEmployees(): Promise<Employee[]>;
     onGetEmployee(id: number): Promise<Employee>;
-    onCreateEmployee(employee: Employee): Promise<Employee>;
+    onCreateEmployee(
+        employee: Prisma.EmployeeCreateInput,
+        customers?: Prisma.CustomerCreateManyEmployeeInput[]
+    ): Promise<Employee>;
     onUpdateEmployee(id: number, employee: Partial<Employee>): Promise<Employee>;
-    onDeleteEmployee(id: number): Promise<Employee>;
+    onDeleteEmployee(id: number): Promise<any>;
 }

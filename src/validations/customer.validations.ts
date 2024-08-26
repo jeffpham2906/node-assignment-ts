@@ -16,7 +16,7 @@ const customerName = Joi.string()
         put: (schema) => schema.optional(),
     });
 
-const baseSchema = Joi.object<Customer>({
+const base = {
     customerName: customerName,
     contactLastName: customerName.min(3),
     contactFirstName: customerName.min(3),
@@ -104,7 +104,9 @@ const baseSchema = Joi.object<Customer>({
         })
         .allow(null)
         .optional(),
-});
-
+};
+const baseSchema = Joi.object<Customer>(base);
+const { salesRepEmployeeNumber, ...withoutEmployee } = base;
+export const customerSchemaWithoutEmployeeNumber = Joi.object(withoutEmployee).tailor("post");
 export const customerSchema = createBodySchema(baseSchema.tailor("post"));
 export const customerSchemaUpdate = createBodySchema(baseSchema.tailor("put"));

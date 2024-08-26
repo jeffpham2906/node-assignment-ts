@@ -1,8 +1,9 @@
-import { Employee } from "@prisma/client";
+import { Customer, Employee } from "@prisma/client";
 import { Joi } from "celebrate";
 import { createBodySchema } from "../utils";
+import { customerSchemaWithoutEmployeeNumber } from "./customer.validations";
 
-export const base = Joi.object<Employee>({
+export const base = Joi.object<Employee & { customers?: Customer[] }>({
     employeeNumber: Joi.number()
         .positive()
         .integer()
@@ -94,6 +95,7 @@ export const base = Joi.object<Employee>({
             post: (schema) => schema.required(),
             put: (schema) => schema.optional(),
         }),
+    customers: Joi.array().items(customerSchemaWithoutEmployeeNumber).optional(),
 });
 
 export const employeeSchema = createBodySchema(base.tailor("post"));
