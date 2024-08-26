@@ -9,7 +9,7 @@ export class OfficeRepository implements IOfficeRepository {
         this.client = prisma;
     }
 
-    create = async (office: Prisma.OfficeCreateInput): Promise<Prisma.OfficeCreateInput> => {
+    create = async (office: Prisma.OfficeCreateInput): Promise<Office> => {
         return this.client.office.create({
             data: {
                 ...office,

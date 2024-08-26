@@ -8,6 +8,7 @@ import { STATUS_MESSAGES } from "../constants";
 
 export class OfficeController {
     private service: IOfficeService;
+
     constructor(service: IOfficeService) {
         this.service = service;
     }
@@ -15,7 +16,7 @@ export class OfficeController {
     getOffices = catchAsync(async (req, res) => {
         const data = await this.service.onGetOffices();
         logger.response(req, res, data);
-        mgLogger.info((req as any).user, req, res, { ...data });
+        await mgLogger.info((req as any).user, req, res, { ...data });
         return new APIResponse(StatusCodes.OK, STATUS_MESSAGES.SUCCESS, data).send(res);
     });
     getReport = catchAsync(async (req, res) => {
@@ -28,7 +29,7 @@ export class OfficeController {
             new Date(endDate as string)
         );
         logger.response(req, res, data);
-        mgLogger.info((req as any).user, req, res, { ...data });
+        await mgLogger.info((req as any).user, req, res, { ...data });
         return new APIResponse(StatusCodes.OK, STATUS_MESSAGES.SUCCESS, data).send(res);
     });
     getReportRevenueCustomerByEmployee = catchAsync(async (req, res) => {
@@ -40,7 +41,13 @@ export class OfficeController {
             new Date(endDate as string)
         );
         logger.response(req, res, data);
-        mgLogger.info((req as any).user, req, res, { ...data });
+        await mgLogger.info((req as any).user, req, res, { ...data });
+        return new APIResponse(StatusCodes.OK, STATUS_MESSAGES.SUCCESS, data).send(res);
+    });
+    createOffice = catchAsync(async (req, res) => {
+        const data = await this.service.onCreateOffice(req.body);
+        logger.response(req, res, data);
+        await mgLogger.info((req as any).user, req, res, { ...data });
         return new APIResponse(StatusCodes.OK, STATUS_MESSAGES.SUCCESS, data).send(res);
     });
 }

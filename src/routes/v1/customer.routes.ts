@@ -20,17 +20,15 @@ customerRoutes.post(
     customerSchema,
     controller.createCustomer
 );
+customerRoutes.route("/:id")
+    .get(authenticate({ key: "customers", method: Method.READ }), controller.getCustomer)
+    .patch(authenticate({ key: "customers", method: Method.UPDATE }),
+        customerSchemaUpdate,
+        controller.updateCustomer)
+    .delete(
+        authenticate({ key: "customers", method: Method.DELETE }),
+        controller.deleteCustomer
+    );
 
-customerRoutes.put(
-    "/:id",
-    authenticate({ key: "customers", method: Method.UPDATE }),
-    customerSchemaUpdate,
-    controller.updateCustomer
-);
-customerRoutes.delete(
-    "/:id",
-    authenticate({ key: "customers", method: Method.DELETE }),
-    controller.deleteCustomer
-);
 
 export default customerRoutes;

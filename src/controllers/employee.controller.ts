@@ -9,6 +9,7 @@ import { IEmployeeService } from "../interfaces";
 
 export class EmployeeController {
     private service: IEmployeeService;
+
     constructor(service: IEmployeeService) {
         this.service = service;
     }
@@ -16,14 +17,22 @@ export class EmployeeController {
     getEmployees = catchAsync(async (req, res) => {
         const data = await this.service.onGetEmployees();
         logger.response(req, res, data);
-        mgLogger.info((req as any).user, req, res, { ...data });
+        await mgLogger.info((req as any).user, req, res, { ...data });
+        new APIResponse(StatusCodes.OK, STATUS_MESSAGES.SUCCESS, data).send(res);
+    });
+
+    getEmployee = catchAsync(async (req, res) => {
+        const { id } = req.params;
+        const data = await this.service.onGetEmployee(parseInt(id));
+        logger.response(req, res, data);
+        await mgLogger.info((req as any).user, req, res, { id, ...data });
         new APIResponse(StatusCodes.OK, STATUS_MESSAGES.SUCCESS, data).send(res);
     });
 
     createEmployee = catchAsync(async (req, res) => {
         const data = await this.service.onCreateEmployee(req.body);
         logger.response(req, res, data);
-        mgLogger.info((req as any).user, req, res, { ...data });
+        await mgLogger.info((req as any).user, req, res, { ...data });
         new APIResponse(StatusCodes.OK, STATUS_MESSAGES.SUCCESS, data).send(res);
     });
 
@@ -31,7 +40,7 @@ export class EmployeeController {
         const { id } = req.params;
         const data = await this.service.onUpdateEmployee(parseInt(id), { ...req.body });
         logger.response(req, res, data);
-        mgLogger.info((req as any).user, req, res, { ...data });
+        await mgLogger.info((req as any).user, req, res, { ...data });
         new APIResponse(StatusCodes.OK, STATUS_MESSAGES.SUCCESS, data).send(res);
     });
 
@@ -39,7 +48,7 @@ export class EmployeeController {
         const { id } = req.params;
         const data = await this.service.onDeleteEmployee(parseInt(id));
         logger.response(req, res, data);
-        mgLogger.info((req as any).user, req, res, { ...data });
+        await mgLogger.info((req as any).user, req, res, { ...data });
         new APIResponse(StatusCodes.OK, STATUS_MESSAGES.SUCCESS, data).send(res);
     });
 }

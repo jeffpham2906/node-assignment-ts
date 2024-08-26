@@ -1,6 +1,8 @@
 import { PrismaClient } from "@prisma/client";
+
 const prisma = new PrismaClient();
 import bcrypt from "bcrypt";
+
 async function main() {
     const roles = await prisma.role.createMany({
         data: [
@@ -11,27 +13,27 @@ async function main() {
                         key: "employees",
                         actions: [
                             {
-                                method: "full",
-                            },
-                        ],
+                                method: "full"
+                            }
+                        ]
                     },
                     {
                         key: "customers",
                         actions: [
                             {
-                                method: "full",
-                            },
-                        ],
+                                method: "full"
+                            }
+                        ]
                     },
                     {
                         key: "roles",
                         actions: [
                             {
-                                method: "full",
-                            },
-                        ],
-                    },
-                ],
+                                method: "full"
+                            }
+                        ]
+                    }
+                ]
             },
             {
                 name: "Manager",
@@ -40,25 +42,25 @@ async function main() {
                         key: "employees",
                         actions: [
                             {
-                                method: "read",
+                                method: "read"
                             },
                             {
-                                method: "update",
+                                method: "update"
                             },
                             {
-                                method: "create",
-                            },
-                        ],
+                                method: "create"
+                            }
+                        ]
                     },
                     {
                         key: "customers",
                         actions: [
                             {
-                                method: "full",
-                            },
-                        ],
-                    },
-                ],
+                                method: "full"
+                            }
+                        ]
+                    }
+                ]
             },
             {
                 name: "Leader",
@@ -67,20 +69,20 @@ async function main() {
                         key: "employees",
                         actions: [
                             {
-                                method: "read",
-                            },
-                        ],
+                                method: "read"
+                            }
+                        ]
                     },
                     {
                         key: "customers",
                         actions: [
                             {
                                 method: "full",
-                                conditions: ["sameOffice"],
-                            },
-                        ],
-                    },
-                ],
+                                conditions: ["sameOffice"]
+                            }
+                        ]
+                    }
+                ]
             },
             {
                 name: "Staff",
@@ -90,17 +92,17 @@ async function main() {
                         actions: [
                             {
                                 method: "read",
-                                conditions: ["theirOwnCustomer"],
+                                conditions: ["theirOwnCustomer"]
                             },
                             {
                                 method: "create",
-                                conditions: ["belongToThem"],
-                            },
-                        ],
-                    },
-                ],
-            },
-        ],
+                                conditions: ["belongToThem"]
+                            }
+                        ]
+                    }
+                ]
+            }
+        ]
     });
     const officeData = [
         {
@@ -112,7 +114,7 @@ async function main() {
             postalCode: "10012",
             country: "USA",
             state: "US",
-            territory: "US",
+            territory: "US"
         },
         {
             officeCode: "VN1",
@@ -123,8 +125,8 @@ async function main() {
             postalCode: "10012",
             country: "VN",
             state: "VN",
-            territory: "VN",
-        },
+            territory: "VN"
+        }
     ];
     await Promise.all(
         officeData.map(async (office) =>
@@ -138,10 +140,10 @@ async function main() {
                             extension: "",
                             email: "Default",
                             reportsTo: null,
-                            jobTitle: "Default",
-                        },
-                    },
-                },
+                            jobTitle: "Default"
+                        }
+                    }
+                }
             })
         )
     );
@@ -157,8 +159,8 @@ async function main() {
                 officeCode: null,
                 email: "jeffpham2906@gmail.com",
                 reportsTo: null,
-                jobTitle: "Leader Sales",
-                role: "President",
+                jobTitle: "System Admin",
+                role: "President"
             },
             {
                 lastName: "Duc",
@@ -167,8 +169,18 @@ async function main() {
                 officeCode: null,
                 email: "ducanh@gmail.com",
                 reportsTo: null,
-                jobTitle: "Manager Sales",
-                role: "Manager",
+                jobTitle: "Sales Manager (APAC)",
+                role: "Manager"
+            },
+            {
+                lastName: "Manager 2",
+                firstName: "Sales",
+                extension: "",
+                officeCode: null,
+                email: "ducanh@gmail.com",
+                reportsTo: null,
+                jobTitle: "Sales Manager (EMEA)",
+                role: "Manager"
             },
             {
                 lastName: "Dung",
@@ -178,7 +190,7 @@ async function main() {
                 officeCode: "VN1",
                 reportsTo: null,
                 jobTitle: "Leader Sales",
-                role: "Leader",
+                role: "Leader"
             },
             {
                 lastName: "John",
@@ -188,7 +200,7 @@ async function main() {
                 officeCode: "VN1",
                 reportsTo: null,
                 jobTitle: "Staff Sales",
-                role: "Staff",
+                role: "Staff"
             },
             {
                 lastName: "Pham",
@@ -198,7 +210,7 @@ async function main() {
                 officeCode: "FA1",
                 reportsTo: null,
                 jobTitle: "Staff Sales",
-                role: "Staff",
+                role: "Staff"
             },
             {
                 lastName: "Dang",
@@ -208,42 +220,42 @@ async function main() {
                 officeCode: "FA1",
                 reportsTo: null,
                 jobTitle: "Leader ABC",
-                role: "Leader",
-            },
-        ],
+                role: "Leader"
+            }
+        ]
     });
     const defaultUsers = [
         {
             username: "system_admin",
             password: "Admin@123",
-            employeeNumber: 3,
+            employeeNumber: 3
         },
         {
             username: "system_manager",
             password: "Admin@123",
-            employeeNumber: 4,
+            employeeNumber: 4
         },
         {
             username: "system_leader1",
             password: "Admin@123",
-            employeeNumber: 5,
+            employeeNumber: 5
         },
         {
             username: "system_staff1",
             password: "Admin@123",
-            employeeNumber: 6,
+            employeeNumber: 6
         },
 
         {
             username: "system_staff2",
             password: "Admin@123",
-            employeeNumber: 7,
+            employeeNumber: 7
         },
         {
             username: "system_leader2",
             password: "Admin@123",
-            employeeNumber: 8,
-        },
+            employeeNumber: 8
+        }
     ];
 
     const data = await Promise.all(
@@ -254,7 +266,7 @@ async function main() {
         })
     );
     const user = await prisma.user.createMany({
-        data,
+        data
     });
     // const customers = await prisma.customer.createMany({
     //     data: [
@@ -295,7 +307,7 @@ async function main() {
                 textDescription: "The Classic Cars product line features vintage cars from the 1940s to the 1960s.",
                 htmlDescription:
                     "<p>The Classic Cars product line features vintage cars from the 1940s to the 1960s.</p>",
-                image: "classic_cars.jpg",
+                image: "classic_cars.jpg"
             },
             {
                 productLine: "Motorcycles",
@@ -303,7 +315,7 @@ async function main() {
                     "The Motorcycles product line features all sorts of motorcycles, from Harley-Davidsons to scooters.",
                 htmlDescription:
                     "<p>The Motorcycles product line features all sorts of motorcycles, from Harley-Davidsons to scooters.</p>",
-                image: "motorcycles.jpg",
+                image: "motorcycles.jpg"
             },
             {
                 productLine: "Planes",
@@ -311,9 +323,9 @@ async function main() {
                     "The Planes product line features model airplanes, including commercial airliners, military planes, and vintage aircraft.",
                 htmlDescription:
                     "<p>The Planes product line features model airplanes, including commercial airliners, military planes, and vintage aircraft.</p>",
-                image: "planes.jpg",
-            },
-        ],
+                image: "planes.jpg"
+            }
+        ]
     });
 
     const products = await prisma.product.createMany({
@@ -328,7 +340,7 @@ async function main() {
                     "This replica features working kickstand, front suspension, gear-shift lever, footbrake lever, drive chain, wheels, and front wheels.",
                 quantityInStock: 10,
                 MSRP: 90.3,
-                buyPrice: 30,
+                buyPrice: 30
             },
             {
                 productCode: "P001",
@@ -340,7 +352,7 @@ async function main() {
                     "Turnable front wheels; steering function; detailed interior; detailed engine; opening hood; opening trunk; opening doors; and detailed chassis.",
                 quantityInStock: 5,
                 MSRP: 98.58,
-                buyPrice: 19,
+                buyPrice: 19
             },
             {
                 productCode: "P002",
@@ -352,9 +364,9 @@ async function main() {
                     "Officially opening for sale in North America as all-terrain wheels surround the front and rear suspension components.",
                 quantityInStock: 4,
                 MSRP: 68.99,
-                buyPrice: 24.5,
-            },
-        ],
+                buyPrice: 24.5
+            }
+        ]
     });
     // const orders = await prisma.order.createMany({
     //     data: [
@@ -370,6 +382,7 @@ async function main() {
     //     ],
     // });
 }
+
 main()
     .then(() => prisma.$disconnect())
     .catch((err) => {

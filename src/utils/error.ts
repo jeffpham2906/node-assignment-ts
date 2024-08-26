@@ -34,38 +34,44 @@ export class APIError extends BaseError {
 
 export const globalErrorHandler: ErrorRequestHandler = async (error, req, res, next) => {
     const user = (req as any).user || "Anonymous";
-    if (isCelebrateError(error)) {
+    let ERROR;
+    if (isCelebrateError(error) && !ERROR) {
         const { message, details } = error;
         const bodyDetails = details.get("body");
         const errors = bodyDetails?.details.map((err) => {
             return { message: err.message, path: err.path };
         });
-        const handledError = new APIResponse(StatusCodes.BAD_REQUEST, message, null, errors);
-        handledError.send(res);
-        mgLogger.warning(user, req, res, handledError);
-        return logger.errorResponse(req, res, handledError);
+        ERROR = new APIResponse(StatusCodes.BAD_REQUEST, message, null, errors);
     }
 
-    if (error instanceof APIError) {
+    if (error instanceof APIError && !ERROR) {
         const { statusCode, message, name } = error;
-        const handledError = new APIResponse(statusCode, name, null, message);
-        handledError.send(res);
-        mgLogger.error(user, req, res, handledError);
-        return logger.errorResponse(req, res, handledError);
+        ERROR = new APIResponse(statusCode, name, null, message);
     }
-    if (error instanceof PrismaClientKnownRequestError) {
-        const { name, meta } = error;
-        const handledError = new APIResponse(StatusCodes.BAD_REQUEST, name, null, meta);
-        handledError.send(res);
-        console.log(error);
-        mgLogger.error(user, req, res, handledError);
-        return logger.errorResponse(req, res, handledError);
+
+    if (error instanceof PrismaClientKnownRequestError && !ERROR) {
+        const { name, meta, code, message } = error;
+
+        switch (code) {
+            case "P2003":
+                ERROR = new APIResponse(StatusCodes.BAD_REQUEST, name, null, `You are reference to an unknown ${meta?.field_name ?? "column"}`);
+                break;
+            case "P2002":
+                ERROR = new APIResponse(StatusCodes.CONFLICT, name, null, `Unique constraint failed on the ${meta?.target ?? "column"}`);
+                break;
+            case "P2005":
+            default:
+                ERROR = new APIResponse(StatusCodes.BAD_REQUEST, name, null, { ...error });
+                break;
+        }
     }
-    const handledError = new APIResponse(StatusCodes.BAD_GATEWAY, STATUS_MESSAGES.SOME_THING_WENT_WRONG, null, {
-        ...error,
-        stack: error.stack,
-    });
-    handledError.send(res);
-    mgLogger.error(user, req, res, handledError);
-    return logger.errorResponse(req, res, handledError);
+
+    if (!ERROR) {
+        ERROR = new APIResponse(StatusCodes.INTERNAL_SERVER_ERROR, STATUS_MESSAGES.SOME_THING_WENT_WRONG, null, error.message);
+    }
+
+    await mgLogger.error(user, req, res, ERROR);
+    logger.errorResponse(req, res, ERROR);
+    return ERROR.send(res);
 };
+

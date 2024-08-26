@@ -1,21 +1,23 @@
 import { Customer, Prisma } from "@prisma/client";
-import { ICustomerService, RequiredConditions } from "../interfaces/customer/ICustomerService";
+import { ICustomerService, RequiredConditions } from "../interfaces";
 import { prisma } from "../lib/prisma";
 import { APIError } from "../utils/error";
 import { StatusCodes } from "http-status-codes";
 import { BELONG_TO_THEM, SAME_OFFICE, STATUS_MESSAGES, THEIR_OWN_CUSTOMER } from "../constants";
 import { ICustomerRepository } from "../interfaces";
 import merge from "lodash.merge";
+
 export class CustomerService implements ICustomerService {
     private repository: ICustomerRepository;
+
     constructor(repository: ICustomerRepository) {
         this.repository = repository;
     }
 
     onGetCustomers = async (requiredConditions?: RequiredConditions): Promise<Customer[]> => {
         const options = this.checkGet<Prisma.CustomerFindManyArgs>(requiredConditions);
-        const customers = await this.repository.getAll(options);
-        return customers;
+        return await this.repository.getAll(options);
+
     };
 
     onGetCustomer = async (customerNumber: number, requiredConditions?: RequiredConditions): Promise<Customer> => {
@@ -34,8 +36,8 @@ export class CustomerService implements ICustomerService {
 
     onCreateCustomer = async (customer: Customer, requiredConditions?: RequiredConditions): Promise<Customer> => {
         await this.checkCreate(customer, requiredConditions);
-        const newCustomer = await this.repository.create(customer);
-        return newCustomer;
+        return this.repository.create(customer);
+
     };
 
     onUpdateCustomer = async (
@@ -44,21 +46,17 @@ export class CustomerService implements ICustomerService {
         requiredConditions?: RequiredConditions
     ): Promise<Customer> => {
         const options = this.checkUpdateAndDelete<Prisma.CustomerUpdateArgs>(requiredConditions);
-        const updatedCustomer = this.repository.update(customerNumber, customer, options);
-        return updatedCustomer;
+        return this.repository.update(customerNumber, customer, options);
+
     };
 
     onDeleteCustomer = async (customerNumber: number, requiredConditions?: RequiredConditions): Promise<Customer> => {
         const options = this.checkUpdateAndDelete<Prisma.CustomerDeleteArgs>(requiredConditions);
-        const deletedCustomer = await this.repository.delete(customerNumber, options);
-        return deletedCustomer;
+        return this.repository.delete(customerNumber, options);
+
     };
     private checkGet = <T>(requiredConditions?: RequiredConditions): T => {
-        const options = {
-            include: {
-                employee: true,
-            },
-        } as T;
+        const options = {} as T;
         if (!requiredConditions) return options;
         const { conditions, user } = requiredConditions;
         conditions.forEach((condition) => {
@@ -66,17 +64,17 @@ export class CustomerService implements ICustomerService {
                 case THEIR_OWN_CUSTOMER:
                     merge(options, {
                         where: {
-                            salesRepEmployeeNumber: user.employeeNumber,
-                        },
+                            salesRepEmployeeNumber: user.employeeNumber
+                        }
                     });
                     break;
                 case BELONG_TO_THEM:
                     merge(options, {
                         where: {
                             employee: {
-                                officeCode: user.officeCode,
-                            },
-                        },
+                                officeCode: user.officeCode
+                            }
+                        }
                     });
                     break;
             }
@@ -86,7 +84,7 @@ export class CustomerService implements ICustomerService {
     private checkCreate = async (customer: Customer, requiredConditions?: RequiredConditions) => {
         if (!requiredConditions) return;
         const { conditions, user } = requiredConditions;
-        return await Promise.all(
+        return Promise.all(
             conditions.map(async (condition) => {
                 switch (condition) {
                     case BELONG_TO_THEM:
@@ -101,8 +99,8 @@ export class CustomerService implements ICustomerService {
                     case SAME_OFFICE:
                         const employee = await prisma.employee.findUnique({
                             where: {
-                                employeeNumber: customer.salesRepEmployeeNumber || undefined,
-                            },
+                                employeeNumber: customer.salesRepEmployeeNumber || undefined
+                            }
                         });
 
                         const isSameOffice = employee?.officeCode === user.officeCode;
@@ -127,9 +125,9 @@ export class CustomerService implements ICustomerService {
                 merge(options, {
                     where: {
                         employee: {
-                            officeCode: user.officeCode,
-                        },
-                    },
+                            officeCode: user.officeCode
+                        }
+                    }
                 });
             }
         });

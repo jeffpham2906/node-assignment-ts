@@ -2,12 +2,15 @@ import { Customer, Prisma, PrismaClient } from "@prisma/client";
 import { ICustomerRepository } from "../interfaces";
 import { prisma } from "../lib/prisma";
 import merge from "lodash.merge";
+
 export class CustomerRepository implements ICustomerRepository {
     private client: PrismaClient;
+
     constructor() {
         this.client = prisma;
     }
-    get = async (customerNumber: number, options: Prisma.CustomerFindFirstArgs = {}): Promise<Customer | null> => {
+
+    get = async (customerNumber: number, options: Prisma.CustomerFindUniqueArgs = {}): Promise<Customer | null> => {
         const getOptions = merge({ where: { customerNumber } }, options);
         return this.client.customer.findFirst(getOptions);
     };
@@ -25,12 +28,12 @@ export class CustomerRepository implements ICustomerRepository {
         const updateOptions = merge(
             {
                 where: {
-                    customerNumber,
+                    customerNumber
                 },
                 data,
                 include: {
-                    employee: true,
-                },
+                    employee: true
+                }
             },
             options
         );
@@ -40,8 +43,8 @@ export class CustomerRepository implements ICustomerRepository {
         const deleteOptions = merge(
             {
                 where: {
-                    customerNumber,
-                },
+                    customerNumber
+                }
             },
             options
         );

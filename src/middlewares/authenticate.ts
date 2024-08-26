@@ -9,7 +9,7 @@ type UserPermissions = {
     actions: [{ method: Method; conditions?: string[] }];
 };
 type RequiredPermission = { key: string; method: Method };
-const checkResource = (
+const checkPermission = (
     userPermissions: UserPermissions[],
     requiredPermissions: RequiredPermission,
     req: Request
@@ -28,14 +28,14 @@ const checkResource = (
     });
 };
 const authenticate = (requiredPermissions?: RequiredPermission): RequestHandler => {
-    return (req, res, next) => {
+    return (req, _res, next) => {
         if (!req.headers["authorization"] || !req.headers["authorization"]?.startsWith("Bearer")) {
-            next(new APIError(StatusCodes.UNAUTHORIZED, STATUS_MESSAGES.UNAUTHORIZED, "You need to bearer token"));
+            return next(new APIError(StatusCodes.UNAUTHORIZED, STATUS_MESSAGES.UNAUTHORIZED, "You need to bearer token"));
         }
         const token = req.headers["authorization"]?.split(" ")[1];
         if (!token) {
-            next(new APIError(StatusCodes.UNAUTHORIZED, STATUS_MESSAGES.UNAUTHORIZED, "Please bearer your token"));
-            return;
+            return next(new APIError(StatusCodes.UNAUTHORIZED, STATUS_MESSAGES.UNAUTHORIZED, "Please bearer your token"));
+
         }
         try {
             const payload = verifyToken(token) as any;
@@ -50,7 +50,7 @@ const authenticate = (requiredPermissions?: RequiredPermission): RequestHandler 
                 if (!userPermissions) {
                     next(errorDenied);
                 }
-                const hasPermission = checkResource(userPermissions, requiredPermissions, req);
+                const hasPermission = checkPermission(userPermissions, requiredPermissions, req);
                 if (!hasPermission) {
                     next(errorDenied);
                 }

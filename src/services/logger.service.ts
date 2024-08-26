@@ -1,19 +1,18 @@
 import { User } from "@prisma/client";
 import mongoose from "mongoose";
 import loggerRepository, { ILogger, LogLevel } from "../repositories/logger.repository";
-import { APIError } from "../utils/error";
-import { StatusCodes } from "http-status-codes";
-import { STATUS_MESSAGES } from "../constants";
 import { Request, Response } from "express";
 import { getMongoClient } from "../lib/mongoClient";
+import { logger } from "../lib/logger";
 
 export class Logger {
-    client: typeof loggerRepository | null = null;
+    client: mongoose.Model<ILogger> | null = null;
+
     constructor() {
-        this.connect();
+        this.connect().then(() => logger.info("Connected to loggerRepository"));
     }
 
-    private connect = async (mongoUri: string = process.env.MONGO_URL || "", dbName: string = "logger") => {
+    private connect = async () => {
         try {
             await getMongoClient();
             this.client = loggerRepository;
@@ -23,17 +22,9 @@ export class Logger {
     };
 
     async log(entry: ILogger) {
-        entry.user = entry.user || "Anonymous";
-        if (!this.client) {
-            throw new APIError(
-                StatusCodes.BAD_GATEWAY,
-                STATUS_MESSAGES.SOME_THING_WENT_WRONG,
-                "MongoDB client not initialized"
-            );
-        }
-
         try {
-            await this.client.create(entry);
+            entry.user = entry.user || "Anonymous";
+            await this.client?.create(entry);
         } catch (error) {
             console.error("Failed to insert log entry:", error);
         }
@@ -44,7 +35,7 @@ export class Logger {
             level: LogLevel.Error,
             user,
             message: `${req.method} ${req.originalUrl} - ${res.statusCode}`,
-            error,
+            error
         });
     }
 
@@ -53,7 +44,7 @@ export class Logger {
             level: LogLevel.Warning,
             user,
             message: `${req.method} ${req.originalUrl} - ${res.statusCode}`,
-            error,
+            error
         });
     }
 
@@ -62,9 +53,10 @@ export class Logger {
             level: LogLevel.Info,
             user,
             message: `${req.method} ${req.originalUrl} - ${res.statusCode}`,
-            data,
+            data
         });
     }
+
     async onGetLogs(options: mongoose.QueryOptions) {
         return await this.client?.find(options);
     }

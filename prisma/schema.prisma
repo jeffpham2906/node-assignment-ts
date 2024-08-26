@@ -37,7 +37,7 @@ model Employee {
   extension      String     @db.VarChar(50)
   email          String     @db.VarChar(100)
   officeCode     String?    @db.VarChar(10)
-  subordinates   Employee[] @relation("EmployeeToEmployee")
+  reportedBy     Employee[] @relation("EmployeeToEmployee")
   manager        Employee?  @relation("EmployeeToEmployee", fields: [reportsTo], references: [employeeNumber], onDelete: SetNull, onUpdate: Cascade)
   reportsTo      Int?       @db.UnsignedInt
   jobTitle       String     @db.VarChar(50)
@@ -53,7 +53,7 @@ model Employee {
 }
 
 model Office {
-  officeCode   String     @db.VarChar(10)
+  officeCode   String     @id @default(cuid()) @db.VarChar(10)
   city         String     @db.VarChar(50)
   phone        String     @db.VarChar(20)
   addressLine1 String     @db.VarChar(50)
@@ -66,7 +66,6 @@ model Office {
   updated_at   DateTime   @default(now()) @db.Timestamp(0)
   employees    Employee[]
 
-  @@unique([officeCode])
   @@map("offices")
 }
 
@@ -91,37 +90,36 @@ model User {
 }
 
 model Product {
-  productCode        String        @id @default(cuid()) @db.VarChar(15)
-  productName        String        @db.VarChar(70)
-  productLine        String        @db.VarChar(50)
-  productScale       String        @db.VarChar(10)
-  productVendor      String        @db.VarChar(50)
-  productDescription String        @db.Text
+  productCode        String       @id @default(cuid()) @db.VarChar(15)
+  productName        String       @db.VarChar(70)
+  productLine        String       @db.VarChar(50)
+  productScale       String       @db.VarChar(10)
+  productVendor      String       @db.VarChar(50)
+  productDescription String       @db.Text
   quantityInStock    Int
-  buyPrice           Decimal       @db.Decimal(10, 2)
-  MSRP               Decimal       @db.Decimal(10, 2)
-  ProductLines       ProductLine?  @relation(fields: [productLines], references: [productLine])
-  productLines       String?
-  orderDetails       OrderDetail[]
+  buyPrice           Decimal      @db.Decimal(10, 2)
+  MSRP               Decimal      @db.Decimal(10, 2)
+  ProductLine        ProductLine? @relation(fields: [productLine], references: [productLine])
+
+  orderDetails OrderDetail[]
 
   @@map("products")
 }
 
 model ProductLine {
-  productLine     String        @db.VarChar(15)
+  productLine     String        @id @default(cuid()) @db.VarChar(15)
   textDescription String        @db.Text
   htmlDescription String        @db.Text
   image           String        @db.VarChar(100)
   products        Product[]
   orderDetails    OrderDetail[]
 
-  @@unique([productLine])
   @@map("productlines")
 }
 
 model Order {
   orderNumber    Int           @id @default(autoincrement()) @db.UnsignedInt
-  orderDate      DateTime
+  orderDate      DateTime      @default(now())
   requiredDate   DateTime
   shippedDate    DateTime?
   status         String        @default("Pending") @db.VarChar(15)
@@ -134,15 +132,15 @@ model Order {
 }
 
 model OrderDetail {
-  Order                  Order        @relation(fields: [orderNumber], references: [orderNumber])
-  orderNumber            Int          @db.UnsignedInt
-  Product                Product      @relation(fields: [productCode], references: [productCode])
-  productCode            String       @db.VarChar(15)
-  quantityOrdered        Int
-  priceEach              Decimal
-  orderLineNumber        Int          @id @default(autoincrement())
-  ProductLine            ProductLine? @relation(fields: [productLineProductLine], references: [productLine])
-  productLineProductLine String?      @db.VarChar(15)
+  Order                Order        @relation(fields: [orderNumber], references: [orderNumber])
+  orderNumber          Int          @db.UnsignedInt
+  Product              Product      @relation(fields: [productCode], references: [productCode])
+  productCode          String       @db.VarChar(15)
+  quantityOrdered      Int
+  priceEach            Decimal
+  orderLineNumber      Int          @id @default(autoincrement())
+  ProductLine          ProductLine? @relation(fields: [productLineOfProduct], references: [productLine])
+  productLineOfProduct String?      @db.VarChar(15)
 
   @@unique([orderNumber, productCode])
   @@map("orderdetails")

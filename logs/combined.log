@@ -1710,3 +1710,427 @@
 03:25:24 PM 26-08-2024 [32minfo[39m: 	[32mResponse: /api/v1/users/login - POST - 200 - {"employeeNumber":3,"username":"system_admin","lastName":"Pham","firstName":"Jeff","extension":"","email":"jeffpham2906@gmail.com","jobTitle":"Leader Sales","role":"President","created_at":"2024-08-25T10:11:19.000Z","updated_at":"2024-08-25T10:11:19.000Z","permissions":[{"key":"employees","actions":[{"method":"full"}]},{"key":"customers","actions":[{"method":"full"}]},{"key":"roles","actions":[{"method":"full"}]}]}[39m
 03:25:28 PM 26-08-2024 [32minfo[39m: 	[32mRequest: /api/v1/offices/report?startDate=2024-08-20&endDate=2024-08-29 - GET [39m
 03:25:28 PM 26-08-2024 [32minfo[39m: 	[32mResponse: /api/v1/offices/report?startDate=2024-08-20&endDate=2024-08-29 - GET - 200 - {"totalRevenue":381,"productLineRevenue":{"Classic Cars":60,"Motorcycles":76,"Planes":245},"startDate":"2024-08-20T00:00:00.000Z","endDate":"2024-08-29T00:00:00.000Z"}[39m
+06:10:31 PM 26-08-2024 [32minfo[39m: 	[32mRequest: /docs - GET [39m
+06:10:46 PM 26-08-2024 [32minfo[39m: 	[32mRequest: /api-docs - GET [39m
+06:10:46 PM 26-08-2024 [32minfo[39m: 	[32mRequest: /api-docs/ - GET [39m
+06:10:46 PM 26-08-2024 [32minfo[39m: 	[32mRequest: /api-docs/swagger-ui.css - GET [39m
+06:10:46 PM 26-08-2024 [32minfo[39m: 	[32mRequest: /api-docs/swagger-ui-bundle.js - GET [39m
+06:10:46 PM 26-08-2024 [32minfo[39m: 	[32mRequest: /api-docs/swagger-ui-standalone-preset.js - GET [39m
+06:10:46 PM 26-08-2024 [32minfo[39m: 	[32mRequest: /api-docs/swagger-ui-init.js - GET [39m
+06:10:46 PM 26-08-2024 [32minfo[39m: 	[32mRequest: /api-docs/swagger-ui-init.js - GET [39m
+06:10:46 PM 26-08-2024 [32minfo[39m: 	[32mRequest: /api-docs/swagger-ui-standalone-preset.js - GET [39m
+06:10:46 PM 26-08-2024 [32minfo[39m: 	[32mRequest: /api-docs/swagger-ui-bundle.js - GET [39m
+06:10:46 PM 26-08-2024 [32minfo[39m: 	[32mRequest: /api-docs/favicon-32x32.png - GET [39m
+06:17:02 PM 26-08-2024 [32minfo[39m: 	[32mRequest: /api-docs/ - GET [39m
+06:17:02 PM 26-08-2024 [32minfo[39m: 	[32mRequest: /api-docs/swagger-ui.css - GET [39m
+06:17:02 PM 26-08-2024 [32minfo[39m: 	[32mRequest: /api-docs/swagger-ui-bundle.js - GET [39m
+06:17:02 PM 26-08-2024 [32minfo[39m: 	[32mRequest: /api-docs/swagger-ui-standalone-preset.js - GET [39m
+06:17:02 PM 26-08-2024 [32minfo[39m: 	[32mRequest: /api-docs/swagger-ui-init.js - GET [39m
+06:17:03 PM 26-08-2024 [32minfo[39m: 	[32mRequest: /api-docs/favicon-32x32.png - GET [39m
+06:17:31 PM 26-08-2024 [32minfo[39m: 	[32mRequest: /api-docs/ - GET [39m
+06:17:31 PM 26-08-2024 [32minfo[39m: 	[32mRequest: /api-docs/swagger-ui.css - GET [39m
+06:17:31 PM 26-08-2024 [32minfo[39m: 	[32mRequest: /api-docs/swagger-ui-bundle.js - GET [39m
+06:17:31 PM 26-08-2024 [32minfo[39m: 	[32mRequest: /api-docs/swagger-ui-standalone-preset.js - GET [39m
+06:17:31 PM 26-08-2024 [32minfo[39m: 	[32mRequest: /api-docs/swagger-ui-init.js - GET [39m
+06:17:31 PM 26-08-2024 [32minfo[39m: 	[32mRequest: /api-docs/favicon-32x32.png - GET [39m
+06:18:00 PM 26-08-2024 [32minfo[39m: 	[32mRequest: /api-docs/ - GET [39m
+06:18:00 PM 26-08-2024 [32minfo[39m: 	[32mRequest: /api-docs/swagger-ui.css - GET [39m
+06:18:00 PM 26-08-2024 [32minfo[39m: 	[32mRequest: /api-docs/swagger-ui-init.js - GET [39m
+06:18:00 PM 26-08-2024 [32minfo[39m: 	[32mRequest: /api-docs/swagger-ui-bundle.js - GET [39m
+06:18:00 PM 26-08-2024 [32minfo[39m: 	[32mRequest: /api-docs/swagger-ui-standalone-preset.js - GET [39m
+06:18:00 PM 26-08-2024 [32minfo[39m: 	[32mRequest: /api-docs/favicon-32x32.png - GET [39m
+06:21:36 PM 26-08-2024 [32minfo[39m: 	[32mRequest: /api-docs/ - GET [39m
+06:21:36 PM 26-08-2024 [32minfo[39m: 	[32mRequest: /api-docs/swagger-ui.css - GET [39m
+06:21:36 PM 26-08-2024 [32minfo[39m: 	[32mRequest: /api-docs/swagger-ui-bundle.js - GET [39m
+06:21:36 PM 26-08-2024 [32minfo[39m: 	[32mRequest: /api-docs/swagger-ui-standalone-preset.js - GET [39m
+06:21:36 PM 26-08-2024 [32minfo[39m: 	[32mRequest: /api-docs/swagger-ui-init.js - GET [39m
+06:21:36 PM 26-08-2024 [32minfo[39m: 	[32mRequest: /api-docs/favicon-32x32.png - GET [39m
+06:22:46 PM 26-08-2024 [32minfo[39m: 	[32mRequest: /api-docs/ - GET [39m
+06:22:46 PM 26-08-2024 [32minfo[39m: 	[32mRequest: /api-docs/swagger-ui.css - GET [39m
+06:22:46 PM 26-08-2024 [32minfo[39m: 	[32mRequest: /api-docs/swagger-ui-bundle.js - GET [39m
+06:22:46 PM 26-08-2024 [32minfo[39m: 	[32mRequest: /api-docs/swagger-ui-standalone-preset.js - GET [39m
+06:22:46 PM 26-08-2024 [32minfo[39m: 	[32mRequest: /api-docs/swagger-ui-init.js - GET [39m
+06:22:46 PM 26-08-2024 [32minfo[39m: 	[32mRequest: /api-docs/favicon-32x32.png - GET [39m
+06:33:10 PM 26-08-2024 [32minfo[39m: 	[32mRequest: /api-docs/ - GET [39m
+06:33:10 PM 26-08-2024 [32minfo[39m: 	[32mRequest: /api-docs/swagger-ui.css - GET [39m
+06:33:10 PM 26-08-2024 [32minfo[39m: 	[32mRequest: /api-docs/swagger-ui-standalone-preset.js - GET [39m
+06:33:10 PM 26-08-2024 [32minfo[39m: 	[32mRequest: /api-docs/swagger-ui-bundle.js - GET [39m
+06:33:10 PM 26-08-2024 [32minfo[39m: 	[32mRequest: /api-docs/swagger-ui-init.js - GET [39m
+06:33:10 PM 26-08-2024 [32minfo[39m: 	[32mRequest: /api-docs/favicon-32x32.png - GET [39m
+06:33:15 PM 26-08-2024 [32minfo[39m: 	[32mRequest: /api/v1/users/login - POST [39m
+06:33:16 PM 26-08-2024 [31merror[39m: 	[31mError: /api/v1/users/login - POST - 401 - {"statusCode":401,"message":"UNAUTHORIZED","data":null,"errors":"Password not correct with username system_admin"}[39m
+06:34:32 PM 26-08-2024 [32minfo[39m: 	[32mRequest: /api/v1/users/login - POST [39m
+06:34:32 PM 26-08-2024 [31merror[39m: 	[31mError: /api/v1/users/login - POST - 401 - {"statusCode":401,"message":"UNAUTHORIZED","data":null,"errors":"Password not correct with username system_admin"}[39m
+06:35:06 PM 26-08-2024 [32minfo[39m: 	[32mRequest: /api/v1/users/login - POST [39m
+06:35:06 PM 26-08-2024 [31merror[39m: 	[31mError: /api/v1/users/login - POST - 401 - {"statusCode":401,"message":"UNAUTHORIZED","data":null,"errors":"Password not correct with username system_admin"}[39m
+06:36:01 PM 26-08-2024 [32minfo[39m: 	[32mRequest: /api-docs/ - GET [39m
+06:36:01 PM 26-08-2024 [32minfo[39m: 	[32mRequest: /api-docs/swagger-ui.css - GET [39m
+06:36:01 PM 26-08-2024 [32minfo[39m: 	[32mRequest: /api-docs/swagger-ui-bundle.js - GET [39m
+06:36:01 PM 26-08-2024 [32minfo[39m: 	[32mRequest: /api-docs/swagger-ui-standalone-preset.js - GET [39m
+06:36:01 PM 26-08-2024 [32minfo[39m: 	[32mRequest: /api-docs/swagger-ui-init.js - GET [39m
+06:36:01 PM 26-08-2024 [32minfo[39m: 	[32mRequest: /api-docs/favicon-32x32.png - GET [39m
+06:36:04 PM 26-08-2024 [32minfo[39m: 	[32mRequest: /api/v1/users/login - POST [39m
+06:36:04 PM 26-08-2024 [31merror[39m: 	[31mError: /api/v1/users/login - POST - 401 - {"statusCode":401,"message":"UNAUTHORIZED","data":null,"errors":"Password not correct with username system_admin"}[39m
+06:37:30 PM 26-08-2024 [32minfo[39m: 	[32mRequest: /api/v1/users/login - POST [39m
+06:37:30 PM 26-08-2024 [31merror[39m: 	[31mError: /api/v1/users/login - POST - 401 - {"statusCode":401,"message":"UNAUTHORIZED","data":null,"errors":"Password not correct with username system_admin"}[39m
+06:41:54 PM 26-08-2024 [32minfo[39m: 	[32mRequest: /api/v1/users/login - POST [39m
+06:41:54 PM 26-08-2024 [31merror[39m: 	[31mError: /api/v1/users/login - POST - 401 - {"statusCode":401,"message":"UNAUTHORIZED","data":null,"errors":"Password not correct with username system_admin"}[39m
+06:42:12 PM 26-08-2024 [32minfo[39m: 	[32mRequest: /api-docs/ - GET [39m
+06:42:12 PM 26-08-2024 [32minfo[39m: 	[32mRequest: /api-docs/swagger-ui.css - GET [39m
+06:42:12 PM 26-08-2024 [32minfo[39m: 	[32mRequest: /api-docs/swagger-ui-bundle.js - GET [39m
+06:42:12 PM 26-08-2024 [32minfo[39m: 	[32mRequest: /api-docs/swagger-ui-standalone-preset.js - GET [39m
+06:42:12 PM 26-08-2024 [32minfo[39m: 	[32mRequest: /api-docs/swagger-ui-init.js - GET [39m
+06:42:12 PM 26-08-2024 [32minfo[39m: 	[32mRequest: /api-docs/favicon-32x32.png - GET [39m
+06:42:13 PM 26-08-2024 [32minfo[39m: 	[32mRequest: /api-docs/ - GET [39m
+06:42:13 PM 26-08-2024 [32minfo[39m: 	[32mRequest: /api-docs/swagger-ui.css - GET [39m
+06:42:13 PM 26-08-2024 [32minfo[39m: 	[32mRequest: /api-docs/swagger-ui-bundle.js - GET [39m
+06:42:13 PM 26-08-2024 [32minfo[39m: 	[32mRequest: /api-docs/swagger-ui-standalone-preset.js - GET [39m
+06:42:13 PM 26-08-2024 [32minfo[39m: 	[32mRequest: /api-docs/swagger-ui-init.js - GET [39m
+06:42:13 PM 26-08-2024 [32minfo[39m: 	[32mRequest: /api-docs/favicon-32x32.png - GET [39m
+06:42:19 PM 26-08-2024 [32minfo[39m: 	[32mRequest: /api/v1/users/login - POST [39m
+06:42:19 PM 26-08-2024 [31merror[39m: 	[31mError: /api/v1/users/login - POST - 401 - {"statusCode":401,"message":"UNAUTHORIZED","data":null,"errors":"Password not correct with username system_manager"}[39m
+07:03:15 PM 26-08-2024 [32minfo[39m: 	[32mRequest: /api/v1/users/login - POST [39m
+07:03:15 PM 26-08-2024 [32minfo[39m: 	[32mResponse: /api/v1/users/login - POST - 200 - {"employeeNumber":4,"username":"system_manager","lastName":"Duc","firstName":"Anh","extension":"","email":"ducanh@gmail.com","jobTitle":"Manager Sales","role":"Manager","created_at":"2024-08-26T12:02:31.000Z","updated_at":"2024-08-26T12:02:31.000Z","permissions":[{"key":"employees","actions":[{"method":"read"},{"method":"update"},{"method":"create"}]},{"key":"customers","actions":[{"method":"full"}]}]}[39m
+07:03:22 PM 26-08-2024 [32minfo[39m: 	[32mRequest: /api-docs/ - GET [39m
+07:03:22 PM 26-08-2024 [32minfo[39m: 	[32mRequest: /api-docs/swagger-ui.css - GET [39m
+07:03:22 PM 26-08-2024 [32minfo[39m: 	[32mRequest: /api-docs/swagger-ui-standalone-preset.js - GET [39m
+07:03:22 PM 26-08-2024 [32minfo[39m: 	[32mRequest: /api-docs/swagger-ui-init.js - GET [39m
+07:03:22 PM 26-08-2024 [32minfo[39m: 	[32mRequest: /api-docs/swagger-ui-bundle.js - GET [39m
+07:03:22 PM 26-08-2024 [32minfo[39m: 	[32mRequest: /api-docs/favicon-32x32.png - GET [39m
+07:06:37 PM 26-08-2024 [32minfo[39m: 	[32mRequest: /api-docs/ - GET [39m
+07:06:37 PM 26-08-2024 [32minfo[39m: 	[32mRequest: /api-docs/swagger-ui.css - GET [39m
+07:06:37 PM 26-08-2024 [32minfo[39m: 	[32mRequest: /api-docs/swagger-ui-bundle.js - GET [39m
+07:06:38 PM 26-08-2024 [32minfo[39m: 	[32mRequest: /api-docs/swagger-ui-standalone-preset.js - GET [39m
+07:06:38 PM 26-08-2024 [32minfo[39m: 	[32mRequest: /api-docs/swagger-ui-init.js - GET [39m
+07:06:38 PM 26-08-2024 [32minfo[39m: 	[32mRequest: /api-docs/favicon-32x32.png - GET [39m
+07:06:53 PM 26-08-2024 [32minfo[39m: 	[32mRequest: /api/v1/customers - GET [39m
+07:06:53 PM 26-08-2024 [31merror[39m: 	[31mError: /api/v1/customers - GET - 401 - {"statusCode":401,"message":"UNAUTHORIZED","data":null,"errors":"You need to bearer token"}[39m
+07:06:54 PM 26-08-2024 [32minfo[39m: 	[32mRequest: /api/v1/customers - GET [39m
+07:06:54 PM 26-08-2024 [31merror[39m: 	[31mError: /api/v1/customers - GET - 401 - {"statusCode":401,"message":"UNAUTHORIZED","data":null,"errors":"You need to bearer token"}[39m
+07:07:03 PM 26-08-2024 [32minfo[39m: 	[32mRequest: /api/v1/users/login - POST [39m
+07:07:03 PM 26-08-2024 [32minfo[39m: 	[32mResponse: /api/v1/users/login - POST - 200 - {"employeeNumber":4,"username":"system_manager","lastName":"Duc","firstName":"Anh","extension":"","email":"ducanh@gmail.com","jobTitle":"Manager Sales","role":"Manager","created_at":"2024-08-26T12:02:31.000Z","updated_at":"2024-08-26T12:02:31.000Z","permissions":[{"key":"employees","actions":[{"method":"read"},{"method":"update"},{"method":"create"}]},{"key":"customers","actions":[{"method":"full"}]}]}[39m
+07:09:50 PM 26-08-2024 [32minfo[39m: 	[32mRequest: /api-docs/ - GET [39m
+07:09:50 PM 26-08-2024 [32minfo[39m: 	[32mRequest: /api-docs/swagger-ui.css - GET [39m
+07:09:50 PM 26-08-2024 [32minfo[39m: 	[32mRequest: /api-docs/swagger-ui-bundle.js - GET [39m
+07:09:50 PM 26-08-2024 [32minfo[39m: 	[32mRequest: /api-docs/swagger-ui-standalone-preset.js - GET [39m
+07:09:50 PM 26-08-2024 [32minfo[39m: 	[32mRequest: /api-docs/swagger-ui-init.js - GET [39m
+07:09:50 PM 26-08-2024 [32minfo[39m: 	[32mRequest: /api-docs/favicon-32x32.png - GET [39m
+07:10:02 PM 26-08-2024 [32minfo[39m: 	[32mRequest: /api/v1/users/login - POST [39m
+07:10:03 PM 26-08-2024 [32minfo[39m: 	[32mResponse: /api/v1/users/login - POST - 200 - {"employeeNumber":4,"username":"system_manager","lastName":"Duc","firstName":"Anh","extension":"","email":"ducanh@gmail.com","jobTitle":"Manager Sales","role":"Manager","created_at":"2024-08-26T12:02:31.000Z","updated_at":"2024-08-26T12:02:31.000Z","permissions":[{"key":"employees","actions":[{"method":"read"},{"method":"update"},{"method":"create"}]},{"key":"customers","actions":[{"method":"full"}]}]}[39m
+07:10:24 PM 26-08-2024 [32minfo[39m: 	[32mRequest: /api-docs/ - GET [39m
+07:10:24 PM 26-08-2024 [32minfo[39m: 	[32mRequest: /api-docs/swagger-ui.css - GET [39m
+07:10:24 PM 26-08-2024 [32minfo[39m: 	[32mRequest: /api-docs/swagger-ui-bundle.js - GET [39m
+07:10:24 PM 26-08-2024 [32minfo[39m: 	[32mRequest: /api-docs/swagger-ui-standalone-preset.js - GET [39m
+07:10:24 PM 26-08-2024 [32minfo[39m: 	[32mRequest: /api-docs/swagger-ui-init.js - GET [39m
+07:10:25 PM 26-08-2024 [32minfo[39m: 	[32mRequest: /api-docs/favicon-32x32.png - GET [39m
+07:10:28 PM 26-08-2024 [32minfo[39m: 	[32mRequest: /api/v1/users/login - POST [39m
+07:10:28 PM 26-08-2024 [32minfo[39m: 	[32mResponse: /api/v1/users/login - POST - 200 - {"employeeNumber":3,"username":"system_admin","lastName":"Pham","firstName":"Jeff","extension":"","email":"jeffpham2906@gmail.com","jobTitle":"Leader Sales","role":"President","created_at":"2024-08-26T12:02:31.000Z","updated_at":"2024-08-26T12:02:31.000Z","permissions":[{"key":"employees","actions":[{"method":"full"}]},{"key":"customers","actions":[{"method":"full"}]},{"key":"roles","actions":[{"method":"full"}]}]}[39m
+07:10:43 PM 26-08-2024 [32minfo[39m: 	[32mRequest: /api/v1/users/login - POST [39m
+07:10:43 PM 26-08-2024 [32minfo[39m: 	[32mResponse: /api/v1/users/login - POST - 200 - {"employeeNumber":3,"username":"system_admin","lastName":"Pham","firstName":"Jeff","extension":"","email":"jeffpham2906@gmail.com","jobTitle":"Leader Sales","role":"President","created_at":"2024-08-26T12:02:31.000Z","updated_at":"2024-08-26T12:02:31.000Z","permissions":[{"key":"employees","actions":[{"method":"full"}]},{"key":"customers","actions":[{"method":"full"}]},{"key":"roles","actions":[{"method":"full"}]}]}[39m
+07:12:04 PM 26-08-2024 [32minfo[39m: 	[32mRequest: /api-docs/ - GET [39m
+07:12:04 PM 26-08-2024 [32minfo[39m: 	[32mRequest: /api-docs/swagger-ui.css - GET [39m
+07:12:04 PM 26-08-2024 [32minfo[39m: 	[32mRequest: /api-docs/swagger-ui-bundle.js - GET [39m
+07:12:04 PM 26-08-2024 [32minfo[39m: 	[32mRequest: /api-docs/swagger-ui-standalone-preset.js - GET [39m
+07:12:04 PM 26-08-2024 [32minfo[39m: 	[32mRequest: /api-docs/swagger-ui-init.js - GET [39m
+07:12:04 PM 26-08-2024 [32minfo[39m: 	[32mRequest: /api-docs/favicon-32x32.png - GET [39m
+07:12:57 PM 26-08-2024 [32minfo[39m: 	[32mRequest: /api-docs/ - GET [39m
+07:12:57 PM 26-08-2024 [32minfo[39m: 	[32mRequest: /api-docs/swagger-ui.css - GET [39m
+07:12:57 PM 26-08-2024 [32minfo[39m: 	[32mRequest: /api-docs/swagger-ui-bundle.js - GET [39m
+07:12:57 PM 26-08-2024 [32minfo[39m: 	[32mRequest: /api-docs/swagger-ui-standalone-preset.js - GET [39m
+07:12:57 PM 26-08-2024 [32minfo[39m: 	[32mRequest: /api-docs/swagger-ui-init.js - GET [39m
+07:12:57 PM 26-08-2024 [32minfo[39m: 	[32mRequest: /api-docs/favicon-32x32.png - GET [39m
+07:13:16 PM 26-08-2024 [32minfo[39m: 	[32mRequest: /api/v1/users/login - POST [39m
+07:13:16 PM 26-08-2024 [31merror[39m: 	[31mError: /api/v1/users/login - POST - 404 - {"statusCode":404,"message":"NOT FOUND","data":null,"errors":"Cannot find user with username system_admind"}[39m
+07:16:02 PM 26-08-2024 [32minfo[39m: 	[32mRequest: /api-docs/ - GET [39m
+07:16:02 PM 26-08-2024 [32minfo[39m: 	[32mRequest: /api-docs/swagger-ui.css - GET [39m
+07:16:02 PM 26-08-2024 [32minfo[39m: 	[32mRequest: /api-docs/swagger-ui-bundle.js - GET [39m
+07:16:02 PM 26-08-2024 [32minfo[39m: 	[32mRequest: /api-docs/swagger-ui-standalone-preset.js - GET [39m
+07:16:02 PM 26-08-2024 [32minfo[39m: 	[32mRequest: /api-docs/swagger-ui-init.js - GET [39m
+07:16:03 PM 26-08-2024 [32minfo[39m: 	[32mRequest: /api-docs/favicon-32x32.png - GET [39m
+07:20:40 PM 26-08-2024 [32minfo[39m: 	[32mRequest: /api-docs/ - GET [39m
+07:20:40 PM 26-08-2024 [32minfo[39m: 	[32mRequest: /api-docs/swagger-ui.css - GET [39m
+07:20:40 PM 26-08-2024 [32minfo[39m: 	[32mRequest: /api-docs/swagger-ui-bundle.js - GET [39m
+07:20:40 PM 26-08-2024 [32minfo[39m: 	[32mRequest: /api-docs/swagger-ui-standalone-preset.js - GET [39m
+07:20:40 PM 26-08-2024 [32minfo[39m: 	[32mRequest: /api-docs/swagger-ui-init.js - GET [39m
+07:20:41 PM 26-08-2024 [32minfo[39m: 	[32mRequest: /api-docs/favicon-32x32.png - GET [39m
+07:21:38 PM 26-08-2024 [32minfo[39m: 	[32mRequest: /api-docs/ - GET [39m
+07:21:38 PM 26-08-2024 [32minfo[39m: 	[32mRequest: /api-docs/swagger-ui.css - GET [39m
+07:21:38 PM 26-08-2024 [32minfo[39m: 	[32mRequest: /api-docs/swagger-ui-standalone-preset.js - GET [39m
+07:21:38 PM 26-08-2024 [32minfo[39m: 	[32mRequest: /api-docs/swagger-ui-bundle.js - GET [39m
+07:21:38 PM 26-08-2024 [32minfo[39m: 	[32mRequest: /api-docs/swagger-ui-init.js - GET [39m
+07:21:38 PM 26-08-2024 [32minfo[39m: 	[32mRequest: /api-docs/favicon-32x32.png - GET [39m
+07:24:06 PM 26-08-2024 [32minfo[39m: 	[32mRequest: /api/v1/users/login - POST [39m
+07:24:06 PM 26-08-2024 [31merror[39m: 	[31mError: /api/v1/users/login - POST - 401 - {"statusCode":401,"message":"UNAUTHORIZED","data":null,"errors":"Password not correct with username system_admin"}[39m
+07:25:03 PM 26-08-2024 [32minfo[39m: 	[32mRequest: /api-docs/ - GET [39m
+07:25:03 PM 26-08-2024 [32minfo[39m: 	[32mRequest: /api-docs/swagger-ui.css - GET [39m
+07:25:03 PM 26-08-2024 [32minfo[39m: 	[32mRequest: /api-docs/swagger-ui-bundle.js - GET [39m
+07:25:03 PM 26-08-2024 [32minfo[39m: 	[32mRequest: /api-docs/swagger-ui-standalone-preset.js - GET [39m
+07:25:03 PM 26-08-2024 [32minfo[39m: 	[32mRequest: /api-docs/swagger-ui-init.js - GET [39m
+07:25:03 PM 26-08-2024 [32minfo[39m: 	[32mRequest: /api-docs/favicon-32x32.png - GET [39m
+07:25:53 PM 26-08-2024 [32minfo[39m: 	[32mRequest: /api-docs/ - GET [39m
+07:25:54 PM 26-08-2024 [32minfo[39m: 	[32mRequest: /api-docs/swagger-ui.css - GET [39m
+07:25:54 PM 26-08-2024 [32minfo[39m: 	[32mRequest: /api-docs/swagger-ui-bundle.js - GET [39m
+07:25:54 PM 26-08-2024 [32minfo[39m: 	[32mRequest: /api-docs/swagger-ui-init.js - GET [39m
+07:25:54 PM 26-08-2024 [32minfo[39m: 	[32mRequest: /api-docs/swagger-ui-standalone-preset.js - GET [39m
+07:25:54 PM 26-08-2024 [32minfo[39m: 	[32mRequest: /api-docs/favicon-32x32.png - GET [39m
+07:31:08 PM 26-08-2024 [32minfo[39m: 	[32mRequest: /api/v1/users/login - POST [39m
+07:31:08 PM 26-08-2024 [32minfo[39m: 	[32mResponse: /api/v1/users/login - POST - 200 - {"employeeNumber":3,"username":"system_admin","lastName":"Pham","firstName":"Jeff","extension":"","email":"jeffpham2906@gmail.com","jobTitle":"Leader Sales","role":"President","created_at":"2024-08-26T12:02:31.000Z","updated_at":"2024-08-26T12:02:31.000Z","permissions":[{"key":"employees","actions":[{"method":"full"}]},{"key":"customers","actions":[{"method":"full"}]},{"key":"roles","actions":[{"method":"full"}]}]}[39m
+07:31:18 PM 26-08-2024 [32minfo[39m: 	[32mRequest: /api/v1/employees - GET [39m
+07:31:18 PM 26-08-2024 [32minfo[39m: 	[32mResponse: /api/v1/employees - GET - 200 - [{"employeeNumber":1,"lastName":"9999","firstName":"Default","extension":"","email":"Default","officeCode":"VN1","reportsTo":null,"jobTitle":"Default","role":"Staff","created_at":"2024-08-26T12:02:31.000Z","updated_at":"2024-08-26T12:02:31.000Z","user":null,"customers":[]},{"employeeNumber":2,"lastName":"9999","firstName":"Default","extension":"","email":"Default","officeCode":"FA1","reportsTo":null,"jobTitle":"Default","role":"Staff","created_at":"2024-08-26T12:02:31.000Z","updated_at":"2024-08-26T12:02:31.000Z","user":null,"customers":[]},{"employeeNumber":3,"lastName":"Pham","firstName":"Jeff","extension":"","email":"jeffpham2906@gmail.com","officeCode":null,"reportsTo":null,"jobTitle":"Leader Sales","role":"President","created_at":"2024-08-26T12:02:31.000Z","updated_at":"2024-08-26T12:02:31.000Z","user":{"username":"system_admin"},"customers":[]},{"employeeNumber":4,"lastName":"Duc","firstName":"Anh","extension":"","email":"ducanh@gmail.com","officeCode":null,"reportsTo":null,"jobTitle":"Manager Sales","role":"Manager","created_at":"2024-08-26T12:02:31.000Z","updated_at":"2024-08-26T12:02:31.000Z","user":{"username":"system_manager"},"customers":[]},{"employeeNumber":5,"lastName":"Dung","firstName":"Pham","extension":"","email":"dungpham@gmail.com","officeCode":"VN1","reportsTo":null,"jobTitle":"Leader Sales","role":"Leader","created_at":"2024-08-26T12:02:31.000Z","updated_at":"2024-08-26T12:02:31.000Z","user":{"username":"system_leader1"},"customers":[]},{"employeeNumber":6,"lastName":"John","firstName":"Tran","extension":"","email":"johntran@gmail.com","officeCode":"VN1","reportsTo":null,"jobTitle":"Staff Sales","role":"Staff","created_at":"2024-08-26T12:02:31.000Z","updated_at":"2024-08-26T12:02:31.000Z","user":{"username":"system_staff1"},"customers":[]},{"employeeNumber":7,"lastName":"Pham","firstName":"Luyen","extension":"","email":"phamluyeb@gmail.com","officeCode":"FA1","reportsTo":null,"jobTitle":"Staff Sales","role":"Staff","created_at":"2024-08-26T12:02:31.000Z","updated_at":"2024-08-26T12:02:31.000Z","user":{"username":"system_staff2"},"customers":[]},{"employeeNumber":8,"lastName":"Dang","firstName":"Khoa","extension":"","email":"dangkhoa@gmail.com","officeCode":"FA1","reportsTo":null,"jobTitle":"Leader ABC","role":"Leader","created_at":"2024-08-26T12:02:31.000Z","updated_at":"2024-08-26T12:02:31.000Z","user":{"username":"system_leader2"},"customers":[]}][39m
+07:31:50 PM 26-08-2024 [32minfo[39m: 	[32mRequest: /api/v1/users/register - POST [39m
+07:31:50 PM 26-08-2024 [32minfo[39m: 	[32mResponse: /api/v1/users/register - POST - 200 - {"username":"system_default1","employeeNumber":2,"lastName":"9999","firstName":"Default","extension":"","email":"Default","officeCode":"FA1","jobTitle":"Default","role":"Staff","created_at":"2024-08-26T12:02:31.000Z","updated_at":"2024-08-26T12:02:31.000Z"}[39m
+07:37:22 PM 26-08-2024 [32minfo[39m: 	[32mRequest: /api-docs/ - GET [39m
+07:37:22 PM 26-08-2024 [32minfo[39m: 	[32mRequest: /api-docs/swagger-ui.css - GET [39m
+07:37:22 PM 26-08-2024 [32minfo[39m: 	[32mRequest: /api-docs/swagger-ui-init.js - GET [39m
+07:37:22 PM 26-08-2024 [32minfo[39m: 	[32mRequest: /api-docs/swagger-ui-standalone-preset.js - GET [39m
+07:37:22 PM 26-08-2024 [32minfo[39m: 	[32mRequest: /api-docs/swagger-ui-bundle.js - GET [39m
+07:37:23 PM 26-08-2024 [32minfo[39m: 	[32mRequest: /api-docs/favicon-32x32.png - GET [39m
+07:38:26 PM 26-08-2024 [32minfo[39m: 	[32mRequest: /api/v1/customers - GET [39m
+07:38:26 PM 26-08-2024 [32minfo[39m: 	[32mResponse: /api/v1/customers - GET - 200 - [][39m
+07:38:35 PM 26-08-2024 [32minfo[39m: 	[32mRequest: /api/v1/customers - POST [39m
+07:38:35 PM 26-08-2024 [31merror[39m: 	[31mError: /api/v1/customers - POST - 400 - {"statusCode":400,"message":"Validation failed","data":null,"errors":[{"message":"customerName name must be at least 5 characters long","path":["customerName"]},{"message":"customerName name must be at least 3 characters long","path":["contactLastName"]},{"message":"customerName name must be at least 3 characters long","path":["contactFirstName"]}]}[39m
+07:38:43 PM 26-08-2024 [32minfo[39m: 	[32mRequest: /api/v1/customers - GET [39m
+07:38:43 PM 26-08-2024 [32minfo[39m: 	[32mResponse: /api/v1/customers - GET - 200 - [][39m
+07:43:51 PM 26-08-2024 [32minfo[39m: 	[32mRequest: /api-docs/ - GET [39m
+07:43:52 PM 26-08-2024 [32minfo[39m: 	[32mRequest: /api-docs/swagger-ui.css - GET [39m
+07:43:52 PM 26-08-2024 [32minfo[39m: 	[32mRequest: /api-docs/swagger-ui-bundle.js - GET [39m
+07:43:52 PM 26-08-2024 [32minfo[39m: 	[32mRequest: /api-docs/swagger-ui-standalone-preset.js - GET [39m
+07:43:52 PM 26-08-2024 [32minfo[39m: 	[32mRequest: /api-docs/swagger-ui-init.js - GET [39m
+07:43:52 PM 26-08-2024 [32minfo[39m: 	[32mRequest: /api-docs/favicon-32x32.png - GET [39m
+07:44:51 PM 26-08-2024 [32minfo[39m: 	[32mRequest: /api-docs/ - GET [39m
+07:44:51 PM 26-08-2024 [32minfo[39m: 	[32mRequest: /api-docs/swagger-ui-init.js - GET [39m
+07:44:51 PM 26-08-2024 [32minfo[39m: 	[32mRequest: /api-docs/swagger-ui.css - GET [39m
+07:44:51 PM 26-08-2024 [32minfo[39m: 	[32mRequest: /api-docs/swagger-ui-bundle.js - GET [39m
+07:44:51 PM 26-08-2024 [32minfo[39m: 	[32mRequest: /api-docs/swagger-ui-standalone-preset.js - GET [39m
+07:44:51 PM 26-08-2024 [32minfo[39m: 	[32mRequest: /api-docs/favicon-32x32.png - GET [39m
+07:46:00 PM 26-08-2024 [32minfo[39m: 	[32mRequest: /api-docs/ - GET [39m
+07:46:00 PM 26-08-2024 [32minfo[39m: 	[32mRequest: /api-docs/swagger-ui.css - GET [39m
+07:46:00 PM 26-08-2024 [32minfo[39m: 	[32mRequest: /api-docs/swagger-ui-bundle.js - GET [39m
+07:46:00 PM 26-08-2024 [32minfo[39m: 	[32mRequest: /api-docs/swagger-ui-standalone-preset.js - GET [39m
+07:46:00 PM 26-08-2024 [32minfo[39m: 	[32mRequest: /api-docs/swagger-ui-init.js - GET [39m
+07:46:00 PM 26-08-2024 [32minfo[39m: 	[32mRequest: /api-docs/favicon-32x32.png - GET [39m
+07:47:02 PM 26-08-2024 [32minfo[39m: 	[32mRequest: /api-docs/ - GET [39m
+07:47:02 PM 26-08-2024 [32minfo[39m: 	[32mRequest: /api-docs/swagger-ui.css - GET [39m
+07:47:02 PM 26-08-2024 [32minfo[39m: 	[32mRequest: /api-docs/swagger-ui-bundle.js - GET [39m
+07:47:02 PM 26-08-2024 [32minfo[39m: 	[32mRequest: /api-docs/swagger-ui-standalone-preset.js - GET [39m
+07:47:02 PM 26-08-2024 [32minfo[39m: 	[32mRequest: /api-docs/swagger-ui-init.js - GET [39m
+07:47:03 PM 26-08-2024 [32minfo[39m: 	[32mRequest: /api-docs/favicon-32x32.png - GET [39m
+07:47:59 PM 26-08-2024 [32minfo[39m: 	[32mRequest: /api-docs/ - GET [39m
+07:47:59 PM 26-08-2024 [32minfo[39m: 	[32mRequest: /api-docs/swagger-ui.css - GET [39m
+07:47:59 PM 26-08-2024 [32minfo[39m: 	[32mRequest: /api-docs/swagger-ui-standalone-preset.js - GET [39m
+07:47:59 PM 26-08-2024 [32minfo[39m: 	[32mRequest: /api-docs/swagger-ui-bundle.js - GET [39m
+07:47:59 PM 26-08-2024 [32minfo[39m: 	[32mRequest: /api-docs/swagger-ui-init.js - GET [39m
+07:47:59 PM 26-08-2024 [32minfo[39m: 	[32mRequest: /api-docs/favicon-32x32.png - GET [39m
+07:49:32 PM 26-08-2024 [32minfo[39m: 	[32mRequest: /api-docs/ - GET [39m
+07:49:32 PM 26-08-2024 [32minfo[39m: 	[32mRequest: /api-docs/swagger-ui.css - GET [39m
+07:49:32 PM 26-08-2024 [32minfo[39m: 	[32mRequest: /api-docs/swagger-ui-bundle.js - GET [39m
+07:49:32 PM 26-08-2024 [32minfo[39m: 	[32mRequest: /api-docs/swagger-ui-standalone-preset.js - GET [39m
+07:49:32 PM 26-08-2024 [32minfo[39m: 	[32mRequest: /api-docs/swagger-ui-init.js - GET [39m
+07:49:32 PM 26-08-2024 [32minfo[39m: 	[32mRequest: /api-docs/favicon-32x32.png - GET [39m
+07:50:27 PM 26-08-2024 [31merror[39m: 	[31mError: /api/v1/customers - POST - 502 - {"statusCode":502,"message":"SOME THING WENT WRONG","data":null,"errors":{"expose":true,"statusCode":400,"status":400,"body":"\n  \r\n    \"customerName\": \"Quang Thang\",\r\n    \"contactLastName\": \"Quang\",\r\n    \"contactFirstName\": \"Thang\",\r\n    \"phone\": \"0968239801\",\r\n    \"addressLine1\": \"292 Ha noi\",\r\n    \"addressLine2\": null,\r\n    \"city\": \"Ha noi\",\r\n    \"state\": \"Hoang Mai\",\r\n    \"postalCode\": \"10000\",\r\n    \"country\": \"Viet nam\",\r\n    \"salesRepEmployeeNumber\": 4,\r\n    \"creditLimit\": 123.32131\r\n}\r\n\n  \r\n\n\n\n\n\n\n\n\n\n\n\n\n","type":"entity.parse.failed","stack":"SyntaxError: Unexpected token '\"', \"\n  \r\n    \"customerN\"... is not valid JSON\n    at JSON.parse (<anonymous>)\n    at createStrictSyntaxError (C:\\Users\\Admin\\WebstormProjects\\node-assignment-ts\\node_modules\\body-parser\\lib\\types\\json.js:169:10)\n    at parse (C:\\Users\\Admin\\WebstormProjects\\node-assignment-ts\\node_modules\\body-parser\\lib\\types\\json.js:86:15)\n    at C:\\Users\\Admin\\WebstormProjects\\node-assignment-ts\\node_modules\\body-parser\\lib\\read.js:128:18\n    at AsyncResource.runInAsyncScope (node:async_hooks:206:9)\n    at invokeCallback (C:\\Users\\Admin\\WebstormProjects\\node-assignment-ts\\node_modules\\raw-body\\index.js:238:16)\n    at done (C:\\Users\\Admin\\WebstormProjects\\node-assignment-ts\\node_modules\\raw-body\\index.js:227:7)\n    at IncomingMessage.onEnd (C:\\Users\\Admin\\WebstormProjects\\node-assignment-ts\\node_modules\\raw-body\\index.js:287:7)\n    at IncomingMessage.emit (node:events:514:28)\n    at IncomingMessage.emit (node:domain:488:12)"}}[39m
+07:50:35 PM 26-08-2024 [32minfo[39m: 	[32mRequest: /api/v1/customers - POST [39m
+07:50:35 PM 26-08-2024 [31merror[39m: 	[31mError: /api/v1/customers - POST - 401 - {"statusCode":401,"message":"UNAUTHORIZED","data":null,"errors":"jwt expired"}[39m
+07:50:38 PM 26-08-2024 [32minfo[39m: 	[32mRequest: /api/v1/users/login - POST [39m
+07:50:39 PM 26-08-2024 [32minfo[39m: 	[32mResponse: /api/v1/users/login - POST - 200 - {"employeeNumber":3,"username":"system_admin","lastName":"Pham","firstName":"Jeff","extension":"","email":"jeffpham2906@gmail.com","jobTitle":"Leader Sales","role":"President","created_at":"2024-08-26T12:02:31.000Z","updated_at":"2024-08-26T12:02:31.000Z","permissions":[{"key":"employees","actions":[{"method":"full"}]},{"key":"customers","actions":[{"method":"full"}]},{"key":"roles","actions":[{"method":"full"}]}]}[39m
+07:50:41 PM 26-08-2024 [32minfo[39m: 	[32mRequest: /api/v1/customers - POST [39m
+07:50:41 PM 26-08-2024 [32minfo[39m: 	[32mResponse: /api/v1/customers - POST - 200 - {"customerNumber":1,"customerName":"Quang Thang","contactLastName":"Quang","contactFirstName":"Thang","phone":"0968239801","addressLine1":"292 Ha noi","addressLine2":null,"city":"Ha noi","state":"Hoang Mai","postalCode":"10000","country":"Viet nam","salesRepEmployeeNumber":4,"creditLimit":"123.32","created_at":"2024-08-26T12:50:41.000Z","updated_at":"2024-08-26T12:50:41.000Z"}[39m
+07:51:46 PM 26-08-2024 [32minfo[39m: 	[32mRequest: /api-docs/ - GET [39m
+07:51:46 PM 26-08-2024 [32minfo[39m: 	[32mRequest: /api-docs/swagger-ui.css - GET [39m
+07:51:46 PM 26-08-2024 [32minfo[39m: 	[32mRequest: /api-docs/swagger-ui-bundle.js - GET [39m
+07:51:46 PM 26-08-2024 [32minfo[39m: 	[32mRequest: /api-docs/swagger-ui-standalone-preset.js - GET [39m
+07:51:46 PM 26-08-2024 [32minfo[39m: 	[32mRequest: /api-docs/swagger-ui-init.js - GET [39m
+07:51:47 PM 26-08-2024 [32minfo[39m: 	[32mRequest: /api-docs/favicon-32x32.png - GET [39m
+07:53:38 PM 26-08-2024 [32minfo[39m: 	[32mRequest: /api-docs/ - GET [39m
+07:53:38 PM 26-08-2024 [32minfo[39m: 	[32mRequest: /api-docs/swagger-ui.css - GET [39m
+07:53:38 PM 26-08-2024 [32minfo[39m: 	[32mRequest: /api-docs/swagger-ui-standalone-preset.js - GET [39m
+07:53:38 PM 26-08-2024 [32minfo[39m: 	[32mRequest: /api-docs/swagger-ui-bundle.js - GET [39m
+07:53:38 PM 26-08-2024 [32minfo[39m: 	[32mRequest: /api-docs/swagger-ui-init.js - GET [39m
+07:53:38 PM 26-08-2024 [32minfo[39m: 	[32mRequest: /api-docs/favicon-32x32.png - GET [39m
+07:56:41 PM 26-08-2024 [32minfo[39m: 	[32mRequest: /api/v1/employees - GET [39m
+07:56:41 PM 26-08-2024 [32minfo[39m: 	[32mResponse: /api/v1/employees - GET - 200 - [{"employeeNumber":1,"lastName":"9999","firstName":"Default","extension":"","email":"Default","officeCode":"VN1","reportsTo":null,"jobTitle":"Default","role":"Staff","created_at":"2024-08-26T12:02:31.000Z","updated_at":"2024-08-26T12:02:31.000Z","user":null,"customers":[]},{"employeeNumber":2,"lastName":"9999","firstName":"Default","extension":"","email":"Default","officeCode":"FA1","reportsTo":null,"jobTitle":"Default","role":"Staff","created_at":"2024-08-26T12:02:31.000Z","updated_at":"2024-08-26T12:02:31.000Z","user":{"username":"system_default1"},"customers":[]},{"employeeNumber":3,"lastName":"Pham","firstName":"Jeff","extension":"","email":"jeffpham2906@gmail.com","officeCode":null,"reportsTo":null,"jobTitle":"Leader Sales","role":"President","created_at":"2024-08-26T12:02:31.000Z","updated_at":"2024-08-26T12:02:31.000Z","user":{"username":"system_admin"},"customers":[]},{"employeeNumber":4,"lastName":"Duc","firstName":"Anh","extension":"","email":"ducanh@gmail.com","officeCode":null,"reportsTo":null,"jobTitle":"Manager Sales","role":"Manager","created_at":"2024-08-26T12:02:31.000Z","updated_at":"2024-08-26T12:02:31.000Z","user":{"username":"system_manager"},"customers":[{"customerNumber":1,"customerName":"Quang Thang","contactLastName":"Quang","contactFirstName":"Thang","phone":"0968239801","addressLine1":"292 Ha noi","addressLine2":null,"city":"Ha noi","state":"Hoang Mai","postalCode":"10000","country":"Viet nam","salesRepEmployeeNumber":4,"creditLimit":"123.32","created_at":"2024-08-26T12:50:41.000Z","updated_at":"2024-08-26T12:50:41.000Z"}]},{"employeeNumber":5,"lastName":"Dung","firstName":"Pham","extension":"","email":"dungpham@gmail.com","officeCode":"VN1","reportsTo":null,"jobTitle":"Leader Sales","role":"Leader","created_at":"2024-08-26T12:02:31.000Z","updated_at":"2024-08-26T12:02:31.000Z","user":{"username":"system_leader1"},"customers":[]},{"employeeNumber":6,"lastName":"John","firstName":"Tran","extension":"","email":"johntran@gmail.com","officeCode":"VN1","reportsTo":null,"jobTitle":"Staff Sales","role":"Staff","created_at":"2024-08-26T12:02:31.000Z","updated_at":"2024-08-26T12:02:31.000Z","user":{"username":"system_staff1"},"customers":[]},{"employeeNumber":7,"lastName":"Pham","firstName":"Luyen","extension":"","email":"phamluyeb@gmail.com","officeCode":"FA1","reportsTo":null,"jobTitle":"Staff Sales","role":"Staff","created_at":"2024-08-26T12:02:31.000Z","updated_at":"2024-08-26T12:02:31.000Z","user":{"username":"system_staff2"},"customers":[]},{"employeeNumber":8,"lastName":"Dang","firstName":"Khoa","extension":"","email":"dangkhoa@gmail.com","officeCode":"FA1","reportsTo":null,"jobTitle":"Leader ABC","role":"Leader","created_at":"2024-08-26T12:02:31.000Z","updated_at":"2024-08-26T12:02:31.000Z","user":{"username":"system_leader2"},"customers":[]}][39m
+08:03:05 PM 26-08-2024 [32minfo[39m: 	[32mRequest: /api-docs/ - GET [39m
+08:03:05 PM 26-08-2024 [32minfo[39m: 	[32mRequest: /api-docs/swagger-ui.css - GET [39m
+08:03:05 PM 26-08-2024 [32minfo[39m: 	[32mRequest: /api-docs/swagger-ui-standalone-preset.js - GET [39m
+08:03:05 PM 26-08-2024 [32minfo[39m: 	[32mRequest: /api-docs/swagger-ui-init.js - GET [39m
+08:03:05 PM 26-08-2024 [32minfo[39m: 	[32mRequest: /api-docs/swagger-ui-bundle.js - GET [39m
+08:03:06 PM 26-08-2024 [32minfo[39m: 	[32mRequest: /api-docs/favicon-32x32.png - GET [39m
+08:04:17 PM 26-08-2024 [32minfo[39m: 	[32mRequest: /api/v1/users/login - POST [39m
+08:04:17 PM 26-08-2024 [32minfo[39m: 	[32mResponse: /api/v1/users/login - POST - 200 - {"employeeNumber":3,"username":"system_admin","lastName":"Pham","firstName":"Jeff","extension":"","email":"jeffpham2906@gmail.com","jobTitle":"Leader Sales","role":"President","created_at":"2024-08-26T12:02:31.000Z","updated_at":"2024-08-26T12:02:31.000Z","permissions":[{"key":"employees","actions":[{"method":"full"}]},{"key":"customers","actions":[{"method":"full"}]},{"key":"roles","actions":[{"method":"full"}]}]}[39m
+08:05:36 PM 26-08-2024 [32minfo[39m: 	[32mRequest: /api-docs/ - GET [39m
+08:05:36 PM 26-08-2024 [32minfo[39m: 	[32mRequest: /api-docs/swagger-ui.css - GET [39m
+08:05:36 PM 26-08-2024 [32minfo[39m: 	[32mRequest: /api-docs/swagger-ui-bundle.js - GET [39m
+08:05:36 PM 26-08-2024 [32minfo[39m: 	[32mRequest: /api-docs/swagger-ui-standalone-preset.js - GET [39m
+08:05:36 PM 26-08-2024 [32minfo[39m: 	[32mRequest: /api-docs/swagger-ui-init.js - GET [39m
+08:05:36 PM 26-08-2024 [32minfo[39m: 	[32mRequest: /api-docs/favicon-32x32.png - GET [39m
+10:33:19 PM 26-08-2024 [32minfo[39m: 	[32mRequest: /api/v1/users/login - POST [39m
+10:33:19 PM 26-08-2024 [32minfo[39m: 	[32mResponse: /api/v1/users/login - POST - 200 - {"employeeNumber":3,"username":"system_admin","lastName":"Pham","firstName":"Jeff","extension":"","email":"jeffpham2906@gmail.com","jobTitle":"System Admin","role":"President","created_at":"2024-08-26T15:31:55.000Z","updated_at":"2024-08-26T15:31:55.000Z","permissions":[{"key":"employees","actions":[{"method":"full"}]},{"key":"customers","actions":[{"method":"full"}]},{"key":"roles","actions":[{"method":"full"}]}]}[39m
+10:33:26 PM 26-08-2024 [32minfo[39m: 	[32mRequest: /api/v1/customers - GET [39m
+10:33:27 PM 26-08-2024 [32minfo[39m: 	[32mResponse: /api/v1/customers - GET - 200 - [][39m
+10:33:29 PM 26-08-2024 [32minfo[39m: 	[32mRequest: /api/v1/employees - GET [39m
+10:33:29 PM 26-08-2024 [32minfo[39m: 	[32mResponse: /api/v1/employees - GET - 200 - [{"employeeNumber":1,"lastName":"9999","firstName":"Default","extension":"","email":"Default","officeCode":"FA1","reportsTo":null,"jobTitle":"Default","role":"Staff","created_at":"2024-08-26T15:31:55.000Z","updated_at":"2024-08-26T15:31:55.000Z","user":null,"customers":[]},{"employeeNumber":2,"lastName":"9999","firstName":"Default","extension":"","email":"Default","officeCode":"VN1","reportsTo":null,"jobTitle":"Default","role":"Staff","created_at":"2024-08-26T15:31:55.000Z","updated_at":"2024-08-26T15:31:55.000Z","user":null,"customers":[]},{"employeeNumber":3,"lastName":"Pham","firstName":"Jeff","extension":"","email":"jeffpham2906@gmail.com","officeCode":null,"reportsTo":null,"jobTitle":"System Admin","role":"President","created_at":"2024-08-26T15:31:55.000Z","updated_at":"2024-08-26T15:31:55.000Z","user":{"username":"system_admin"},"customers":[]},{"employeeNumber":4,"lastName":"Duc","firstName":"Anh","extension":"","email":"ducanh@gmail.com","officeCode":null,"reportsTo":null,"jobTitle":"Sales Manager (APAC)","role":"Manager","created_at":"2024-08-26T15:31:55.000Z","updated_at":"2024-08-26T15:31:55.000Z","user":{"username":"system_manager"},"customers":[]},{"employeeNumber":5,"lastName":"Manager 2","firstName":"Sales","extension":"","email":"ducanh@gmail.com","officeCode":null,"reportsTo":null,"jobTitle":"Sales Manager (EMEA)","role":"Manager","created_at":"2024-08-26T15:31:55.000Z","updated_at":"2024-08-26T15:31:55.000Z","user":{"username":"system_leader1"},"customers":[]},{"employeeNumber":6,"lastName":"Dung","firstName":"Pham","extension":"","email":"dungpham@gmail.com","officeCode":"VN1","reportsTo":null,"jobTitle":"Leader Sales","role":"Leader","created_at":"2024-08-26T15:31:55.000Z","updated_at":"2024-08-26T15:31:55.000Z","user":{"username":"system_staff1"},"customers":[]},{"employeeNumber":7,"lastName":"John","firstName":"Tran","extension":"","email":"johntran@gmail.com","officeCode":"VN1","reportsTo":null,"jobTitle":"Staff Sales","role":"Staff","created_at":"2024-08-26T15:31:55.000Z","updated_at":"2024-08-26T15:31:55.000Z","user":{"username":"system_staff2"},"customers":[]},{"employeeNumber":8,"lastName":"Pham","firstName":"Luyen","extension":"","email":"phamluyeb@gmail.com","officeCode":"FA1","reportsTo":null,"jobTitle":"Staff Sales","role":"Staff","created_at":"2024-08-26T15:31:55.000Z","updated_at":"2024-08-26T15:31:55.000Z","user":{"username":"system_leader2"},"customers":[]},{"employeeNumber":9,"lastName":"Dang","firstName":"Khoa","extension":"","email":"dangkhoa@gmail.com","officeCode":"FA1","reportsTo":null,"jobTitle":"Leader ABC","role":"Leader","created_at":"2024-08-26T15:31:55.000Z","updated_at":"2024-08-26T15:31:55.000Z","user":null,"customers":[]}][39m
+10:35:28 PM 26-08-2024 [32minfo[39m: 	[32mRequest: /api/v1/employees - POST [39m
+10:35:28 PM 26-08-2024 [31merror[39m: 	[31mError: /api/v1/employees - POST - 400 - {"statusCode":400,"message":"Validation failed","data":null,"errors":[{"message":"employeeNumber is required","path":["employeeNumber"]}]}[39m
+10:36:00 PM 26-08-2024 [32minfo[39m: 	[32mRequest: /api/v1/employees - POST [39m
+10:36:00 PM 26-08-2024 [31merror[39m: 	[31mError: /api/v1/employees - POST - 400 - {"statusCode":400,"message":"PrismaClientKnownRequestError","data":null,"errors":{"modelName":"Employee","field_name":"officeCode"}}[39m
+10:39:14 PM 26-08-2024 [32minfo[39m: 	[32mRequest: /api/v1/employees - POST [39m
+10:40:14 PM 26-08-2024 [31merror[39m: 	[31mError: /api/v1/employees - POST - 400 - {"statusCode":400,"message":"PrismaClientKnownRequestError","data":null,"errors":{"modelName":"Employee","field_name":"officeCode"}}[39m
+10:45:29 PM 26-08-2024 [32minfo[39m: 	[32mRequest: /api/v1/employees - POST [39m
+10:55:07 PM 26-08-2024 [32minfo[39m: 	[32mConnected to loggerRepository[39m
+10:55:11 PM 26-08-2024 [32minfo[39m: 	[32mRequest: /api/v1/users/login - POST [39m
+10:55:11 PM 26-08-2024 [32minfo[39m: 	[32mResponse: /api/v1/users/login - POST - 200 - {"employeeNumber":3,"username":"system_admin","lastName":"Pham","firstName":"Jeff","extension":"","email":"jeffpham2906@gmail.com","jobTitle":"System Admin","role":"President","created_at":"2024-08-26T15:31:55.000Z","updated_at":"2024-08-26T15:31:55.000Z","permissions":[{"key":"employees","actions":[{"method":"full"}]},{"key":"customers","actions":[{"method":"full"}]},{"key":"roles","actions":[{"method":"full"}]}]}[39m
+10:55:20 PM 26-08-2024 [32minfo[39m: 	[32mRequest: /api/v1/employees - POST [39m
+10:55:20 PM 26-08-2024 [31merror[39m: 	[31mError: /api/v1/employees - POST - 502 - {"statusCode":502,"message":"PrismaClientKnownRequestError","data":null,"errors":"You are reference to an unknown officeCode"}[39m
+10:55:51 PM 26-08-2024 [32minfo[39m: 	[32mConnected to loggerRepository[39m
+10:56:13 PM 26-08-2024 [32minfo[39m: 	[32mConnected to loggerRepository[39m
+10:56:27 PM 26-08-2024 [32minfo[39m: 	[32mRequest: /api/v1/employees - POST [39m
+10:56:28 PM 26-08-2024 [31merror[39m: 	[31mError: /api/v1/employees - POST - 400 - {"statusCode":400,"message":"PrismaClientKnownRequestError","data":null,"errors":"You are reference to an unknown officeCode"}[39m
+10:56:37 PM 26-08-2024 [32minfo[39m: 	[32mRequest: /api/v1/employees - POST [39m
+10:56:37 PM 26-08-2024 [32minfo[39m: 	[32mResponse: /api/v1/employees - POST - 200 - {"employeeNumber":101,"lastName":"Employee 1","firstName":"Employee 1","extension":"Hello","email":"khoanguyen@gmail.com","officeCode":"FA1","reportsTo":null,"jobTitle":"Staff","role":"Staff","created_at":"2024-08-26T15:56:37.000Z","updated_at":"2024-08-26T15:56:37.000Z","customers":[{"customerNumber":1,"customerName":"Customer 1","contactLastName":"Customer 1","contactFirstName":"Customer 1","phone":"0968239801","addressLine1":"292 Ha noi","addressLine2":null,"city":"Ha noi","state":"Hoang Mai","postalCode":"10000","country":"Viet nam","salesRepEmployeeNumber":101,"creditLimit":"123.32","created_at":"2024-08-26T15:56:37.000Z","updated_at":"2024-08-26T15:56:37.000Z"},{"customerNumber":2,"customerName":"Customer 2","contactLastName":"Customer 2","contactFirstName":"Customer 2","phone":"0968239801","addressLine1":"292 Ha noi","addressLine2":null,"city":"Ha noi","state":"Hoang Mai","postalCode":"10000","country":"Viet nam","salesRepEmployeeNumber":101,"creditLimit":"123.32","created_at":"2024-08-26T15:56:37.000Z","updated_at":"2024-08-26T15:56:37.000Z"}]}[39m
+10:56:44 PM 26-08-2024 [32minfo[39m: 	[32mRequest: /api/v1/customers - GET [39m
+10:56:44 PM 26-08-2024 [32minfo[39m: 	[32mResponse: /api/v1/customers - GET - 200 - [{"customerNumber":1,"customerName":"Customer 1","contactLastName":"Customer 1","contactFirstName":"Customer 1","phone":"0968239801","addressLine1":"292 Ha noi","addressLine2":null,"city":"Ha noi","state":"Hoang Mai","postalCode":"10000","country":"Viet nam","salesRepEmployeeNumber":101,"creditLimit":"123.32","created_at":"2024-08-26T15:56:37.000Z","updated_at":"2024-08-26T15:56:37.000Z","employee":{"employeeNumber":101,"lastName":"Employee 1","firstName":"Employee 1","extension":"Hello","email":"khoanguyen@gmail.com","officeCode":"FA1","reportsTo":null,"jobTitle":"Staff","role":"Staff","created_at":"2024-08-26T15:56:37.000Z","updated_at":"2024-08-26T15:56:37.000Z"}},{"customerNumber":2,"customerName":"Customer 2","contactLastName":"Customer 2","contactFirstName":"Customer 2","phone":"0968239801","addressLine1":"292 Ha noi","addressLine2":null,"city":"Ha noi","state":"Hoang Mai","postalCode":"10000","country":"Viet nam","salesRepEmployeeNumber":101,"creditLimit":"123.32","created_at":"2024-08-26T15:56:37.000Z","updated_at":"2024-08-26T15:56:37.000Z","employee":{"employeeNumber":101,"lastName":"Employee 1","firstName":"Employee 1","extension":"Hello","email":"khoanguyen@gmail.com","officeCode":"FA1","reportsTo":null,"jobTitle":"Staff","role":"Staff","created_at":"2024-08-26T15:56:37.000Z","updated_at":"2024-08-26T15:56:37.000Z"}}][39m
+10:57:49 PM 26-08-2024 [32minfo[39m: 	[32mConnected to loggerRepository[39m
+10:59:01 PM 26-08-2024 [32minfo[39m: 	[32mConnected to loggerRepository[39m
+10:59:10 PM 26-08-2024 [32minfo[39m: 	[32mConnected to loggerRepository[39m
+10:59:13 PM 26-08-2024 [32minfo[39m: 	[32mRequest: /api/v1/customers - GET [39m
+10:59:13 PM 26-08-2024 [32minfo[39m: 	[32mResponse: /api/v1/customers - GET - 200 - [{"customerNumber":1,"customerName":"Customer 1","contactLastName":"Customer 1","contactFirstName":"Customer 1","phone":"0968239801","addressLine1":"292 Ha noi","addressLine2":null,"city":"Ha noi","state":"Hoang Mai","postalCode":"10000","country":"Viet nam","salesRepEmployeeNumber":101,"creditLimit":"123.32","created_at":"2024-08-26T15:56:37.000Z","updated_at":"2024-08-26T15:56:37.000Z"},{"customerNumber":2,"customerName":"Customer 2","contactLastName":"Customer 2","contactFirstName":"Customer 2","phone":"0968239801","addressLine1":"292 Ha noi","addressLine2":null,"city":"Ha noi","state":"Hoang Mai","postalCode":"10000","country":"Viet nam","salesRepEmployeeNumber":101,"creditLimit":"123.32","created_at":"2024-08-26T15:56:37.000Z","updated_at":"2024-08-26T15:56:37.000Z"}][39m
+11:05:21 PM 26-08-2024 [32minfo[39m: 	[32mConnected to loggerRepository[39m
+11:05:35 PM 26-08-2024 [32minfo[39m: 	[32mConnected to loggerRepository[39m
+11:06:00 PM 26-08-2024 [32minfo[39m: 	[32mConnected to loggerRepository[39m
+11:06:21 PM 26-08-2024 [32minfo[39m: 	[32mConnected to loggerRepository[39m
+11:06:51 PM 26-08-2024 [32minfo[39m: 	[32mRequest: /api/v1/offices - GET [39m
+11:07:58 PM 26-08-2024 [32minfo[39m: 	[32mConnected to loggerRepository[39m
+11:08:32 PM 26-08-2024 [32minfo[39m: 	[32mConnected to loggerRepository[39m
+11:08:41 PM 26-08-2024 [32minfo[39m: 	[32mRequest: /api/v1/offices - GET [39m
+11:09:51 PM 26-08-2024 [32minfo[39m: 	[32mRequest: /api/v1/offices - GET [39m
+11:11:14 PM 26-08-2024 [32minfo[39m: 	[32mConnected to loggerRepository[39m
+11:11:15 PM 26-08-2024 [32minfo[39m: 	[32mRequest: /api/v1/offices - GET [39m
+11:11:35 PM 26-08-2024 [32minfo[39m: 	[32mConnected to loggerRepository[39m
+11:11:38 PM 26-08-2024 [32minfo[39m: 	[32mRequest: /api/v1/offices - GET [39m
+11:12:08 PM 26-08-2024 [32minfo[39m: 	[32mConnected to loggerRepository[39m
+11:12:29 PM 26-08-2024 [32minfo[39m: 	[32mRequest: /api/v1/offices - GET [39m
+11:14:05 PM 26-08-2024 [32minfo[39m: 	[32mConnected to loggerRepository[39m
+11:14:06 PM 26-08-2024 [32minfo[39m: 	[32mRequest: /api/v1/offices - GET [39m
+11:15:36 PM 26-08-2024 [32minfo[39m: 	[32mRequest: /api/v1/offices - GET [39m
+11:15:37 PM 26-08-2024 [32minfo[39m: 	[32mRequest: /api/v1/offices - GET [39m
+11:15:37 PM 26-08-2024 [32minfo[39m: 	[32mRequest: /api/v1/offices - GET [39m
+11:15:54 PM 26-08-2024 [32minfo[39m: 	[32mConnected to loggerRepository[39m
+11:15:56 PM 26-08-2024 [32minfo[39m: 	[32mRequest: /api/v1/offices - GET [39m
+11:16:05 PM 26-08-2024 [32minfo[39m: 	[32mRequest: /api/v1/offices - GET [39m
+11:18:48 PM 26-08-2024 [32minfo[39m: 	[32mConnected to loggerRepository[39m
+11:19:25 PM 26-08-2024 [32minfo[39m: 	[32mConnected to loggerRepository[39m
+11:20:00 PM 26-08-2024 [32minfo[39m: 	[32mConnected to loggerRepository[39m
+11:20:01 PM 26-08-2024 [32minfo[39m: 	[32mRequest: /api/v1/offices - GET [39m
+11:20:46 PM 26-08-2024 [32minfo[39m: 	[32mConnected to loggerRepository[39m
+11:20:54 PM 26-08-2024 [32minfo[39m: 	[32mRequest: /api/v1/offices - GET [39m
+11:21:50 PM 26-08-2024 [32minfo[39m: 	[32mConnected to loggerRepository[39m
+11:21:50 PM 26-08-2024 [32minfo[39m: 	[32mRequest: /api/v1/offices - GET [39m
+11:21:52 PM 26-08-2024 [31merror[39m: 	[31mError: /api/v1/offices - GET - 401 - {"statusCode":401,"message":"UNAUTHORIZED","data":null,"errors":"jwt expired"}[39m
+11:27:47 PM 26-08-2024 [32minfo[39m: 	[32mConnected to loggerRepository[39m
+11:27:58 PM 26-08-2024 [32minfo[39m: 	[32mRequest: /api/v1/offices - GET [39m
+11:28:16 PM 26-08-2024 [32minfo[39m: 	[32mConnected to loggerRepository[39m
+11:28:17 PM 26-08-2024 [32minfo[39m: 	[32mRequest: /api/v1/offices - GET [39m
+11:28:17 PM 26-08-2024 [31merror[39m: 	[31mError: /api/v1/offices - GET - 200 - {"statusCode":401,"message":"UNAUTHORIZED","data":null,"errors":"jwt expired"}[39m
+11:28:20 PM 26-08-2024 [32minfo[39m: 	[32mRequest: /api/v1/users/login - POST [39m
+11:28:21 PM 26-08-2024 [32minfo[39m: 	[32mResponse: /api/v1/users/login - POST - 200 - {"employeeNumber":3,"username":"system_admin","lastName":"Pham","firstName":"Jeff","extension":"","email":"jeffpham2906@gmail.com","jobTitle":"System Admin","role":"President","created_at":"2024-08-26T15:31:55.000Z","updated_at":"2024-08-26T15:31:55.000Z","permissions":[{"key":"employees","actions":[{"method":"full"}]},{"key":"customers","actions":[{"method":"full"}]},{"key":"roles","actions":[{"method":"full"}]}]}[39m
+11:28:40 PM 26-08-2024 [32minfo[39m: 	[32mRequest: /api/v1/employees - POST [39m
+11:28:40 PM 26-08-2024 [31merror[39m: 	[31mError: /api/v1/employees - POST - 200 - {"statusCode":400,"message":"PrismaClientKnownRequestError","data":null,"errors":{"modelName":"Employee","target":"PRIMARY"}}[39m
+11:28:48 PM 26-08-2024 [32minfo[39m: 	[32mRequest: /api/v1/employees - POST [39m
+11:28:48 PM 26-08-2024 [31merror[39m: 	[31mError: /api/v1/employees - POST - 200 - {"statusCode":400,"message":"PrismaClientKnownRequestError","data":null,"errors":{"modelName":"Employee","target":"PRIMARY"}}[39m
+11:29:51 PM 26-08-2024 [32minfo[39m: 	[32mConnected to loggerRepository[39m
+11:29:55 PM 26-08-2024 [32minfo[39m: 	[32mRequest: /api/v1/employees - POST [39m
+11:29:55 PM 26-08-2024 [31merror[39m: 	[31mError: /api/v1/employees - POST - 200 - {"statusCode":400,"message":"PrismaClientKnownRequestError","data":null,"errors":{"name":"PrismaClientKnownRequestError","code":"P2002","clientVersion":"5.18.0","meta":{"modelName":"Employee","target":"PRIMARY"}}}[39m
+11:30:59 PM 26-08-2024 [32minfo[39m: 	[32mConnected to loggerRepository[39m
+11:31:04 PM 26-08-2024 [32minfo[39m: 	[32mRequest: /api/v1/employees - POST [39m
+11:31:04 PM 26-08-2024 [31merror[39m: 	[31mError: /api/v1/employees - POST - 200 - {"statusCode":409,"message":"PrismaClientKnownRequestError","data":null,"errors":"Duplicate PRIMARY"}[39m
+11:32:06 PM 26-08-2024 [32minfo[39m: 	[32mConnected to loggerRepository[39m
+11:32:06 PM 26-08-2024 [32minfo[39m: 	[32mRequest: /api/v1/employees - POST [39m
+11:32:07 PM 26-08-2024 [31merror[39m: 	[31mError: /api/v1/employees - POST - 200 - {"statusCode":400,"message":"PrismaClientKnownRequestError","data":null,"errors":"You are reference to an unknown officeCode"}[39m
+11:32:13 PM 26-08-2024 [32minfo[39m: 	[32mRequest: /api/v1/employees - POST [39m
+11:32:13 PM 26-08-2024 [31merror[39m: 	[31mError: /api/v1/employees - POST - 200 - {"statusCode":409,"message":"PrismaClientKnownRequestError","data":null,"errors":"Unique constraint failed on the PRIMARY"}[39m
+11:32:17 PM 26-08-2024 [32minfo[39m: 	[32mRequest: /api/v1/employees - POST [39m
+11:32:17 PM 26-08-2024 [31merror[39m: 	[31mError: /api/v1/employees - POST - 200 - {"statusCode":400,"message":"PrismaClientKnownRequestError","data":null,"errors":"You are reference to an unknown officeCode"}[39m
+11:33:49 PM 26-08-2024 [32minfo[39m: 	[32mRequest: /api/v1/employees - POST [39m
+11:33:49 PM 26-08-2024 [31merror[39m: 	[31mError: /api/v1/employees - POST - 200 - {"statusCode":400,"message":"PrismaClientKnownRequestError","data":null,"errors":"You are reference to an unknown officeCode"}[39m
+11:35:09 PM 26-08-2024 [32minfo[39m: 	[32mConnected to loggerRepository[39m
+11:36:06 PM 26-08-2024 [32minfo[39m: 	[32mConnected to loggerRepository[39m
+11:37:19 PM 26-08-2024 [32minfo[39m: 	[32mConnected to loggerRepository[39m
+11:40:14 PM 26-08-2024 [32minfo[39m: 	[32mConnected to loggerRepository[39m
+11:42:14 PM 26-08-2024 [32minfo[39m: 	[32mRequest: /api/v1/offices - POST [39m
+11:42:15 PM 26-08-2024 [31merror[39m: 	[31mError: /api/v1/offices - POST - 200 - {"statusCode":401,"message":"UNAUTHORIZED","data":null,"errors":"jwt expired"}[39m
+11:42:18 PM 26-08-2024 [32minfo[39m: 	[32mRequest: /api/v1/users/login - POST [39m
+11:42:18 PM 26-08-2024 [32minfo[39m: 	[32mResponse: /api/v1/users/login - POST - 200 - {"employeeNumber":3,"username":"system_admin","lastName":"Pham","firstName":"Jeff","extension":"","email":"jeffpham2906@gmail.com","jobTitle":"System Admin","role":"President","created_at":"2024-08-26T15:31:55.000Z","updated_at":"2024-08-26T15:31:55.000Z","permissions":[{"key":"employees","actions":[{"method":"full"}]},{"key":"customers","actions":[{"method":"full"}]},{"key":"roles","actions":[{"method":"full"}]}]}[39m
+11:42:24 PM 26-08-2024 [32minfo[39m: 	[32mRequest: /api/v1/offices - POST [39m
+11:42:42 PM 26-08-2024 [32minfo[39m: 	[32mConnected to loggerRepository[39m
+11:43:50 PM 26-08-2024 [32minfo[39m: 	[32mConnected to loggerRepository[39m
+11:44:55 PM 26-08-2024 [32minfo[39m: 	[32mConnected to loggerRepository[39m
+11:45:51 PM 26-08-2024 [32minfo[39m: 	[32mConnected to loggerRepository[39m
+11:45:54 PM 26-08-2024 [32minfo[39m: 	[32mRequest: /api/v1/offices - POST [39m
+11:45:54 PM 26-08-2024 [31merror[39m: 	[31mError: /api/v1/offices - POST - 200 - {"statusCode":400,"message":"Validation failed","data":null,"errors":[{"message":"postalCode is required","path":["postalCode"]},{"message":"country is required","path":["country"]},{"message":"state is required","path":["state"]},{"message":"territory is required","path":["territory"]}]}[39m
+11:46:02 PM 26-08-2024 [32minfo[39m: 	[32mRequest: /api/v1/offices - POST [39m
+11:46:02 PM 26-08-2024 [32minfo[39m: 	[32mResponse: /api/v1/offices - POST - 200 - {"officeCode":"Office 1","city":"New York","phone":"+1 212-987-6543","addressLine1":"255 Bryant St","addressLine2":"","state":"US","country":"USA","postalCode":"10012","territory":"US","created_at":"2024-08-26T16:46:02.000Z","updated_at":"2024-08-26T16:46:02.000Z"}[39m
+11:46:13 PM 26-08-2024 [32minfo[39m: 	[32mRequest: /api/v1/offices - GET [39m
+11:46:13 PM 26-08-2024 [31merror[39m: 	[31mError: /api/v1/offices - GET - 200 - {"statusCode":500,"message":"SOME THING WENT WRONG","data":null,"errors":"Method not implemented."}[39m
+11:46:53 PM 26-08-2024 [32minfo[39m: 	[32mConnected to loggerRepository[39m
+11:46:56 PM 26-08-2024 [32minfo[39m: 	[32mRequest: /api/v1/offices - GET [39m
+11:46:56 PM 26-08-2024 [32minfo[39m: 	[32mResponse: /api/v1/offices - GET - 200 - [{"officeCode":"FA1","city":"New York","phone":"+1 212-987-6543","addressLine1":"255 Bryant St","addressLine2":"","state":"US","country":"USA","postalCode":"10012","territory":"US","created_at":"2024-08-26T15:31:55.000Z","updated_at":"2024-08-26T15:31:55.000Z"},{"officeCode":"Office 1","city":"New York","phone":"+1 212-987-6543","addressLine1":"255 Bryant St","addressLine2":"","state":"US","country":"USA","postalCode":"10012","territory":"US","created_at":"2024-08-26T16:46:02.000Z","updated_at":"2024-08-26T16:46:02.000Z"},{"officeCode":"VN1","city":"Viet nam","phone":"0327015348","addressLine1":"My Dinh Ha Noi","addressLine2":"","state":"VN","country":"VN","postalCode":"10012","territory":"VN","created_at":"2024-08-26T15:31:55.000Z","updated_at":"2024-08-26T15:31:55.000Z"}][39m
+11:47:09 PM 26-08-2024 [32minfo[39m: 	[32mRequest: /api/v1/customers - GET [39m
+11:47:09 PM 26-08-2024 [32minfo[39m: 	[32mResponse: /api/v1/customers - GET - 200 - [{"customerNumber":1,"customerName":"Customer 1","contactLastName":"Customer 1","contactFirstName":"Customer 1","phone":"0968239801","addressLine1":"292 Ha noi","addressLine2":null,"city":"Ha noi","state":"Hoang Mai","postalCode":"10000","country":"Viet nam","salesRepEmployeeNumber":101,"creditLimit":"123.32","created_at":"2024-08-26T15:56:37.000Z","updated_at":"2024-08-26T15:56:37.000Z"},{"customerNumber":2,"customerName":"Customer 2","contactLastName":"Customer 2","contactFirstName":"Customer 2","phone":"0968239801","addressLine1":"292 Ha noi","addressLine2":null,"city":"Ha noi","state":"Hoang Mai","postalCode":"10000","country":"Viet nam","salesRepEmployeeNumber":101,"creditLimit":"123.32","created_at":"2024-08-26T15:56:37.000Z","updated_at":"2024-08-26T15:56:37.000Z"}][39m
+11:47:15 PM 26-08-2024 [32minfo[39m: 	[32mRequest: /api/v1/employees - GET [39m
+11:47:15 PM 26-08-2024 [32minfo[39m: 	[32mResponse: /api/v1/employees - GET - 200 - [{"employeeNumber":1,"lastName":"9999","firstName":"Default","extension":"","email":"Default","officeCode":"FA1","reportsTo":null,"jobTitle":"Default","role":"Staff","created_at":"2024-08-26T15:31:55.000Z","updated_at":"2024-08-26T15:31:55.000Z","user":null,"customers":[]},{"employeeNumber":2,"lastName":"9999","firstName":"Default","extension":"","email":"Default","officeCode":"VN1","reportsTo":null,"jobTitle":"Default","role":"Staff","created_at":"2024-08-26T15:31:55.000Z","updated_at":"2024-08-26T15:31:55.000Z","user":null,"customers":[]},{"employeeNumber":3,"lastName":"Pham","firstName":"Jeff","extension":"","email":"jeffpham2906@gmail.com","officeCode":null,"reportsTo":null,"jobTitle":"System Admin","role":"President","created_at":"2024-08-26T15:31:55.000Z","updated_at":"2024-08-26T15:31:55.000Z","user":{"username":"system_admin"},"customers":[]},{"employeeNumber":4,"lastName":"Duc","firstName":"Anh","extension":"","email":"ducanh@gmail.com","officeCode":null,"reportsTo":null,"jobTitle":"Sales Manager (APAC)","role":"Manager","created_at":"2024-08-26T15:31:55.000Z","updated_at":"2024-08-26T15:31:55.000Z","user":{"username":"system_manager"},"customers":[]},{"employeeNumber":5,"lastName":"Manager 2","firstName":"Sales","extension":"","email":"ducanh@gmail.com","officeCode":null,"reportsTo":null,"jobTitle":"Sales Manager (EMEA)","role":"Manager","created_at":"2024-08-26T15:31:55.000Z","updated_at":"2024-08-26T15:31:55.000Z","user":{"username":"system_leader1"},"customers":[]},{"employeeNumber":6,"lastName":"Dung","firstName":"Pham","extension":"","email":"dungpham@gmail.com","officeCode":"VN1","reportsTo":null,"jobTitle":"Leader Sales","role":"Leader","created_at":"2024-08-26T15:31:55.000Z","updated_at":"2024-08-26T15:31:55.000Z","user":{"username":"system_staff1"},"customers":[]},{"employeeNumber":7,"lastName":"John","firstName":"Tran","extension":"","email":"johntran@gmail.com","officeCode":"VN1","reportsTo":null,"jobTitle":"Staff Sales","role":"Staff","created_at":"2024-08-26T15:31:55.000Z","updated_at":"2024-08-26T15:31:55.000Z","user":{"username":"system_staff2"},"customers":[]},{"employeeNumber":8,"lastName":"Pham","firstName":"Luyen","extension":"","email":"phamluyeb@gmail.com","officeCode":"FA1","reportsTo":null,"jobTitle":"Staff Sales","role":"Staff","created_at":"2024-08-26T15:31:55.000Z","updated_at":"2024-08-26T15:31:55.000Z","user":{"username":"system_leader2"},"customers":[]},{"employeeNumber":9,"lastName":"Dang","firstName":"Khoa","extension":"","email":"dangkhoa@gmail.com","officeCode":"FA1","reportsTo":null,"jobTitle":"Leader ABC","role":"Leader","created_at":"2024-08-26T15:31:55.000Z","updated_at":"2024-08-26T15:31:55.000Z","user":null,"customers":[]},{"employeeNumber":101,"lastName":"Employee 1","firstName":"Employee 1","extension":"Hello","email":"khoanguyen@gmail.com","officeCode":"FA1","reportsTo":null,"jobTitle":"Staff","role":"Staff","created_at":"2024-08-26T15:56:37.000Z","updated_at":"2024-08-26T15:56:37.000Z","user":null,"customers":[{"customerNumber":1,"customerName":"Customer 1","contactLastName":"Customer 1","contactFirstName":"Customer 1","phone":"0968239801","addressLine1":"292 Ha noi","addressLine2":null,"city":"Ha noi","state":"Hoang Mai","postalCode":"10000","country":"Viet nam","salesRepEmployeeNumber":101,"creditLimit":"123.32","created_at":"2024-08-26T15:56:37.000Z","updated_at":"2024-08-26T15:56:37.000Z"},{"customerNumber":2,"customerName":"Customer 2","contactLastName":"Customer 2","contactFirstName":"Customer 2","phone":"0968239801","addressLine1":"292 Ha noi","addressLine2":null,"city":"Ha noi","state":"Hoang Mai","postalCode":"10000","country":"Viet nam","salesRepEmployeeNumber":101,"creditLimit":"123.32","created_at":"2024-08-26T15:56:37.000Z","updated_at":"2024-08-26T15:56:37.000Z"}]},{"employeeNumber":103,"lastName":"9999","firstName":"Default","extension":"","email":"Default","officeCode":"Office 1","reportsTo":null,"jobTitle":"Default","role":"Staff","created_at":"2024-08-26T16:46:02.000Z","updated_at":"2024-08-26T16:46:02.000Z","user":null,"customers":[]}][39m
+11:54:43 PM 26-08-2024 [32minfo[39m: 	[32mConnected to loggerRepository[39m
+11:54:47 PM 26-08-2024 [32minfo[39m: 	[32mRequest: /api/v1/users/login - POST [39m
+11:54:47 PM 26-08-2024 [32minfo[39m: 	[32mResponse: /api/v1/users/login - POST - 200 - {"employeeNumber":3,"username":"system_admin","lastName":"Pham","firstName":"Jeff","extension":"","email":"jeffpham2906@gmail.com","jobTitle":"System Admin","role":"President","created_at":"2024-08-26T15:31:55.000Z","updated_at":"2024-08-26T15:31:55.000Z","permissions":[{"key":"employees","actions":[{"method":"full"}]},{"key":"customers","actions":[{"method":"full"}]},{"key":"roles","actions":[{"method":"full"}]}]}[39m
+11:54:52 PM 26-08-2024 [32minfo[39m: 	[32mRequest: /api/v1/employees - GET [39m
+11:54:52 PM 26-08-2024 [32minfo[39m: 	[32mResponse: /api/v1/employees - GET - 200 - [{"employeeNumber":1,"lastName":"9999","firstName":"Default","extension":"","email":"Default","officeCode":"FA1","reportsTo":null,"jobTitle":"Default","role":"Staff","created_at":"2024-08-26T15:31:55.000Z","updated_at":"2024-08-26T15:31:55.000Z","user":null,"customers":[]},{"employeeNumber":2,"lastName":"9999","firstName":"Default","extension":"","email":"Default","officeCode":"VN1","reportsTo":null,"jobTitle":"Default","role":"Staff","created_at":"2024-08-26T15:31:55.000Z","updated_at":"2024-08-26T15:31:55.000Z","user":null,"customers":[]},{"employeeNumber":3,"lastName":"Pham","firstName":"Jeff","extension":"","email":"jeffpham2906@gmail.com","officeCode":null,"reportsTo":null,"jobTitle":"System Admin","role":"President","created_at":"2024-08-26T15:31:55.000Z","updated_at":"2024-08-26T15:31:55.000Z","user":{"username":"system_admin"},"customers":[]},{"employeeNumber":4,"lastName":"Duc","firstName":"Anh","extension":"","email":"ducanh@gmail.com","officeCode":null,"reportsTo":null,"jobTitle":"Sales Manager (APAC)","role":"Manager","created_at":"2024-08-26T15:31:55.000Z","updated_at":"2024-08-26T15:31:55.000Z","user":{"username":"system_manager"},"customers":[]},{"employeeNumber":5,"lastName":"Manager 2","firstName":"Sales","extension":"","email":"ducanh@gmail.com","officeCode":null,"reportsTo":null,"jobTitle":"Sales Manager (EMEA)","role":"Manager","created_at":"2024-08-26T15:31:55.000Z","updated_at":"2024-08-26T15:31:55.000Z","user":{"username":"system_leader1"},"customers":[]},{"employeeNumber":6,"lastName":"Dung","firstName":"Pham","extension":"","email":"dungpham@gmail.com","officeCode":"VN1","reportsTo":null,"jobTitle":"Leader Sales","role":"Leader","created_at":"2024-08-26T15:31:55.000Z","updated_at":"2024-08-26T15:31:55.000Z","user":{"username":"system_staff1"},"customers":[]},{"employeeNumber":7,"lastName":"John","firstName":"Tran","extension":"","email":"johntran@gmail.com","officeCode":"VN1","reportsTo":null,"jobTitle":"Staff Sales","role":"Staff","created_at":"2024-08-26T15:31:55.000Z","updated_at":"2024-08-26T15:31:55.000Z","user":{"username":"system_staff2"},"customers":[]},{"employeeNumber":8,"lastName":"Pham","firstName":"Luyen","extension":"","email":"phamluyeb@gmail.com","officeCode":"FA1","reportsTo":null,"jobTitle":"Staff Sales","role":"Staff","created_at":"2024-08-26T15:31:55.000Z","updated_at":"2024-08-26T15:31:55.000Z","user":{"username":"system_leader2"},"customers":[]},{"employeeNumber":9,"lastName":"Dang","firstName":"Khoa","extension":"","email":"dangkhoa@gmail.com","officeCode":"FA1","reportsTo":null,"jobTitle":"Leader ABC","role":"Leader","created_at":"2024-08-26T15:31:55.000Z","updated_at":"2024-08-26T15:31:55.000Z","user":null,"customers":[]},{"employeeNumber":101,"lastName":"Employee 1","firstName":"Employee 1","extension":"Hello","email":"khoanguyen@gmail.com","officeCode":"FA1","reportsTo":null,"jobTitle":"Staff","role":"Staff","created_at":"2024-08-26T15:56:37.000Z","updated_at":"2024-08-26T15:56:37.000Z","user":null,"customers":[{"customerNumber":1,"customerName":"Customer 1","contactLastName":"Customer 1","contactFirstName":"Customer 1","phone":"0968239801","addressLine1":"292 Ha noi","addressLine2":null,"city":"Ha noi","state":"Hoang Mai","postalCode":"10000","country":"Viet nam","salesRepEmployeeNumber":101,"creditLimit":"123.32","created_at":"2024-08-26T15:56:37.000Z","updated_at":"2024-08-26T15:56:37.000Z"},{"customerNumber":2,"customerName":"Customer 2","contactLastName":"Customer 2","contactFirstName":"Customer 2","phone":"0968239801","addressLine1":"292 Ha noi","addressLine2":null,"city":"Ha noi","state":"Hoang Mai","postalCode":"10000","country":"Viet nam","salesRepEmployeeNumber":101,"creditLimit":"123.32","created_at":"2024-08-26T15:56:37.000Z","updated_at":"2024-08-26T15:56:37.000Z"}]},{"employeeNumber":103,"lastName":"9999","firstName":"Default","extension":"","email":"Default","officeCode":"Office 1","reportsTo":null,"jobTitle":"Default","role":"Staff","created_at":"2024-08-26T16:46:02.000Z","updated_at":"2024-08-26T16:46:02.000Z","user":null,"customers":[]}][39m
+11:55:00 PM 26-08-2024 [32minfo[39m: 	[32mRequest: /api/v1/employees/103 - GET [39m
+11:55:00 PM 26-08-2024 [31merror[39m: 	[31mError: /api/v1/employees/103 - GET - 401 - {"statusCode":401,"message":"UNAUTHORIZED","data":null,"errors":"You need to bearer token"}[39m
+11:56:36 PM 26-08-2024 [32minfo[39m: 	[32mConnected to loggerRepository[39m
+11:56:38 PM 26-08-2024 [32minfo[39m: 	[32mRequest: /api/v1/employees/103 - GET [39m
+11:56:38 PM 26-08-2024 [31merror[39m: 	[31mError: /api/v1/employees/103 - GET - 401 - {"statusCode":401,"message":"UNAUTHORIZED","data":null,"errors":"You need to bearer token"}[39m
+11:57:27 PM 26-08-2024 [32minfo[39m: 	[32mRequest: /api/v1/employees/103 - GET [39m
+11:58:02 PM 26-08-2024 [31merror[39m: 	[31mError: /api/v1/employees/103 - GET - 200 - {"statusCode":401,"message":"UNAUTHORIZED","data":null,"errors":"You need to bearer token"}[39m
+11:58:03 PM 26-08-2024 [32minfo[39m: 	[32mConnected to loggerRepository[39m
+11:58:38 PM 26-08-2024 [32minfo[39m: 	[32mConnected to loggerRepository[39m
+11:59:42 PM 26-08-2024 [32minfo[39m: 	[32mConnected to loggerRepository[39m
+11:59:58 PM 26-08-2024 [32minfo[39m: 	[32mConnected to loggerRepository[39m
+12:00:29 AM 27-08-2024 [32minfo[39m: 	[32mRequest: /api/v1/employees/103 - GET [39m
+12:00:41 AM 27-08-2024 [31merror[39m: 	[31mError: /api/v1/employees/103 - GET - 200 - {"statusCode":401,"message":"UNAUTHORIZED","data":null,"errors":"You need to bearer token"}[39m
+12:01:22 AM 27-08-2024 [32minfo[39m: 	[32mConnected to loggerRepository[39m
+12:01:26 AM 27-08-2024 [32minfo[39m: 	[32mRequest: /api/v1/employees/103 - GET [39m
+12:01:26 AM 27-08-2024 [31merror[39m: 	[31mError: /api/v1/employees/103 - GET - 200 - {"statusCode":401,"message":"UNAUTHORIZED","data":null,"errors":"You need to bearer token"}[39m
+12:01:28 AM 27-08-2024 [32minfo[39m: 	[32mRequest: /api/v1/employees/103 - GET [39m
+12:01:28 AM 27-08-2024 [31merror[39m: 	[31mError: /api/v1/employees/103 - GET - 200 - {"statusCode":401,"message":"UNAUTHORIZED","data":null,"errors":"You need to bearer token"}[39m
+12:01:48 AM 27-08-2024 [32minfo[39m: 	[32mRequest: /api/v1/employees/103 - GET [39m
+12:02:17 AM 27-08-2024 [32minfo[39m: 	[32mRequest: /api/v1/employees/103 - DELETE [39m
+12:02:17 AM 27-08-2024 [31merror[39m: 	[31mError: /api/v1/employees/103 - DELETE - 200 - {"statusCode":400,"message":"FAILED","data":null,"errors":"Cannot change | create an default employee with lastName 9999"}[39m
+12:03:08 AM 27-08-2024 [32minfo[39m: 	[32mConnected to loggerRepository[39m
+12:03:10 AM 27-08-2024 [32minfo[39m: 	[32mRequest: /api/v1/employees/103 - DELETE [39m
+12:03:10 AM 27-08-2024 [31merror[39m: 	[31mError: /api/v1/employees/103 - DELETE - 200 - {"statusCode":400,"message":"FAILED","data":null,"errors":"Cannot update | create | delete an default employee of an office"}[39m
+12:04:35 AM 27-08-2024 [32minfo[39m: 	[32mConnected to loggerRepository[39m
+12:04:42 AM 27-08-2024 [32minfo[39m: 	[32mConnected to loggerRepository[39m
+12:04:44 AM 27-08-2024 [32minfo[39m: 	[32mRequest: /api/v1/employees/103 - GET [39m
+12:04:44 AM 27-08-2024 [32minfo[39m: 	[32mResponse: /api/v1/employees/103 - GET - 200 - {"employeeNumber":103,"lastName":"9999","firstName":"Default","extension":"","email":"Default","officeCode":"Office 1","reportsTo":null,"jobTitle":"Default","role":"Staff","created_at":"2024-08-26T16:46:02.000Z","updated_at":"2024-08-26T16:46:02.000Z"}[39m
+12:07:19 AM 27-08-2024 [32minfo[39m: 	[32mRequest: /api/v1/employees/103 - PUT [39m
+12:07:19 AM 27-08-2024 [31merror[39m: 	[31mError: /api/v1/employees/103 - PUT - 200 - {"statusCode":401,"message":"UNAUTHORIZED","data":null,"errors":"jwt expired"}[39m
+12:07:22 AM 27-08-2024 [32minfo[39m: 	[32mRequest: /api/v1/users/login - POST [39m
+12:07:22 AM 27-08-2024 [32minfo[39m: 	[32mResponse: /api/v1/users/login - POST - 200 - {"employeeNumber":3,"username":"system_admin","lastName":"Pham","firstName":"Jeff","extension":"","email":"jeffpham2906@gmail.com","jobTitle":"System Admin","role":"President","created_at":"2024-08-26T15:31:55.000Z","updated_at":"2024-08-26T15:31:55.000Z","permissions":[{"key":"employees","actions":[{"method":"full"}]},{"key":"customers","actions":[{"method":"full"}]},{"key":"roles","actions":[{"method":"full"}]}]}[39m
+12:07:32 AM 27-08-2024 [32minfo[39m: 	[32mRequest: /api/v1/employees/103 - PUT [39m
+12:07:40 AM 27-08-2024 [32minfo[39m: 	[32mRequest: /api/v1/employees/103 - PATCH [39m
+12:07:40 AM 27-08-2024 [32minfo[39m: 	[32mResponse: /api/v1/employees/103 - PATCH - 200 - {"employeeNumber":103,"lastName":"9999","firstName":"Default","extension":"","email":"Default","officeCode":"Office 1","reportsTo":null,"jobTitle":"Default","role":"Staff","created_at":"2024-08-26T16:46:02.000Z","updated_at":"2024-08-26T16:46:02.000Z"}[39m
+12:08:14 AM 27-08-2024 [32minfo[39m: 	[32mConnected to loggerRepository[39m
+12:27:42 AM 27-08-2024 [32minfo[39m: 	[32mConnected to loggerRepository[39m
+12:27:43 AM 27-08-2024 [32minfo[39m: 	[32mRequest: /api/v1/users/login - POST [39m
+12:27:43 AM 27-08-2024 [32minfo[39m: 	[32mResponse: /api/v1/users/login - POST - 200 - {"employeeNumber":3,"username":"system_admin","lastName":"Pham","firstName":"Jeff","extension":"","email":"jeffpham2906@gmail.com","jobTitle":"System Admin","role":"President","created_at":"2024-08-26T15:31:55.000Z","updated_at":"2024-08-26T15:31:55.000Z","permissions":[{"key":"employees","actions":[{"method":"full"}]},{"key":"customers","actions":[{"method":"full"}]},{"key":"roles","actions":[{"method":"full"}]}]}[39m
+12:27:49 AM 27-08-2024 [32minfo[39m: 	[32mRequest: /api/v1/employees/103 - GET [39m
+12:27:49 AM 27-08-2024 [32minfo[39m: 	[32mResponse: /api/v1/employees/103 - GET - 200 - {"employeeNumber":103,"lastName":"9999","firstName":"Default","extension":"","email":"Default","officeCode":"Office 1","reportsTo":null,"jobTitle":"Default","role":"Staff","created_at":"2024-08-26T16:46:02.000Z","updated_at":"2024-08-26T16:46:02.000Z","user":null,"customers":[]}[39m
+12:27:58 AM 27-08-2024 [32minfo[39m: 	[32mRequest: /api/v1/employees - GET [39m
+12:27:58 AM 27-08-2024 [32minfo[39m: 	[32mResponse: /api/v1/employees - GET - 200 - [{"employeeNumber":1,"lastName":"9999","firstName":"Default","extension":"","email":"Default","officeCode":"FA1","reportsTo":null,"jobTitle":"Default","role":"Staff","created_at":"2024-08-26T15:31:55.000Z","updated_at":"2024-08-26T15:31:55.000Z","user":null,"customers":[]},{"employeeNumber":2,"lastName":"9999","firstName":"Default","extension":"","email":"Default","officeCode":"VN1","reportsTo":null,"jobTitle":"Default","role":"Staff","created_at":"2024-08-26T15:31:55.000Z","updated_at":"2024-08-26T15:31:55.000Z","user":null,"customers":[]},{"employeeNumber":3,"lastName":"Pham","firstName":"Jeff","extension":"","email":"jeffpham2906@gmail.com","officeCode":null,"reportsTo":null,"jobTitle":"System Admin","role":"President","created_at":"2024-08-26T15:31:55.000Z","updated_at":"2024-08-26T15:31:55.000Z","user":{"username":"system_admin"},"customers":[]},{"employeeNumber":4,"lastName":"Duc","firstName":"Anh","extension":"","email":"ducanh@gmail.com","officeCode":null,"reportsTo":null,"jobTitle":"Sales Manager (APAC)","role":"Manager","created_at":"2024-08-26T15:31:55.000Z","updated_at":"2024-08-26T15:31:55.000Z","user":{"username":"system_manager"},"customers":[]},{"employeeNumber":5,"lastName":"Manager 2","firstName":"Sales","extension":"","email":"ducanh@gmail.com","officeCode":null,"reportsTo":null,"jobTitle":"Sales Manager (EMEA)","role":"Manager","created_at":"2024-08-26T15:31:55.000Z","updated_at":"2024-08-26T15:31:55.000Z","user":{"username":"system_leader1"},"customers":[]},{"employeeNumber":6,"lastName":"Dung","firstName":"Pham","extension":"","email":"dungpham@gmail.com","officeCode":"VN1","reportsTo":null,"jobTitle":"Leader Sales","role":"Leader","created_at":"2024-08-26T15:31:55.000Z","updated_at":"2024-08-26T15:31:55.000Z","user":{"username":"system_staff1"},"customers":[]},{"employeeNumber":7,"lastName":"John","firstName":"Tran","extension":"","email":"johntran@gmail.com","officeCode":"VN1","reportsTo":null,"jobTitle":"Staff Sales","role":"Staff","created_at":"2024-08-26T15:31:55.000Z","updated_at":"2024-08-26T15:31:55.000Z","user":{"username":"system_staff2"},"customers":[]},{"employeeNumber":8,"lastName":"Pham","firstName":"Luyen","extension":"","email":"phamluyeb@gmail.com","officeCode":"FA1","reportsTo":null,"jobTitle":"Staff Sales","role":"Staff","created_at":"2024-08-26T15:31:55.000Z","updated_at":"2024-08-26T15:31:55.000Z","user":{"username":"system_leader2"},"customers":[]},{"employeeNumber":9,"lastName":"Dang","firstName":"Khoa","extension":"","email":"dangkhoa@gmail.com","officeCode":"FA1","reportsTo":null,"jobTitle":"Leader ABC","role":"Leader","created_at":"2024-08-26T15:31:55.000Z","updated_at":"2024-08-26T15:31:55.000Z","user":null,"customers":[]},{"employeeNumber":101,"lastName":"Employee 1","firstName":"Employee 1","extension":"Hello","email":"khoanguyen@gmail.com","officeCode":"FA1","reportsTo":null,"jobTitle":"Staff","role":"Staff","created_at":"2024-08-26T15:56:37.000Z","updated_at":"2024-08-26T15:56:37.000Z","user":null,"customers":[{"customerNumber":1,"customerName":"Customer 1","contactLastName":"Customer 1","contactFirstName":"Customer 1","phone":"0968239801","addressLine1":"292 Ha noi","addressLine2":null,"city":"Ha noi","state":"Hoang Mai","postalCode":"10000","country":"Viet nam","salesRepEmployeeNumber":101,"creditLimit":"123.32","created_at":"2024-08-26T15:56:37.000Z","updated_at":"2024-08-26T15:56:37.000Z"},{"customerNumber":2,"customerName":"Customer 2","contactLastName":"Customer 2","contactFirstName":"Customer 2","phone":"0968239801","addressLine1":"292 Ha noi","addressLine2":null,"city":"Ha noi","state":"Hoang Mai","postalCode":"10000","country":"Viet nam","salesRepEmployeeNumber":101,"creditLimit":"123.32","created_at":"2024-08-26T15:56:37.000Z","updated_at":"2024-08-26T15:56:37.000Z"}]},{"employeeNumber":103,"lastName":"9999","firstName":"Default","extension":"","email":"Default","officeCode":"Office 1","reportsTo":null,"jobTitle":"Default","role":"Staff","created_at":"2024-08-26T16:46:02.000Z","updated_at":"2024-08-26T16:46:02.000Z","user":null,"customers":[]}][39m
+12:28:08 AM 27-08-2024 [32minfo[39m: 	[32mRequest: /api/v1/employees/101 - GET [39m
+12:28:08 AM 27-08-2024 [32minfo[39m: 	[32mResponse: /api/v1/employees/101 - GET - 200 - {"employeeNumber":101,"lastName":"Employee 1","firstName":"Employee 1","extension":"Hello","email":"khoanguyen@gmail.com","officeCode":"FA1","reportsTo":null,"jobTitle":"Staff","role":"Staff","created_at":"2024-08-26T15:56:37.000Z","updated_at":"2024-08-26T15:56:37.000Z","user":null,"customers":[{"customerNumber":1,"customerName":"Customer 1","contactLastName":"Customer 1","contactFirstName":"Customer 1","phone":"0968239801","addressLine1":"292 Ha noi","addressLine2":null,"city":"Ha noi","state":"Hoang Mai","postalCode":"10000","country":"Viet nam","salesRepEmployeeNumber":101,"creditLimit":"123.32","created_at":"2024-08-26T15:56:37.000Z","updated_at":"2024-08-26T15:56:37.000Z"},{"customerNumber":2,"customerName":"Customer 2","contactLastName":"Customer 2","contactFirstName":"Customer 2","phone":"0968239801","addressLine1":"292 Ha noi","addressLine2":null,"city":"Ha noi","state":"Hoang Mai","postalCode":"10000","country":"Viet nam","salesRepEmployeeNumber":101,"creditLimit":"123.32","created_at":"2024-08-26T15:56:37.000Z","updated_at":"2024-08-26T15:56:37.000Z"}]}[39m
+12:32:20 AM 27-08-2024 [32minfo[39m: 	[32mConnected to loggerRepository[39m
+12:32:54 AM 27-08-2024 [32minfo[39m: 	[32mConnected to loggerRepository[39m
+12:33:16 AM 27-08-2024 [32minfo[39m: 	[32mConnected to loggerRepository[39m
+12:33:59 AM 27-08-2024 [32minfo[39m: 	[32mRequest: /api/v1/customers/1 - GET [39m
+12:33:59 AM 27-08-2024 [31merror[39m: 	[31mError: /api/v1/customers/1 - GET - 200 - {"statusCode":401,"message":"UNAUTHORIZED","data":null,"errors":"You need to bearer token"}[39m
+12:34:09 AM 27-08-2024 [32minfo[39m: 	[32mRequest: /api/v1/customers/1 - GET [39m
+12:34:09 AM 27-08-2024 [32minfo[39m: 	[32mResponse: /api/v1/customers/1 - GET - 200 - {"customerNumber":1,"customerName":"Customer 1","contactLastName":"Customer 1","contactFirstName":"Customer 1","phone":"0968239801","addressLine1":"292 Ha noi","addressLine2":null,"city":"Ha noi","state":"Hoang Mai","postalCode":"10000","country":"Viet nam","salesRepEmployeeNumber":101,"creditLimit":"123.32","created_at":"2024-08-26T15:56:37.000Z","updated_at":"2024-08-26T15:56:37.000Z"}[39m

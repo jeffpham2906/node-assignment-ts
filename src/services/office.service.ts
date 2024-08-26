@@ -4,20 +4,22 @@ import { IOfficeRepository } from "../interfaces/office/IOfficeRepository";
 
 export class OfficeService implements IOfficeService {
     private repository: IOfficeRepository;
+
     constructor(repository: IOfficeRepository) {
         this.repository = repository;
     }
+
     onGetOffice(officeCode: string): Promise<Office | null> {
         throw new Error("Method not implemented.");
     }
 
     onGetOffices(): Promise<Office[]> {
-        throw new Error("Method not implemented.");
+        return this.repository.getAll();
     }
 
-    onCreateOffice(office: Office): Promise<Office> {
-        throw new Error("Method not implemented.");
-    }
+    onCreateOffice = async (office: Office): Promise<Office> => {
+        return this.repository.create(office);
+    };
 
     onUpdateOffice(officeCode: string, office: Partial<Office>): Promise<Office> {
         throw new Error("Method not implemented.");

@@ -19,12 +19,15 @@ employeeRoutes.post(
     employeeSchema,
     controller.createEmployee
 );
-employeeRoutes.put(
-    "/:id",
-    authenticate({ key: "employees", method: Method.UPDATE }),
-    employeeSchemaUpdate,
-    controller.updateEmployee
-);
-employeeRoutes.delete("/:id", authenticate({ key: "employees", method: Method.DELETE }), controller.deleteEmployee);
+employeeRoutes
+    .route("/:id")
+    .get(authenticate({ key: "employees", method: Method.READ }), controller.getEmployee)
+    .patch(
+        authenticate({ key: "employees", method: Method.UPDATE }),
+        employeeSchemaUpdate,
+        controller.updateEmployee
+    )
+    .delete(authenticate({ key: "employees", method: Method.DELETE }), controller.deleteEmployee);
+
 
 export default employeeRoutes;

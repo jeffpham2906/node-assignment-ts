@@ -50,7 +50,7 @@ CREATE TABLE `offices` (
     `created_at` TIMESTAMP(0) NOT NULL DEFAULT CURRENT_TIMESTAMP(0),
     `updated_at` TIMESTAMP(0) NOT NULL DEFAULT CURRENT_TIMESTAMP(0),
 
-    UNIQUE INDEX `offices_officeCode_key`(`officeCode`)
+    PRIMARY KEY (`officeCode`)
 ) DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
 
 -- CreateTable
@@ -84,7 +84,6 @@ CREATE TABLE `products` (
     `quantityInStock` INTEGER NOT NULL,
     `buyPrice` DECIMAL(10, 2) NOT NULL,
     `MSRP` DECIMAL(10, 2) NOT NULL,
-    `productLines` VARCHAR(191) NULL,
 
     PRIMARY KEY (`productCode`)
 ) DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
@@ -96,13 +95,13 @@ CREATE TABLE `productlines` (
     `htmlDescription` TEXT NOT NULL,
     `image` VARCHAR(100) NOT NULL,
 
-    UNIQUE INDEX `productlines_productLine_key`(`productLine`)
+    PRIMARY KEY (`productLine`)
 ) DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
 
 -- CreateTable
 CREATE TABLE `orders` (
     `orderNumber` INTEGER UNSIGNED NOT NULL AUTO_INCREMENT,
-    `orderDate` DATETIME(3) NOT NULL,
+    `orderDate` DATETIME(3) NOT NULL DEFAULT CURRENT_TIMESTAMP(3),
     `requiredDate` DATETIME(3) NOT NULL,
     `shippedDate` DATETIME(3) NULL,
     `status` VARCHAR(15) NOT NULL DEFAULT 'Pending',
@@ -118,10 +117,11 @@ CREATE TABLE `orderdetails` (
     `productCode` VARCHAR(15) NOT NULL,
     `quantityOrdered` INTEGER NOT NULL,
     `priceEach` DECIMAL(65, 30) NOT NULL,
-    `orderLineNumber` INTEGER NOT NULL,
-    `productLineProductLine` VARCHAR(15) NULL,
+    `orderLineNumber` INTEGER NOT NULL AUTO_INCREMENT,
+    `productLineOfProduct` VARCHAR(15) NULL,
 
-    UNIQUE INDEX `orderdetails_orderNumber_productCode_key`(`orderNumber`, `productCode`)
+    UNIQUE INDEX `orderdetails_orderNumber_productCode_key`(`orderNumber`, `productCode`),
+    PRIMARY KEY (`orderLineNumber`)
 ) DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
 
 -- AddForeignKey
@@ -140,7 +140,7 @@ ALTER TABLE `employees` ADD CONSTRAINT `employees_officeCode_fkey` FOREIGN KEY (
 ALTER TABLE `users` ADD CONSTRAINT `users_employeeNumber_fkey` FOREIGN KEY (`employeeNumber`) REFERENCES `employees`(`employeeNumber`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 -- AddForeignKey
-ALTER TABLE `products` ADD CONSTRAINT `products_productLines_fkey` FOREIGN KEY (`productLines`) REFERENCES `productlines`(`productLine`) ON DELETE SET NULL ON UPDATE CASCADE;
+ALTER TABLE `products` ADD CONSTRAINT `products_productLine_fkey` FOREIGN KEY (`productLine`) REFERENCES `productlines`(`productLine`) ON DELETE RESTRICT ON UPDATE CASCADE;
 
 -- AddForeignKey
 ALTER TABLE `orders` ADD CONSTRAINT `orders_customerNumber_fkey` FOREIGN KEY (`customerNumber`) REFERENCES `customers`(`customerNumber`) ON DELETE RESTRICT ON UPDATE CASCADE;
@@ -152,4 +152,4 @@ ALTER TABLE `orderdetails` ADD CONSTRAINT `orderdetails_orderNumber_fkey` FOREIG
 ALTER TABLE `orderdetails` ADD CONSTRAINT `orderdetails_productCode_fkey` FOREIGN KEY (`productCode`) REFERENCES `products`(`productCode`) ON DELETE RESTRICT ON UPDATE CASCADE;
 
 -- AddForeignKey
-ALTER TABLE `orderdetails` ADD CONSTRAINT `orderdetails_productLineProductLine_fkey` FOREIGN KEY (`productLineProductLine`) REFERENCES `productlines`(`productLine`) ON DELETE SET NULL ON UPDATE CASCADE;
+ALTER TABLE `orderdetails` ADD CONSTRAINT `orderdetails_productLineOfProduct_fkey` FOREIGN KEY (`productLineOfProduct`) REFERENCES `productlines`(`productLine`) ON DELETE SET NULL ON UPDATE CASCADE;

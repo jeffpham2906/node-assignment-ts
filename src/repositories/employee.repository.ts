@@ -7,15 +7,17 @@ import { STATUS_MESSAGES } from "../constants";
 
 export class EmployeeRepository implements IEmployeeRepository {
     private client: PrismaClient;
+
     constructor() {
         this.client = prisma;
     }
+
     private isChangeDefaultEmployee = (data: any) => {
         if (data?.lastName && data.lastName === "9999") {
             throw new APIError(
                 StatusCodes.BAD_REQUEST,
                 STATUS_MESSAGES.FAILED,
-                "Cannot change | create an default employee with lastName 9999"
+                "Cannot update | create | delete an default employee of an office"
             );
         }
     };
@@ -24,24 +26,31 @@ export class EmployeeRepository implements IEmployeeRepository {
             include: {
                 user: {
                     select: {
-                        username: true,
-                    },
+                        username: true
+                    }
                 },
-                customers: true,
-            },
+                customers: true
+            }
         });
     };
+
     async get(employeeNumber: number): Promise<Employee | null> {
         return this.client.employee.findUnique({
             where: { employeeNumber },
+            include: {
+                user: true,
+                customers: true
+            }
         });
     }
+
     async create(data: Prisma.EmployeeCreateInput): Promise<Employee> {
         this.isChangeDefaultEmployee(data);
         return this.client.employee.create({
-            data,
+            data
         });
     }
+
     async createWithCustomers(
         employee: Prisma.EmployeeCreateInput,
         customers: Prisma.CustomerCreateManyEmployeeInput[]
@@ -52,34 +61,36 @@ export class EmployeeRepository implements IEmployeeRepository {
                 ...employee,
                 customers: {
                     createMany: {
-                        data: customers,
-                    },
-                },
+                        data: customers
+                    }
+                }
             },
             include: {
-                customers: true,
-            },
+                customers: true
+            }
         });
     }
+
     async update(employeeNumber: number, data: any): Promise<Employee> {
         this.isChangeDefaultEmployee(data);
         return this.client.employee.update({
             where: {
-                employeeNumber,
+                employeeNumber
             },
-            data,
+            data
         });
     }
+
     async delete(employeeNumber: number): Promise<any> {
         return this.client.$transaction(async (prisma) => {
             const deletedEmployee = await prisma.employee.delete({
                 where: {
-                    employeeNumber,
+                    employeeNumber
                 },
                 include: {
                     customers: true,
-                    office: true,
-                },
+                    office: true
+                }
             });
             this.isChangeDefaultEmployee(deletedEmployee);
             if (!Boolean(deletedEmployee.customers.length)) {
@@ -89,18 +100,18 @@ export class EmployeeRepository implements IEmployeeRepository {
                 where: {
                     officeCode: deletedEmployee.officeCode,
                     AND: {
-                        lastName: "9999",
-                    },
-                },
+                        lastName: "9999"
+                    }
+                }
             });
             if (!defaultEmployee) return;
-            return await prisma.customer.updateMany({
+            return prisma.customer.updateMany({
                 where: {
-                    salesRepEmployeeNumber: null,
+                    salesRepEmployeeNumber: null
                 },
                 data: {
-                    salesRepEmployeeNumber: defaultEmployee?.employeeNumber,
-                },
+                    salesRepEmployeeNumber: defaultEmployee?.employeeNumber
+                }
             });
         });
     }
