@@ -1,11 +1,12 @@
 import { Customer, Prisma } from "@prisma/client";
-import { ICustomerService, RequiredConditions } from "../interfaces";
+import { ICustomerService, QueryParams, RequiredConditions } from "../interfaces";
 import { prisma } from "../lib/prisma";
 import { APIError } from "../utils/error";
 import { StatusCodes } from "http-status-codes";
 import { BELONG_TO_THEM, SAME_OFFICE, STATUS_MESSAGES, THEIR_OWN_CUSTOMER } from "../constants";
 import { ICustomerRepository } from "../interfaces";
 import merge from "lodash.merge";
+import { buildQueryParams } from "../utils";
 
 export class CustomerService implements ICustomerService {
     private repository: ICustomerRepository;
@@ -14,14 +15,15 @@ export class CustomerService implements ICustomerService {
         this.repository = repository;
     }
 
-    onGetCustomers = async (requiredConditions?: RequiredConditions): Promise<Customer[]> => {
+    onGetCustomers = async (requiredConditions?: RequiredConditions, queryOptions?: Prisma.CustomerFindManyArgs): Promise<Customer[]> => {
         const options = this.checkGet<Prisma.CustomerFindManyArgs>(requiredConditions);
+        merge(options, queryOptions);
         return await this.repository.getAll(options);
 
     };
 
     onGetCustomer = async (customerNumber: number, requiredConditions?: RequiredConditions): Promise<Customer> => {
-        const options = this.checkGet<Prisma.CustomerFindUniqueArgs>(requiredConditions);
+        const options = { ...this.checkGet<Prisma.CustomerFindUniqueArgs>(requiredConditions) };
         const customer = await this.repository.get(customerNumber, options);
 
         if (!customer) {

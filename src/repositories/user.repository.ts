@@ -7,31 +7,26 @@ export class UserRepository implements IUserRepository {
     constructor() {
         this.client = prisma;
     }
-    findOne = async (id: number): Promise<User | null> => {
-        // Implementation
-        throw new Error("Method not implemented.");
-    };
 
     findByUsername = async (username: string): Promise<User | null> => {
         // Implementation
         return this.client.user.findUnique({
-            where: { username: username },
+            where: { username },
             include: {
                 employee: {
                     include: {
                         employeeRole: {
                             select: {
-                                permissions: true,
-                            },
-                        },
-                    },
-                },
-            },
+                                permissions: true
+                            }
+                        }
+                    }
+                }
+            }
         });
     };
     findAll = async (): Promise<User[]> => {
-        // Implementation
-        throw new Error("Method not implemented.");
+        return this.client.user.findMany();
     };
     create = async (data: any): Promise<Omit<User, "password">> => {
         return this.client.user.create({
@@ -40,16 +35,23 @@ export class UserRepository implements IUserRepository {
                 username: true,
                 password: false,
                 employeeNumber: true,
-                employee: true,
-            },
+                employee: true
+            }
         });
     };
-    update = async (id: number, data: any): Promise<User> => {
-        // Implementation
-        throw new Error("Method not implemented.");
+    update = async (username: string, data: any): Promise<User> => {
+        return this.client.user.update({
+            where: {
+                username
+            },
+            data
+        });
     };
-    delete = async (id: number): Promise<User> => {
-        // Implementation
-        throw new Error("Method not implemented.");
+    delete = async (username: string): Promise<User> => {
+        return this.client.user.delete({
+            where: {
+                username
+            }
+        });
     };
 }

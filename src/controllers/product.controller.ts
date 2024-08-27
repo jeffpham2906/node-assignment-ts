@@ -1,18 +1,25 @@
-import { StatusCodes } from "http-status-codes";
-import { IProductService } from "../interfaces/product/IProductService";
-import { logger } from "../lib/logger";
-import mgLogger from "../services/logger.service";
-import { APIResponse } from "../utils/api.state";
-import { STATUS_MESSAGES } from "../constants";
 import catchAsync from "../utils/catchAsync";
 
+import { StatusCodes } from "http-status-codes";
+import { IProductService } from "../interfaces/product/IProductService";
+import { APIResponse } from "../utils/api.state";
+import { STATUS_MESSAGES } from "../constants";
+import { QueryParams } from "../interfaces";
+import { buildQueryParams } from "../utils";
+
 export class ProductController {
-    constructor(private service: IProductService) { }
+    constructor(private service: IProductService) {
+    }
 
     getProducts = catchAsync(async (req, res) => {
-        const data = await this.service.onGetProducts();
-        logger.response(req, res, data);
-        mgLogger.info((req as any).user, req, res, { ...data });
-        return new APIResponse(StatusCodes.OK, STATUS_MESSAGES.SUCCESS, data).send(res);
+        const { page, limit, sort, filter } = req.query as QueryParams;
+        const data = await this.service.onGetProducts(buildQueryParams({ ...req.query }));
+        const total = data.length;
+
+        return new APIResponse(StatusCodes.OK, STATUS_MESSAGES.SUCCESS, {
+            items: data,
+            total,
+            page, limit, sort, filter
+        }).send(res);
     });
 }

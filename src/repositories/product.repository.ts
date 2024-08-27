@@ -1,9 +1,10 @@
-import { PrismaClient } from "@prisma/client";
+import { Prisma, PrismaClient } from "@prisma/client";
 import { IProductRepository } from "../interfaces/product/IProductRepository";
 import { prisma } from "../lib/prisma";
 
 export class ProductRepository implements IProductRepository {
     private client: PrismaClient;
+
     constructor() {
         this.client = prisma;
     }
@@ -11,35 +12,35 @@ export class ProductRepository implements IProductRepository {
     get = async (productCode: string): Promise<any> => {
         return this.client.product.findUnique({
             where: {
-                productCode,
-            },
+                productCode
+            }
         });
     };
 
-    getAll = async (): Promise<any> => {
-        return this.client.product.findMany();
+    getAll = async (options?: Prisma.ProductFindManyArgs): Promise<any> => {
+        return this.client.product.findMany(options);
     };
 
     create = async (data: any): Promise<any> => {
         return this.client.product.create({
-            data,
+            data
         });
     };
 
     update = async (productCode: string, data: any): Promise<any> => {
         return this.client.product.update({
             where: {
-                productCode,
+                productCode
             },
-            data,
+            data
         });
     };
 
     delete = async (productCode: string): Promise<any> => {
         return this.client.product.delete({
             where: {
-                productCode,
-            },
+                productCode
+            }
         });
     };
 }

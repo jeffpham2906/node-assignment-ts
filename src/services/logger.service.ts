@@ -22,12 +22,8 @@ export class Logger {
     };
 
     async log(entry: ILogger) {
-        try {
-            entry.user = entry.user || "Anonymous";
-            await this.client?.create(entry);
-        } catch (error) {
-            console.error("Failed to insert log entry:", error);
-        }
+        entry.user = entry.user || "Anonymous";
+        await this.client?.create({ ...entry });
     }
 
     async error(user: User | string, req: Request, res: Response, error: any) {
@@ -49,7 +45,7 @@ export class Logger {
     }
 
     async info(user: User | string, req: Request, res: Response, data: any) {
-        await this.log({
+        return this.log({
             level: LogLevel.Info,
             user,
             message: `${req.method} ${req.originalUrl} - ${res.statusCode}`,
@@ -57,8 +53,16 @@ export class Logger {
         });
     }
 
-    async onGetLogs(options: mongoose.QueryOptions) {
-        return await this.client?.find(options);
+    async onGetLogs(options: mongoose.QueryOptions<typeof loggerRepository>) {
+        return this.client?.find(options);
+    }
+
+    async onDeleteAll() {
+        return this.client?.deleteMany();
+    }
+
+    async onUpdate(id: string, data: Partial<ILogger>) {
+        return this.client?.updateOne({ id }, data);
     }
 }
 

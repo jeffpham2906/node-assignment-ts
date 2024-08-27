@@ -3,6 +3,7 @@ import { verifyToken } from "../lib/jwt";
 import { StatusCodes } from "http-status-codes";
 import { APIError } from "../utils/error";
 import { Method, STATUS_MESSAGES } from "../constants";
+import catchAsync from "../utils/catchAsync";
 
 type UserPermissions = {
     key: string;
@@ -28,16 +29,15 @@ const checkPermission = (
     });
 };
 const authenticate = (requiredPermissions?: RequiredPermission): RequestHandler => {
-    return (req, _res, next) => {
-        if (!req.headers["authorization"] || !req.headers["authorization"]?.startsWith("Bearer")) {
-            return next(new APIError(StatusCodes.UNAUTHORIZED, STATUS_MESSAGES.UNAUTHORIZED, "You need to bearer token"));
-        }
-        const token = req.headers["authorization"]?.split(" ")[1];
-        if (!token) {
-            return next(new APIError(StatusCodes.UNAUTHORIZED, STATUS_MESSAGES.UNAUTHORIZED, "Please bearer your token"));
-
-        }
-        try {
+    return catchAsync(async (req, res, next) => {
+            if (!req.headers["authorization"] || !req.headers["authorization"]?.startsWith("Bearer")) {
+                return next(new APIError(StatusCodes.UNAUTHORIZED, STATUS_MESSAGES.UNAUTHORIZED, "You need to bearer token")
+                );
+            }
+            const token = req.headers["authorization"]?.split(" ")[1];
+            if (!token) {
+                return next(new APIError(StatusCodes.UNAUTHORIZED, STATUS_MESSAGES.UNAUTHORIZED, "Please bearer your token"));
+            }
             const payload = verifyToken(token) as any;
             (req as any).user = payload;
             if (requiredPermissions) {
@@ -48,23 +48,15 @@ const authenticate = (requiredPermissions?: RequiredPermission): RequestHandler 
                     "User does not have required permissions"
                 );
                 if (!userPermissions) {
-                    next(errorDenied);
+                    throw errorDenied;
                 }
                 const hasPermission = checkPermission(userPermissions, requiredPermissions, req);
                 if (!hasPermission) {
-                    next(errorDenied);
+                    throw errorDenied;
                 }
             }
             next();
-        } catch (error: any) {
-            next(
-                new APIError(
-                    StatusCodes.UNAUTHORIZED,
-                    STATUS_MESSAGES.UNAUTHORIZED,
-                    error.message || "Your token is not valid"
-                )
-            );
         }
-    };
+    );
 };
 export default authenticate;

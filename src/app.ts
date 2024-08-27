@@ -8,47 +8,43 @@ import e from "express";
 import apiRoutes from "./routes/v1";
 import cors from "cors";
 import swaggerDocs from "./docs/swagger";
-import { globalErrorHandler } from "./utils/error";
-import { logger } from "./lib/logger";
 
-import performanceTracker from "./services/performanceTracker.service";
+import { globalErrorHandler } from "./utils/error";
+import { loggerMiddleware } from "./middlewares/logger";
+import { logger } from "./lib/logger";
+import { errors } from "celebrate";
 
 const port = Number(process.env.PORT) || 3000;
 const bootstrap = async () => {
     process.on("unhandledRejection", (reason: Error) => {
+        console.log("!213");
         throw reason;
     });
 
     try {
 
         const app = e();
-        console.log("Hello");
+
         //Middlewares
         app.use(e.json());
         app.use(e.urlencoded({ extended: true }));
         app.use(cors({ origin: "*" }));
-        app.use((req, res, next) => {
-            const start = Date.now();
-            logger.request(req);
-            res.on("finish", async () => {
-                const responseTime = Date.now() - start;
-                await performanceTracker.trackRequest({
-                    endpoint: req.originalUrl,
-                    method: req.method,
-                    responseTime,
-                    statusCode: res.statusCode
-                });
-            });
-            next();
-        });
-
+        app.use(loggerMiddleware);
 
         //Routes
         app.use(swaggerDocs);
         app.use("/api/v1", apiRoutes);
 
-        app.use(globalErrorHandler);
+        // app.use(errors());
+        app.use("*", (req, res) => {
+            res.status(404).json({
+                status: 404,
+                message: "Page Not Found"
+            });
+        });
+        //Handle Error
 
+        app.use(globalErrorHandler);
         return app;
     } catch (error) {
         logger.error(error);

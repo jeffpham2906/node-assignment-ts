@@ -4,9 +4,11 @@ import { IOrderService } from "../interfaces/order/IOrderService";
 
 export class OrderService implements IOrderService {
     private repository: IOrderRepository;
+
     constructor(repository: IOrderRepository) {
         this.repository = repository;
     }
+
     onCreate = async (
         order: Prisma.OrderCreateInput & { orderDetails: Prisma.OrderDetailCreateManyOrderInput[] }
     ): Promise<Order> => {
@@ -26,7 +28,7 @@ export class OrderService implements IOrderService {
         return this.repository.get(id);
     };
 
-    onGetAll = async (): Promise<Order[]> => {
-        return this.repository.getAll();
+    onGetAll = async (options?: Prisma.OrderFindManyArgs): Promise<Order[]> => {
+        return this.repository.getAll(options);
     };
 }

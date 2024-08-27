@@ -1,4 +1,4 @@
-import { Office } from "@prisma/client";
+import { Office, Prisma } from "@prisma/client";
 import { IOfficeService } from "../interfaces/office/IOfficeService";
 import { IOfficeRepository } from "../interfaces/office/IOfficeRepository";
 
@@ -9,12 +9,12 @@ export class OfficeService implements IOfficeService {
         this.repository = repository;
     }
 
-    onGetOffice(officeCode: string): Promise<Office | null> {
-        throw new Error("Method not implemented.");
+    async onGetOffice(officeCode: string): Promise<Office | null> {
+        return this.repository.get(officeCode);
     }
 
-    onGetOffices(): Promise<Office[]> {
-        return this.repository.getAll();
+    async onGetOffices(options?: Prisma.OfficeFindManyArgs): Promise<Office[]> {
+        return this.repository.getAll(options);
     }
 
     onCreateOffice = async (office: Office): Promise<Office> => {
@@ -22,11 +22,11 @@ export class OfficeService implements IOfficeService {
     };
 
     onUpdateOffice(officeCode: string, office: Partial<Office>): Promise<Office> {
-        throw new Error("Method not implemented.");
+        return this.repository.update(officeCode, office);
     }
 
     onDeleteOffice(officeCode: string): Promise<Office> {
-        throw new Error("Method not implemented.");
+        return this.repository.delete(officeCode);
     }
 
     onGetReport = async (officeCode?: string, startDate?: Date, endDate?: Date): Promise<any> => {

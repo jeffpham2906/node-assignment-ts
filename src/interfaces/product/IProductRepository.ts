@@ -5,5 +5,5 @@ export interface IProductRepository {
     update: (productCode: string, data: Prisma.ProductUpdateInput) => Promise<Product>;
     delete: (productCode: string) => Promise<any>;
     get: (productCode: string) => Promise<Product | null>;
-    getAll: () => Promise<Product[]>;
+    getAll: (options?: Prisma.ProductFindManyArgs) => Promise<Product[]>;
 }

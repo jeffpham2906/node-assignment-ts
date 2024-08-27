@@ -1,6 +1,7 @@
 import { Order, Prisma, PrismaClient } from "@prisma/client";
 import { IOrderRepository } from "../interfaces/order/IOrderRepository";
 import { prisma } from "../lib/prisma";
+import merge from "lodash.merge";
 
 export class OrderRepository implements IOrderRepository {
     private client: PrismaClient;
@@ -17,8 +18,8 @@ export class OrderRepository implements IOrderRepository {
         });
     };
 
-    getAll = async (): Promise<Order[]> => {
-        return this.client.order.findMany({
+    getAll = async (options?: Prisma.OrderFindManyArgs): Promise<Order[]> => {
+        const defaultOptions = {
             include: {
                 orderDetails: {
                     select: {
@@ -29,7 +30,9 @@ export class OrderRepository implements IOrderRepository {
                     }
                 }
             }
-        });
+        };
+        merge(defaultOptions, options);
+        return this.client.order.findMany(defaultOptions);
     };
 
     create = async (

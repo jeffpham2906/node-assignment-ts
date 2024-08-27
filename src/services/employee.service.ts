@@ -2,13 +2,15 @@ import { Employee, Prisma } from "@prisma/client";
 import { APIError } from "../utils/error";
 import { StatusCodes } from "http-status-codes";
 import { STATUS_MESSAGES } from "../constants";
-import { IEmployeeRepository, IEmployeeService } from "../interfaces";
+import { IEmployeeRepository, IEmployeeService, QueryParams } from "../interfaces";
 
 export class EmployeeService implements IEmployeeService {
     private repository: IEmployeeRepository;
+
     constructor(repository: IEmployeeRepository) {
         this.repository = repository;
     }
+
     private isChangeRootUser = (employeeNumber: number) => {
         const error = new APIError(
             StatusCodes.FORBIDDEN,
@@ -20,8 +22,8 @@ export class EmployeeService implements IEmployeeService {
             throw error;
         }
     };
-    onGetEmployees = async (): Promise<Employee[]> => {
-        return this.repository.getAll();
+    onGetEmployees = async (options?: Prisma.EmployeeFindManyArgs): Promise<Employee[]> => {
+        return this.repository.getAll(options);
     };
     onGetEmployee = async (employeeNumber: number): Promise<Employee> => {
         const employee = await this.repository.get(employeeNumber);

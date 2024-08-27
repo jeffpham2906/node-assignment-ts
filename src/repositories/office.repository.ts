@@ -37,8 +37,8 @@ export class OfficeRepository implements IOfficeRepository {
     };
 
 
-    getAll = async (): Promise<Office[]> => {
-        return this.client.office.findMany();
+    getAll = async (options?: Prisma.OfficeFindManyArgs): Promise<Office[]> => {
+        return this.client.office.findMany(options);
     };
 
 

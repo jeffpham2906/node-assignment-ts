@@ -7,5 +7,5 @@ export interface IOrderService {
     onUpdate: (id: number, order: Prisma.OrderUpdateInput) => Promise<Prisma.OrderUpdateInput>;
     onDelete: (id: number) => Promise<Order>;
     onGet: (id: number) => Promise<Order | null>;
-    onGetAll: () => Promise<Order[]>;
+    onGetAll: (options?: Prisma.OrderFindManyArgs) => Promise<Order[]>;
 }

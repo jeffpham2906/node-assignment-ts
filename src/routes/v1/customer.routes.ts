@@ -5,6 +5,7 @@ import { customerSchema, customerSchemaUpdate } from "../../validations/customer
 import authenticate from "../../middlewares/authenticate";
 import { Method } from "../../constants";
 import { CustomerRepository } from "../../repositories/customer.repository";
+import { validQueryParams } from "../../validations";
 
 // api/v1/customers
 const customerRoutes = Router();
@@ -12,7 +13,10 @@ const repository = new CustomerRepository();
 const service = new CustomerService(repository);
 const controller = new CustomerController(service);
 
-customerRoutes.get("/", authenticate({ key: "customers", method: Method.READ }), controller.getCustomers);
+customerRoutes.get("/", authenticate({
+    key: "customers",
+    method: Method.READ
+}), validQueryParams, controller.getCustomers);
 
 customerRoutes.post(
     "/",

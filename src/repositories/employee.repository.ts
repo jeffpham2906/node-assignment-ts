@@ -1,9 +1,10 @@
-import { Customer, Employee, Prisma, PrismaClient } from "@prisma/client";
-import { IEmployeeRepository } from "../interfaces";
+import { Employee, Prisma, PrismaClient } from "@prisma/client";
+import { IEmployeeRepository, QueryParams } from "../interfaces";
 import { prisma } from "../lib/prisma";
 import { APIError } from "../utils/error";
 import { StatusCodes } from "http-status-codes";
 import { STATUS_MESSAGES } from "../constants";
+import merge from "lodash.merge";
 
 export class EmployeeRepository implements IEmployeeRepository {
     private client: PrismaClient;
@@ -21,8 +22,28 @@ export class EmployeeRepository implements IEmployeeRepository {
             );
         }
     };
-    getAll = async (): Promise<Employee[]> => {
-        return this.client.employee.findMany({
+    getAll = async (options?: Prisma.EmployeeFindManyArgs): Promise<Employee[]> => {
+        const defaultOptions = {
+            include: {
+                user: {
+                    select: {
+                        username: true
+                    }
+                },
+                customers: true
+            }
+
+
+        } as Prisma.EmployeeFindManyArgs;
+        return this.client.employee.findMany(merge(defaultOptions, options));
+    };
+    getTotalRecordNumber = async (options?: Prisma.EmployeeCountArgs) => {
+        return this.client.employee.count(options || {});
+    };
+
+    async get(employeeNumber: number): Promise<Employee | null> {
+        return this.client.employee.findUnique({
+            where: { employeeNumber },
             include: {
                 user: {
                     select: {
@@ -32,22 +53,13 @@ export class EmployeeRepository implements IEmployeeRepository {
                 customers: true
             }
         });
-    };
-
-    async get(employeeNumber: number): Promise<Employee | null> {
-        return this.client.employee.findUnique({
-            where: { employeeNumber },
-            include: {
-                user: true,
-                customers: true
-            }
-        });
     }
 
     async create(data: Prisma.EmployeeCreateInput): Promise<Employee> {
-        this.isChangeDefaultEmployee(data);
-        return this.client.employee.create({
-            data
+        return this.client.$transaction(async (trx) => {
+            const employeeCreated = await trx.employee.create({ data });
+            this.isChangeDefaultEmployee(employeeCreated);
+            return employeeCreated;
         });
     }
 
@@ -55,29 +67,35 @@ export class EmployeeRepository implements IEmployeeRepository {
         employee: Prisma.EmployeeCreateInput,
         customers: Prisma.CustomerCreateManyEmployeeInput[]
     ): Promise<Employee> {
-        this.isChangeDefaultEmployee(employee);
-        return this.client.employee.create({
-            data: {
-                ...employee,
-                customers: {
-                    createMany: {
-                        data: customers
+        return this.client.$transaction(async (trx) => {
+            const employeeCreated = await trx.employee.create({
+                data: {
+                    ...employee,
+                    customers: {
+                        createMany: {
+                            data: customers
+                        }
                     }
+                },
+                include: {
+                    customers: true
                 }
-            },
-            include: {
-                customers: true
-            }
+            });
+            this.isChangeDefaultEmployee(employeeCreated);
+            return employeeCreated;
         });
     }
 
     async update(employeeNumber: number, data: any): Promise<Employee> {
-        this.isChangeDefaultEmployee(data);
-        return this.client.employee.update({
-            where: {
-                employeeNumber
-            },
-            data
+        return this.client.$transaction(async (trx) => {
+            const employeeUpdated = await trx.employee.update({
+                where: {
+                    employeeNumber
+                },
+                data
+            });
+            this.isChangeDefaultEmployee(employeeUpdated);
+            return employeeUpdated;
         });
     }
 

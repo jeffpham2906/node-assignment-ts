@@ -1,7 +1,9 @@
-import { Employee, User } from "@prisma/client";
+import { Employee, Prisma, User } from "@prisma/client";
 import { celebrate, Joi } from "celebrate";
 import { Request } from "express";
 import { isDate } from "util/types";
+import { QueryParams } from "../interfaces";
+import merge from "lodash.merge";
 
 export const getRequiredConditions = (req: Request) => {
     let query;
@@ -28,3 +30,58 @@ export const flattenObject = <T = object>(obj: T): T => {
     }
     return flatted;
 };
+
+export function buildQueryParams(query?: QueryParams) {
+    const options = {} as Prisma.CustomerFindManyArgs | any;
+
+    if (!query) {
+        return options;
+    }
+    const { page = 1, limit = 10, sort, filter } = query;
+
+    // Pagination
+    if (page && limit) {
+        options.skip = (page - 1) * limit;
+        options.take = limit;
+    }
+
+    // Sorting
+    if (sort) {
+        Object.entries(sort).forEach(([key, value]) => {
+            if (value) {
+                merge(options, {
+                    orderBy: {
+                        [key]: value
+                    }
+                });
+            }
+        });
+    }
+
+    // Filter
+    if (filter) {
+        Object.entries(filter).forEach(([key, value]) => {
+            if (value) {
+                if (Array.isArray(value)) {
+                    merge(options, {
+                        where: {
+                            OR: [
+                                { [key]: { in: value } }
+                            ]
+                        }
+                    });
+                } else {
+                    merge(options, {
+                        where: {
+                            OR: [
+                                { [key]: value }
+                            ]
+                        }
+                    });
+                }
+            }
+        });
+    }
+
+    return options;
+}

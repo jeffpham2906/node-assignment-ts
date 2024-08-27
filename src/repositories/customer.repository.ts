@@ -10,9 +10,9 @@ export class CustomerRepository implements ICustomerRepository {
         this.client = prisma;
     }
 
-    get = async (customerNumber: number, options: Prisma.CustomerFindUniqueArgs = {}): Promise<Customer | null> => {
+    get = async (customerNumber: number, options?: Prisma.CustomerFindUniqueArgs): Promise<Customer | null> => {
         const getOptions = merge({ where: { customerNumber } }, options);
-        return this.client.customer.findFirst(getOptions);
+        return this.client.customer.findUnique(getOptions);
     };
     getAll = async (options: Prisma.CustomerFindManyArgs): Promise<Customer[]> => {
         return this.client.customer.findMany(options);
@@ -30,10 +30,7 @@ export class CustomerRepository implements ICustomerRepository {
                 where: {
                     customerNumber
                 },
-                data,
-                include: {
-                    employee: true
-                }
+                data
             },
             options
         );

@@ -1,64 +1,47 @@
-import { Router } from "express";
 import mgLogger from "../../services/logger.service";
-import performanceTracker from "../../services/performanceTracker.service";
+import catchAsync from "../../utils/catchAsync";
+
+import { Router } from "express";
+import { APIResponse } from "../../utils/api.state";
+import { StatusCodes } from "http-status-codes";
+import { STATUS_MESSAGES } from "../../constants";
+import { logQueryParams } from "../../validations";
 
 const logRoute = Router();
 
-logRoute.get("/", async (req, res) => {
-    try {
-        const { level, user, startDate, endDate, content } = req.query;
+// Sorry i'm lazy :v
+logRoute.get("/",
+    logQueryParams,
+    catchAsync(async (req, res) => {
+        const { level, user, startDate, endDate, data } = req.query;
 
         // Build the filter query
-        const query: any = {};
+        const query: any = {
+                ...(level && { level }),
+                ...(user && { user }),
+                ...(data && { data })
+            }
+        ;
 
-        if (level) {
-            query.level = level;
-        }
-
-        if (user) {
-            query.user = user;
-        }
-
-        if (startDate && endDate) {
+        if (startDate || endDate) {
             query.createdAt = {
-                $gte: new Date(startDate as string),
-                $lte: new Date(endDate as string),
+                $gte: startDate ? new Date(startDate as string).toISOString() : undefined,
+                $lte: endDate ? new Date(endDate as string).toISOString() : undefined
             };
-        } else if (startDate) {
-            query.createdAt = {
-                $gte: new Date(startDate as string),
-            };
-        } else if (endDate) {
-            query.createdAt = {
-                $lte: new Date(endDate as string),
-            };
-        }
-
-        if (content) {
-            query.$or = [
-                { message: { $regex: content, $options: "i" } },
-                { data: { $regex: content, $options: "i" } },
-                { error: { $regex: content, $options: "i" } },
-            ];
         }
 
         const logs = await mgLogger.onGetLogs(query);
-        res.status(200).json(logs);
-    } catch (error) {
-        res.status(500).json({ error: "An error occurred while fetching logs" });
-    }
-});
+        return new APIResponse(StatusCodes.OK, STATUS_MESSAGES.SUCCESS, logs).send(res);
+    }));
 
-logRoute.get("/performances", async (req, res) => {
-    try {
-        const { startDate, endDate } = req.query;
-        const logs = await performanceTracker.getPerformanceMetrics({
-            startDate: startDate ? new Date(startDate as string) : undefined,
-            endDate: endDate ? new Date(endDate as string) : undefined,
-        });
-        res.status(200).json(logs);
-    } catch (error: any) {
-        res.status(500).json({ error: "An error occurred while fetching logs", stack: error.stack });
-    }
-});
+logRoute.patch("/:id", catchAsync(async (req, res) => {
+    const { id } = req.params;
+    const updatedLog = await mgLogger.onUpdate(id, req.body);
+    return new APIResponse(StatusCodes.OK, STATUS_MESSAGES.SUCCESS, updatedLog).send(res);
+}));
+logRoute.delete("/", catchAsync(async (req, res) => {
+    await mgLogger.onDeleteAll();
+    new APIResponse(StatusCodes.OK, STATUS_MESSAGES.SUCCESS, undefined).send(res);
+}));
+
 export default logRoute;

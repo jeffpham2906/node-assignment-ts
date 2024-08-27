@@ -5,6 +5,7 @@ import { Method } from "../../constants";
 import { EmployeeRepository } from "../../repositories/employee.repository";
 import { EmployeeController } from "../../controllers/employee.controller";
 import { EmployeeService } from "../../services/employee.service";
+import { validQueryParams } from "../../validations";
 
 // api/v1/employees
 const employeeRoutes = Router();
@@ -12,7 +13,10 @@ const repository = new EmployeeRepository();
 const service = new EmployeeService(repository);
 const controller = new EmployeeController(service);
 
-employeeRoutes.get("/", authenticate({ key: "employees", method: Method.READ }), controller.getEmployees);
+employeeRoutes.get("/", authenticate({
+    key: "employees",
+    method: Method.READ
+}), validQueryParams, controller.getEmployees);
 employeeRoutes.post(
     "/",
     authenticate({ key: "employees", method: Method.CREATE }),

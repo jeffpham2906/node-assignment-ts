@@ -1,5 +1,6 @@
 import { getMongoClient } from "../lib/mongoClient";
 import performanceTrackerRepository from "../repositories/performanceTracker.repository";
+import { logger } from "../lib/logger";
 
 interface PerformanceMetrics {
     endpoint: string;
@@ -8,11 +9,14 @@ interface PerformanceMetrics {
     statusCode: number;
     timestamp: Date;
 }
+
 export class PerformanceTracker {
     private metricsCollection = performanceTrackerRepository || null;
+
     constructor() {
-        this.connect();
+        this.connect().then(() => logger.info("performanceTracker connected"));
     }
+
     private async connect() {
         try {
             await getMongoClient();
@@ -21,10 +25,11 @@ export class PerformanceTracker {
             console.error("Failed to connect to MongoDB for performance tracking:", error);
         }
     }
+
     async trackRequest(metrics: Omit<PerformanceMetrics, "timestamp">) {
         const performanceEntry: PerformanceMetrics = {
             ...metrics,
-            timestamp: new Date(),
+            timestamp: new Date()
         };
 
         try {
@@ -33,6 +38,7 @@ export class PerformanceTracker {
             console.error("Failed to insert performance metrics:", error);
         }
     }
+
     async getPerformanceMetrics(options: { startDate?: Date; endDate?: Date; endpoint?: string }) {
         const query: any = {};
         if (options.startDate || options.endDate) {
@@ -44,6 +50,11 @@ export class PerformanceTracker {
 
         return this.metricsCollection.find(query);
     }
+
+    async onDeleteAll() {
+        return this.metricsCollection?.deleteMany();
+    }
 }
+
 const performanceTracker = new PerformanceTracker();
 export default performanceTracker;

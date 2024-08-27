@@ -254,3 +254,47 @@
 12:03:10 AM 27-08-2024 [31merror[39m: 	[31mError: /api/v1/employees/103 - DELETE - 200 - {"statusCode":400,"message":"FAILED","data":null,"errors":"Cannot update | create | delete an default employee of an office"}[39m
 12:07:19 AM 27-08-2024 [31merror[39m: 	[31mError: /api/v1/employees/103 - PUT - 200 - {"statusCode":401,"message":"UNAUTHORIZED","data":null,"errors":"jwt expired"}[39m
 12:33:59 AM 27-08-2024 [31merror[39m: 	[31mError: /api/v1/customers/1 - GET - 200 - {"statusCode":401,"message":"UNAUTHORIZED","data":null,"errors":"You need to bearer token"}[39m
+10:14:22 AM 27-08-2024 [31merror[39m: 	[31mError: /api/v1/employees - POST - 200 - {"statusCode":400,"message":"FAILED","data":null,"errors":"Cannot update | create | delete an default employee of an office"}[39m
+10:45:23 AM 27-08-2024 [31merror[39m: 	[31mError: /api/v1/logs/performances - DELETE - 200 - {"statusCode":401,"message":"UNAUTHORIZED","data":null,"errors":"jwt expired"}[39m
+10:50:26 AM 27-08-2024 [31merror[39m: 	[31mError: /api/v1/performances - GET - 200 - {"statusCode":401,"message":"UNAUTHORIZED","data":null,"errors":"You need to bearer token"}[39m
+10:50:42 AM 27-08-2024 [31merror[39m: 	[31mError: /api/v1/performances - DELETE - 200 - {"statusCode":401,"message":"UNAUTHORIZED","data":null,"errors":"You need to bearer token"}[39m
+10:59:54 AM 27-08-2024 [31merror[39m: 	[31mError: /api/v1/logs - DELETE - 200 - {"statusCode":401,"message":"UNAUTHORIZED","data":null,"errors":"jwt expired"}[39m
+11:22:45 AM 27-08-2024 [31merror[39m: 	[31mError: /api/v1/logs - DELETE - 200 - {"statusCode":401,"message":"UNAUTHORIZED","data":null,"errors":"jwt malformed"}[39m
+11:23:23 AM 27-08-2024 [31merror[39m: 	[31mError: /api/v1/logs - DELETE - 200 - {"statusCode":401,"message":"UNAUTHORIZED","data":null,"errors":"jwt malformed"}[39m
+11:24:37 AM 27-08-2024 [31merror[39m: 	[31mError: /api/v1/logs - DELETE - 200 - {"statusCode":401,"message":"UNAUTHORIZED","data":null,"errors":"jwt malformed"}[39m
+11:24:47 AM 27-08-2024 [31merror[39m: 	[31mError: /api/v1/logs - GET - 200 - {"statusCode":401,"message":"UNAUTHORIZED","data":null,"errors":"jwt malformed"}[39m
+11:26:17 AM 27-08-2024 [31merror[39m: 	[31mError: /api/v1/logs - GET - 200 - {"statusCode":401,"message":"UNAUTHORIZED","data":null,"errors":"jwt malformed"}[39m
+11:26:18 AM 27-08-2024 [31merror[39m: 	[31mError: /api/v1/logs - GET - 200 - {"statusCode":401,"message":"UNAUTHORIZED","data":null,"errors":"jwt malformed"}[39m
+11:26:26 AM 27-08-2024 [31merror[39m: 	[31mError: /api/v1/logs - GET - 200 - {"statusCode":401,"message":"UNAUTHORIZED","data":null,"errors":"jwt malformed"}[39m
+11:26:28 AM 27-08-2024 [31merror[39m: 	[31mError: /api/v1/logs - DELETE - 200 - {"statusCode":401,"message":"UNAUTHORIZED","data":null,"errors":"jwt malformed"}[39m
+01:28:59 PM 27-08-2024 [31merror[39m: 	[31mError: /api/v1/users/login - POST - 200 - {"statusCode":500,"message":"SOME THING WENT WRONG","data":null,"errors":"(res) => {\n        return res.status(this.statusCode).json(this);\n    } could not be cloned."}[39m
+01:44:45 PM 27-08-2024 [31merror[39m: 	[31mError: /api/v1/logs - GET - 200 - {"statusCode":401,"message":"UNAUTHORIZED","data":null,"errors":"jwt expired"}[39m
+02:08:41 PM 27-08-2024 [31merror[39m: 	[31mError: undefined - undefined - undefined - {"statusCode":500,"message":"SOME THING WENT WRONG","data":null}[39m
+02:11:17 PM 27-08-2024 [31merror[39m: 	[31mError: undefined - undefined - undefined - {"statusCode":500,"message":"SOME THING WENT WRONG","data":null}[39m
+02:12:17 PM 27-08-2024 [31merror[39m: 	[31mError: undefined - undefined - undefined - {"statusCode":500,"message":"SOME THING WENT WRONG","data":null}[39m
+02:19:32 PM 27-08-2024 [31merror[39m: 	[31mError: undefined - undefined - undefined - {"statusCode":500,"message":"SOME THING WENT WRONG","data":null}[39m
+02:20:39 PM 27-08-2024 [31merror[39m: 	[31mError: undefined - undefined - undefined - {"statusCode":500,"message":"SOME THING WENT WRONG","data":null}[39m
+02:25:11 PM 27-08-2024 [31merror[39m: 	[31mError: undefined - undefined - undefined - [object Object][39m
+02:27:00 PM 27-08-2024 [31merror[39m: 	[31mError: undefined - undefined - undefined - [object Object][39m
+02:28:04 PM 27-08-2024 [31merror[39m: 	[31mError: undefined - undefined - undefined - [object Object][39m
+02:28:35 PM 27-08-2024 [31merror[39m: 	[31mError: undefined - undefined - undefined - [object Object][39m
+02:29:29 PM 27-08-2024 [31merror[39m: 	[31mError: undefined - undefined - undefined - [object Object][39m
+08:48:42 PM 27-08-2024 [31merror[39m: 	[31mError: /api/v1/logs?startDate=2024-07/08&endDate=2024-08-30 - GET - 200 - {"statusCode":400,"message":"Validation failed","data":null}[39m
+08:50:06 PM 27-08-2024 [31merror[39m: 	[31mError: /api/v1/logs?startDate=2024-07/08&endDate=2024-08-30 - GET - 200 - {"statusCode":400,"message":"Validation failed","data":null}[39m
+08:51:12 PM 27-08-2024 [31merror[39m: 	[31mError: /api/v1/logs?startDate=2024-07/08&endDate=2024-08-30 - GET - 200 - {"statusCode":400,"message":"Validation failed","data":null}[39m
+08:51:13 PM 27-08-2024 [31merror[39m: 	[31mError: /api/v1/logs?startDate=2024-07/08&endDate=2024-08-30 - GET - 200 - {"statusCode":400,"message":"Validation failed","data":null}[39m
+08:51:48 PM 27-08-2024 [31merror[39m: 	[31mError: /api/v1/logs?startDate=2024-07/08&endDate=2024-08-30 - GET - 200 - {"statusCode":400,"message":"Validation failed","data":null}[39m
+08:52:02 PM 27-08-2024 [31merror[39m: 	[31mError: /api/v1/logs?startDate=2024-07/08&endDate=2024-08-30 - GET - 200 - {"statusCode":400,"message":"Validation failed","data":null,"errors":[{"message":"startDate should follow the format 'YYYY-MM-DD'","path":["startDate"]}]}[39m
+08:53:20 PM 27-08-2024 [31merror[39m: 	[31mError: /api/v1/logs?startDate=2024-07/08&endDate=2024-08-30 - GET - 200 - {"statusCode":401,"message":"UNAUTHORIZED","data":null,"errors":"You need to bearer token"}[39m
+08:53:58 PM 27-08-2024 [31merror[39m: 	[31mError: /api/v1/logs?startDate=2024-07/08&endDate=2024-08-30 - GET - 200 - {"statusCode":401,"message":"UNAUTHORIZED","data":null,"errors":"You need to bearer token"}[39m
+08:54:00 PM 27-08-2024 [31merror[39m: 	[31mError: /api/v1/logs?startDate=2024-07/08&endDate=2024-08-30 - GET - 200 - {"statusCode":401,"message":"UNAUTHORIZED","data":null,"errors":"You need to bearer token"}[39m
+08:54:04 PM 27-08-2024 [31merror[39m: 	[31mError: /api/v1/logs?startDate=2024-07/08&endDate=2024-08-30 - GET - 200 - {"statusCode":400,"message":"Validation failed","data":null,"errors":[{"message":"startDate should follow the format 'YYYY-MM-DD'","path":["startDate"]}]}[39m
+08:55:19 PM 27-08-2024 [31merror[39m: 	[31mError: /api/v1/logs?startDate=2024-07/08&endDate=2024-08-30 - GET - 200 - {"statusCode":400,"message":"Validation failed","data":null,"errors":[{"message":"startDate should follow the format 'YYYY-MM-DD'","path":["startDate"]}]}[39m
+09:02:15 PM 27-08-2024 [31merror[39m: 	[31mError: /api/v1/logs/66cd73b26896b9180dac880c - PATCH - 200 - {"statusCode":500,"message":"SOME THING WENT WRONG","data":null,"errors":{"name":"TokenExpiredError","message":"jwt expired","expiredAt":"2024-08-27T13:58:38.000Z"}}[39m
+09:04:42 PM 27-08-2024 [31merror[39m: 	[31mError: /api/v1/logs/66cd73b26896b9180dac880c - PATCH - 200 - {"statusCode":401,"message":"UNAUTHORIZED","data":null,"errors":{"name":"TokenExpiredError","message":"jwt expired","expiredAt":"2024-08-27T13:58:38.000Z"}}[39m
+09:05:06 PM 27-08-2024 [31merror[39m: 	[31mError: /api/v1/logs/66cd73b26896b9180dac880c - PATCH - 200 - {"statusCode":401,"message":"UNAUTHORIZED","data":null,"errors":{"name":"TokenExpiredError","message":"jwt expired","expiredAt":"2024-08-27T13:58:38.000Z"}}[39m
+09:10:21 PM 27-08-2024 [31merror[39m: 	[31mError: /api/v1/offices - GET - 200 - {"statusCode":401,"message":"UNAUTHORIZED","data":null,"errors":"You need to bearer token"}[39m
+09:18:51 PM 27-08-2024 [31merror[39m: 	[31mError: /api/v1/orders - GET - 200 - {"statusCode":401,"message":"UNAUTHORIZED","data":null,"errors":{"name":"TokenExpiredError","message":"jwt expired","expiredAt":"2024-08-27T14:15:10.000Z"}}[39m
+09:28:57 PM 27-08-2024 [31merror[39m: 	[31mError: /api/v1/offices - GET - 200 - {"statusCode":401,"message":"UNAUTHORIZED","data":null,"errors":{"name":"TokenExpiredError","message":"jwt expired","expiredAt":"2024-08-27T14:28:57.000Z"}}[39m
+09:36:21 PM 27-08-2024 [31merror[39m: 	[31mError: /api/v1/offices - POST - 200 - {"statusCode":401,"message":"UNAUTHORIZED","data":null,"errors":"You need to bearer token"}[39m
+09:36:24 PM 27-08-2024 [31merror[39m: 	[31mError: /api/v1/offices - POST - 200 - {"statusCode":401,"message":"UNAUTHORIZED","data":null,"errors":"You need to bearer token"}[39m

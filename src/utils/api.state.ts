@@ -6,6 +6,7 @@ export class APIResponse {
     message: string;
     data?: any;
     errors?: any;
+
     constructor(statusCode: StatusCodes, message: string, data?: any, errors?: any) {
         this.statusCode = statusCode;
         this.message = message;
@@ -13,7 +14,8 @@ export class APIResponse {
         this.errors = errors;
         return this;
     }
+
     send = (res: Response) => {
-        return res.status(this.statusCode).json(this);
+        return res?.status(this.statusCode).json(this);
     };
 }

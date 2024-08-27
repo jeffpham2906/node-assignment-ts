@@ -1,7 +1,7 @@
 import { Office, Prisma } from "@prisma/client";
 
 export interface IOfficeRepository {
-    getAll: () => Promise<Office[]>;
+    getAll: (options?: Prisma.OfficeFindManyArgs) => Promise<Office[]>;
     get: (officeCode: string) => Promise<Office | null>;
     create: (office: Prisma.OfficeCreateInput) => Promise<Office>;
     update: (officeCode: string, office: Prisma.OfficeUpdateInput) => Promise<Office>;
